@@ -1,442 +1,450 @@
 /* ================================================================
-   BlockFigs — main.js
-   
-   WHAT THIS FILE DOES:
-   1. Navbar scroll effect
-   2. Mobile hamburger menu toggle
-   3. Order form validation
-   4. Captures Roblox username & customer info
-   5. Submits order to PayPal
-   6. Shows confirmation screen with order details
-   
-   SETUP CHECKLIST:
-   [ ] Replace PAYPAL_EMAIL with your actual PayPal email
-   [ ] Update STORE_URL with your GitHub Pages URL
-   [ ] Optionally enable EmailJS to receive order notifications
+   BlockFigs — Premium Store JavaScript
+   Enhanced with modern features and smooth interactions
    ================================================================ */
 
 // ================================================================
-// CONFIGURATION — EDIT THESE VALUES
+// CONFIGURATION
 // ================================================================
 
 const CONFIG = {
-  // REPLACE: Your PayPal email address (must be a PayPal Business or Personal account)
-  PAYPAL_EMAIL: "YOUR_PAYPAL_EMAIL@example.com",
-
-  // REPLACE: Your GitHub Pages URL (e.g. "https://yourname.github.io/roblox-store")
-  STORE_URL: "YOUR_STORE_URL",
-
-  // Product details
-  PRODUCT_NAME: "Custom 3-Inch Roblox Avatar Figure",
-  PRODUCT_PRICE: "15.00",
-  CURRENCY: "USD",
-
-  // OPTIONAL: Set to true and configure EmailJS if you want email notifications
-  // See: https://www.emailjs.com/ (free tier available)
-  USE_EMAILJS: false,
-  EMAILJS_SERVICE_ID: "YOUR_EMAILJS_SERVICE_ID",
-  EMAILJS_TEMPLATE_ID: "YOUR_EMAILJS_TEMPLATE_ID",
-  EMAILJS_USER_ID: "YOUR_EMAILJS_USER_ID",
+    PAYPAL_EMAIL: "YOUR_PAYPAL_EMAIL@example.com",
+    STORE_URL: "YOUR_STORE_URL",
+    PRODUCT_NAME: "Custom 3-Inch Roblox Avatar Figure",
+    PRODUCT_PRICE: "15.00",
+    CURRENCY: "USD",
+    USE_EMAILJS: false,
+    EMAILJS_SERVICE_ID: "YOUR_EMAILJS_SERVICE_ID",
+    EMAILJS_TEMPLATE_ID: "YOUR_EMAILJS_TEMPLATE_ID",
+    EMAILJS_USER_ID: "YOUR_EMAILJS_USER_ID",
 };
 
 // ================================================================
-// NAVBAR — Scroll effect & mobile menu
+// DOM Elements
 // ================================================================
 
 const navbar = document.getElementById("navbar");
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("navLinks");
+const orderForm = document.getElementById("orderForm");
+const yearSpan = document.getElementById("currentYear");
 
-// Add "scrolled" class to navbar when user scrolls down
+// ================================================================
+// NAVBAR FUNCTIONS
+// ================================================================
+
+// Update navbar on scroll
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 20) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
+    if (window.scrollY > 20) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
 });
 
 // Toggle mobile menu
-hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("open");
-  // Animate hamburger lines
-  const spans = hamburger.querySelectorAll("span");
-  if (navLinks.classList.contains("open")) {
-    spans[0].style.transform = "translateY(7px) rotate(45deg)";
-    spans[1].style.opacity = "0";
-    spans[2].style.transform = "translateY(-7px) rotate(-45deg)";
-  } else {
-    spans.forEach((s) => {
-      s.style.transform = "";
-      s.style.opacity = "";
+function toggleMenu() {
+    navLinks.classList.toggle("open");
+    hamburger.classList.toggle("open");
+    document.body.style.overflow = navLinks.classList.contains("open") ? "hidden" : "";
+}
+
+hamburger.addEventListener("click", toggleMenu);
+
+// Close menu when clicking a link
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        hamburger.classList.remove("open");
+        document.body.style.overflow = "";
     });
-  }
 });
 
 // Close menu when clicking outside
 document.addEventListener("click", (e) => {
-  if (!navbar.contains(e.target) && navLinks.classList.contains("open")) {
-    closeMenu();
-  }
+    if (!navbar.contains(e.target) && navLinks.classList.contains("open")) {
+        navLinks.classList.remove("open");
+        hamburger.classList.remove("open");
+        document.body.style.overflow = "";
+    }
 });
 
-function closeMenu() {
-  navLinks.classList.remove("open");
-  const spans = hamburger.querySelectorAll("span");
-  spans.forEach((s) => {
-    s.style.transform = "";
-    s.style.opacity = "";
-  });
-}
-
 // ================================================================
-// FORM VALIDATION & SUBMISSION
+// FORM VALIDATION
 // ================================================================
 
-const orderForm = document.getElementById("orderForm");
-
-// Fields to validate: [fieldId, errorId, label]
 const fields = [
-  ["fullName", "fullNameError", "Full name"],
-  ["email", "emailError", "Email address"],
-  ["robloxUsername", "robloxUsernameError", "Roblox username"],
-  ["address", "addressError", "Street address"],
-  ["city", "cityError", "City"],
-  ["state", "stateError", "State / Province"],
-  ["zip", "zipError", "ZIP / Postal code"],
-  ["country", "countryError", "Country"],
+    ["fullName", "fullNameError", "Full name"],
+    ["email", "emailError", "Email address"],
+    ["robloxUsername", "robloxUsernameError", "Roblox username"],
+    ["address", "addressError", "Street address"],
+    ["city", "cityError", "City"],
+    ["state", "stateError", "State / Province"],
+    ["zip", "zipError", "ZIP / Postal code"],
+    ["country", "countryError", "Country"],
 ];
 
-// Validate a single field, return true if valid
 function validateField(fieldId, errorId, label) {
-  const field = document.getElementById(fieldId);
-  const error = document.getElementById(errorId);
-  const value = field.value.trim();
-
-  // Clear previous error
-  field.classList.remove("error");
-  error.textContent = "";
-
-  if (!value) {
-    field.classList.add("error");
-    error.textContent = `${label} is required.`;
-    return false;
-  }
-
-  // Email format check
-  if (fieldId === "email") {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(value)) {
-      field.classList.add("error");
-      error.textContent = "Please enter a valid email address.";
-      return false;
+    const field = document.getElementById(fieldId);
+    const error = document.getElementById(errorId);
+    
+    if (!field) return true;
+    
+    const value = field.value.trim();
+    
+    field.classList.remove("error");
+    if (error) error.textContent = "";
+    
+    if (!value) {
+        field.classList.add("error");
+        if (error) error.textContent = `${label} is required.`;
+        showNotification(`${label} is required.`, "error");
+        return false;
     }
-  }
-
-  // Roblox username length check (3–20 chars, alphanumeric + underscore)
-  if (fieldId === "robloxUsername") {
-    const robloxRegex = /^[a-zA-Z0-9_]{3,20}$/;
-    if (!robloxRegex.test(value)) {
-      field.classList.add("error");
-      error.textContent =
-        "Roblox usernames are 3–20 characters (letters, numbers, underscores only).";
-      return false;
+    
+    if (fieldId === "email") {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+            field.classList.add("error");
+            if (error) error.textContent = "Please enter a valid email address.";
+            showNotification("Please enter a valid email address.", "error");
+            return false;
+        }
     }
-  }
-
-  return true;
+    
+    if (fieldId === "robloxUsername") {
+        const robloxRegex = /^[a-zA-Z0-9_]{3,20}$/;
+        if (!robloxRegex.test(value)) {
+            field.classList.add("error");
+            if (error) error.textContent = "Roblox usernames are 3–20 characters (letters, numbers, underscores only).";
+            showNotification("Please enter a valid Roblox username.", "error");
+            return false;
+        }
+    }
+    
+    return true;
 }
 
-// Live validation on blur (when user leaves a field)
+// Live validation
 fields.forEach(([fieldId, errorId, label]) => {
-  const field = document.getElementById(fieldId);
-  if (field) {
-    field.addEventListener("blur", () => validateField(fieldId, errorId, label));
-    field.addEventListener("input", () => {
-      // Clear error as user types
-      document.getElementById(errorId).textContent = "";
-      field.classList.remove("error");
+    const field = document.getElementById(fieldId);
+    if (field) {
+        field.addEventListener("blur", () => validateField(fieldId, errorId, label));
+        field.addEventListener("input", () => {
+            const error = document.getElementById(errorId);
+            field.classList.remove("error");
+            if (error) error.textContent = "";
+        });
+    }
+});
+
+// ================================================================
+// NOTIFICATION SYSTEM
+// ================================================================
+
+function showNotification(message, type = "success") {
+    const notification = document.createElement("div");
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas fa-${type === "success" ? "check-circle" : "exclamation-circle"}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.classList.add("show");
+    }, 10);
+    
+    setTimeout(() => {
+        notification.classList.remove("show");
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 3000);
+}
+
+// Add notification styles
+const notificationStyles = document.createElement("style");
+notificationStyles.textContent = `
+    .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #1a1a2e, #16213e);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 100px;
+        padding: 12px 24px;
+        color: #fff;
+        font-weight: 600;
+        z-index: 9999;
+        transform: translateX(120%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .notification.show {
+        transform: translateX(0);
+    }
+    
+    .notification-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .notification-success i {
+        color: var(--success);
+    }
+    
+    .notification-error i {
+        color: var(--error);
+    }
+    
+    .notification-warning i {
+        color: var(--warning);
+    }
+`;
+document.head.appendChild(notificationStyles);
+
+// ================================================================
+// FORM SUBMISSION
+// ================================================================
+
+if (orderForm) {
+    orderForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        let allValid = true;
+        fields.forEach(([fieldId, errorId, label]) => {
+            if (!validateField(fieldId, errorId, label)) {
+                allValid = false;
+            }
+        });
+        
+        if (!allValid) {
+            const firstError = orderForm.querySelector(".error");
+            if (firstError) {
+                firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+            return;
+        }
+        
+        const orderData = {
+            fullName: document.getElementById("fullName")?.value.trim() || "",
+            email: document.getElementById("email")?.value.trim() || "",
+            robloxUsername: document.getElementById("robloxUsername")?.value.trim() || "",
+            address: document.getElementById("address")?.value.trim() || "",
+            city: document.getElementById("city")?.value.trim() || "",
+            state: document.getElementById("state")?.value.trim() || "",
+            zip: document.getElementById("zip")?.value.trim() || "",
+            country: document.getElementById("country")?.value || "",
+            notes: document.getElementById("notes")?.value.trim() || "",
+        };
+        
+        sessionStorage.setItem("blockfigs_order", JSON.stringify(orderData));
+        
+        if (CONFIG.USE_EMAILJS && typeof emailjs !== "undefined") {
+            sendEmailNotification(orderData);
+        }
+        
+        submitToPayPal(orderData);
+        showConfirmation(orderData);
     });
-  }
-});
-
-// Form submit handler
-orderForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  // Validate all fields
-  let allValid = true;
-  fields.forEach(([fieldId, errorId, label]) => {
-    if (!validateField(fieldId, errorId, label)) {
-      allValid = false;
-    }
-  });
-
-  if (!allValid) {
-    // Scroll to first error
-    const firstError = orderForm.querySelector(".error");
-    if (firstError) {
-      firstError.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-    return;
-  }
-
-  // Gather form data
-  const orderData = {
-    fullName: document.getElementById("fullName").value.trim(),
-    email: document.getElementById("email").value.trim(),
-    robloxUsername: document.getElementById("robloxUsername").value.trim(),
-    address: document.getElementById("address").value.trim(),
-    city: document.getElementById("city").value.trim(),
-    state: document.getElementById("state").value.trim(),
-    zip: document.getElementById("zip").value.trim(),
-    country: document.getElementById("country").value,
-    notes: document.getElementById("notes").value.trim(),
-  };
-
-  // Store order data in sessionStorage so confirmation page can read it
-  // (clears when browser tab is closed)
-  sessionStorage.setItem("blockfigs_order", JSON.stringify(orderData));
-
-  // Optional: Send email notification via EmailJS
-  if (CONFIG.USE_EMAILJS && typeof emailjs !== "undefined") {
-    sendEmailNotification(orderData);
-  }
-
-  // Submit PayPal form
-  submitToPayPal(orderData);
-});
+}
 
 // ================================================================
 // PAYPAL SUBMISSION
 // ================================================================
 
 function submitToPayPal(orderData) {
-  const paypalForm = document.getElementById("paypalForm");
-
-  // Update PayPal form fields
-  document.getElementById("paypalBusiness").value = CONFIG.PAYPAL_EMAIL;
-  document.getElementById("paypalItemName").value = CONFIG.PRODUCT_NAME;
-
-  // Pass Roblox username + customer name in the "custom" field
-  // This appears in your PayPal transaction details
-  document.getElementById("paypalCustom").value =
-    `Roblox: ${orderData.robloxUsername} | Name: ${orderData.fullName} | Email: ${orderData.email} | Ship to: ${orderData.address}, ${orderData.city}, ${orderData.state} ${orderData.zip}, ${orderData.country}`;
-
-  // Update return URLs
-  paypalForm.querySelector('[name="return"]').value =
-    `${CONFIG.STORE_URL}/index.html#confirmation`;
-  paypalForm.querySelector('[name="cancel_return"]').value =
-    `${CONFIG.STORE_URL}/index.html#order`;
-
-  // Show confirmation section immediately (for users who complete PayPal)
-  // NOTE: For a production store, use PayPal IPN/webhooks to verify payment
-  // before showing confirmation. This shows a preview confirmation.
-  showConfirmation(orderData);
-
-  // Submit the PayPal form in a new tab
-  // Comment out the line below if you want to redirect in same tab:
-  paypalForm.target = "_blank";
-  paypalForm.submit();
+    const paypalForm = document.getElementById("paypalForm");
+    
+    if (!paypalForm) return;
+    
+    const business = document.getElementById("paypalBusiness");
+    const itemName = document.getElementById("paypalItemName");
+    const custom = document.getElementById("paypalCustom");
+    const returnUrl = paypalForm.querySelector('[name="return"]');
+    const cancelReturn = paypalForm.querySelector('[name="cancel_return"]');
+    
+    if (business) business.value = CONFIG.PAYPAL_EMAIL;
+    if (itemName) itemName.value = CONFIG.PRODUCT_NAME;
+    if (custom) {
+        custom.value = `Roblox: ${orderData.robloxUsername} | Name: ${orderData.fullName} | Email: ${orderData.email} | Ship to: ${orderData.address}, ${orderData.city}, ${orderData.state} ${orderData.zip}, ${orderData.country}`;
+    }
+    
+    const storeUrl = CONFIG.STORE_URL || window.location.origin + window.location.pathname;
+    if (returnUrl) returnUrl.value = `${storeUrl}#confirmation`;
+    if (cancelReturn) cancelReturn.value = `${storeUrl}#order`;
+    
+    paypalForm.target = "_blank";
+    paypalForm.submit();
 }
 
 // ================================================================
-// ORDER CONFIRMATION DISPLAY
+// CONFIRMATION DISPLAY
 // ================================================================
 
 function showConfirmation(orderData) {
-  // Hide order section, show confirmation
-  document.getElementById("order").style.display = "none";
-  const confirmSection = document.getElementById("confirmation");
-  confirmSection.style.display = "block";
-
-  // Build confirmation details HTML
-  const detailsHTML = `
-    <div class="confirm-detail-row">
-      <span class="label">Name</span>
-      <span class="value">${escapeHTML(orderData.fullName)}</span>
-    </div>
-    <div class="confirm-detail-row">
-      <span class="label">Email</span>
-      <span class="value">${escapeHTML(orderData.email)}</span>
-    </div>
-    <div class="confirm-detail-row">
-      <span class="label">🎮 Roblox Username</span>
-      <span class="value confirm-roblox">${escapeHTML(orderData.robloxUsername)}</span>
-    </div>
-    <div class="confirm-detail-row">
-      <span class="label">Ship To</span>
-      <span class="value">${escapeHTML(orderData.address)}, ${escapeHTML(orderData.city)}, ${escapeHTML(orderData.state)} ${escapeHTML(orderData.zip)}</span>
-    </div>
-    <div class="confirm-detail-row">
-      <span class="label">Product</span>
-      <span class="value">${CONFIG.PRODUCT_NAME}</span>
-    </div>
-    <div class="confirm-detail-row">
-      <span class="label">Total</span>
-      <span class="value" style="color: var(--primary); font-size: 1.1rem;">$${CONFIG.PRODUCT_PRICE}</span>
-    </div>
-    ${orderData.notes ? `
-    <div class="confirm-detail-row">
-      <span class="label">Notes</span>
-      <span class="value">${escapeHTML(orderData.notes)}</span>
-    </div>` : ""}
-  `;
-
-  document.getElementById("confirmDetails").innerHTML = detailsHTML;
-
-  // Smooth scroll to confirmation
-  confirmSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    const orderSection = document.getElementById("order");
+    const confirmSection = document.getElementById("confirmation");
+    
+    if (orderSection) orderSection.style.display = "none";
+    if (confirmSection) {
+        confirmSection.style.display = "block";
+        
+        const detailsHTML = `
+            <div class="confirm-detail-row">
+                <span class="label">Name</span>
+                <span class="value">${escapeHTML(orderData.fullName)}</span>
+            </div>
+            <div class="confirm-detail-row">
+                <span class="label">Email</span>
+                <span class="value">${escapeHTML(orderData.email)}</span>
+            </div>
+            <div class="confirm-detail-row">
+                <span class="label">🎮 Roblox Username</span>
+                <span class="value confirm-roblox">${escapeHTML(orderData.robloxUsername)}</span>
+            </div>
+            <div class="confirm-detail-row">
+                <span class="label">Ship To</span>
+                <span class="value">${escapeHTML(orderData.address)}, ${escapeHTML(orderData.city)}, ${escapeHTML(orderData.state)} ${escapeHTML(orderData.zip)}, ${escapeHTML(orderData.country)}</span>
+            </div>
+            <div class="confirm-detail-row">
+                <span class="label">Product</span>
+                <span class="value">${CONFIG.PRODUCT_NAME}</span>
+            </div>
+            <div class="confirm-detail-row">
+                <span class="label">Total</span>
+                <span class="value" style="color: var(--primary); font-size: 1.1rem;">$${CONFIG.PRODUCT_PRICE}</span>
+            </div>
+            ${orderData.notes ? `
+            <div class="confirm-detail-row">
+                <span class="label">Notes</span>
+                <span class="value">${escapeHTML(orderData.notes)}</span>
+            </div>` : ""}
+        `;
+        
+        const confirmDetails = document.getElementById("confirmDetails");
+        if (confirmDetails) confirmDetails.innerHTML = detailsHTML;
+        
+        confirmSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        showNotification("Order placed successfully! Redirecting to PayPal...", "success");
+    }
 }
 
-// Prevent XSS by escaping HTML special chars
 function escapeHTML(str) {
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 // ================================================================
-// AFFILIATE SECTION — Share button toggle
+// AFFILIATE SECTION
 // ================================================================
 
 const shareBtn = document.getElementById("shareBtn");
 const shareOptions = document.getElementById("shareOptions");
 
-shareBtn.addEventListener("click", () => {
-  const isOpen = shareOptions.style.display !== "none";
-  shareOptions.style.display = isOpen ? "none" : "block";
-  shareBtn.innerHTML = isOpen
-    ? '<i class="fas fa-share-alt"></i> Share This Store'
-    : '<i class="fas fa-times"></i> Close';
-});
-
-// Copy store link to clipboard
-function copyLink() {
-  const url = CONFIG.STORE_URL || window.location.href;
-  navigator.clipboard
-    .writeText(url)
-    .then(() => {
-      const btn = document.querySelector(".share-link.copy");
-      const original = btn.innerHTML;
-      btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-      btn.style.background = "rgba(16,185,129,0.2)";
-      btn.style.borderColor = "var(--success)";
-      btn.style.color = "var(--success)";
-      setTimeout(() => {
-        btn.innerHTML = original;
-        btn.style.background = "";
-        btn.style.borderColor = "";
-        btn.style.color = "";
-      }, 2500);
-    })
-    .catch(() => {
-      alert("Copy this link: " + (CONFIG.STORE_URL || window.location.href));
+if (shareBtn && shareOptions) {
+    shareBtn.addEventListener("click", () => {
+        const isOpen = shareOptions.style.display !== "none";
+        shareOptions.style.display = isOpen ? "none" : "block";
+        shareBtn.innerHTML = isOpen
+            ? '<i class="fas fa-share-alt"></i> Share This Store'
+            : '<i class="fas fa-times"></i> Close';
     });
 }
 
+async function copyLink() {
+    const url = CONFIG.STORE_URL || window.location.href;
+    
+    try {
+        await navigator.clipboard.writeText(url);
+        
+        const btn = document.querySelector(".share-link.copy");
+        if (btn) {
+            const original = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            btn.style.background = "rgba(16, 185, 129, 0.2)";
+            btn.style.borderColor = "var(--success)";
+            btn.style.color = "var(--success)";
+            
+            setTimeout(() => {
+                btn.innerHTML = original;
+                btn.style.background = "";
+                btn.style.borderColor = "";
+                btn.style.color = "";
+            }, 2500);
+        }
+        
+        showNotification("Link copied to clipboard!", "success");
+    } catch (err) {
+        prompt("Copy this link:", url);
+    }
+}
+
 // ================================================================
-// INTERSECTION OBSERVER — Fade-in on scroll
+// SCROLL REVEAL ANIMATIONS
 // ================================================================
 
 const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -40px 0px",
+    threshold: 0.1,
+    rootMargin: "0px 0px -40px 0px",
 };
 
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
-    }
-  });
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        }
+    });
 }, observerOptions);
 
-// Add scroll-reveal to cards and feature elements
 document.querySelectorAll(
-  ".feature-card, .product-card, .step, .perk, .order-summary, .order-form"
+    ".feature-card, .product-card, .step, .perk, .order-summary, .order-form, .affiliate-card"
 ).forEach((el) => {
-  el.style.opacity = "0";
-  el.style.transform = "translateY(24px)";
-  el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-  observer.observe(el);
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Re-check visibility for elements already in view on load
-  document.querySelectorAll(
-    ".feature-card, .product-card, .step, .perk, .order-summary, .order-form"
-  ).forEach((el) => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight) {
-      el.classList.add("visible");
+    if (el) {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(30px)";
+        el.style.transition = "opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)";
+        observer.observe(el);
     }
-  });
 });
 
-// CSS class to trigger visibility
-const style = document.createElement("style");
-style.textContent = `
-  .feature-card.visible,
-  .product-card.visible,
-  .step.visible,
-  .perk.visible,
-  .order-summary.visible,
-  .order-form.visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-  }
+// Add visible class styles
+const visibleStyles = document.createElement("style");
+visibleStyles.textContent = `
+    .feature-card.visible,
+    .product-card.visible,
+    .step.visible,
+    .perk.visible,
+    .order-summary.visible,
+    .order-form.visible,
+    .affiliate-card.visible {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
 `;
-document.head.appendChild(style);
+document.head.appendChild(visibleStyles);
 
 // ================================================================
-// OPTIONAL: EmailJS integration for order notifications
-// Uncomment and configure if you want email alerts on new orders
-// Setup: https://www.emailjs.com/
+// HASH NAVIGATION HANDLER
 // ================================================================
 
-/*
-function sendEmailNotification(orderData) {
-  emailjs.send(
-    CONFIG.EMAILJS_SERVICE_ID,
-    CONFIG.EMAILJS_TEMPLATE_ID,
-    {
-      to_email: CONFIG.PAYPAL_EMAIL, // your email
-      customer_name: orderData.fullName,
-      customer_email: orderData.email,
-      roblox_username: orderData.robloxUsername,
-      shipping_address: `${orderData.address}, ${orderData.city}, ${orderData.state} ${orderData.zip}, ${orderData.country}`,
-      notes: orderData.notes || "None",
-      product: CONFIG.PRODUCT_NAME,
-      price: CONFIG.PRODUCT_PRICE,
-    },
-    CONFIG.EMAILJS_USER_ID
-  ).then(() => {
-    console.log("Order notification sent!");
-  }).catch((err) => {
-    console.error("EmailJS error:", err);
-  });
-}
-*/
-
-// ================================================================
-// RESTORE ORDER SECTION if user navigates back
-// ================================================================
-
-// If user hits "Back to Store" from confirmation, show the order form again
-document.querySelector('[href="#home"]')?.addEventListener("click", () => {
-  document.getElementById("order").style.display = "";
-  sessionStorage.removeItem("blockfigs_order");
-});
-
-console.log(
-  "%cBlockFigs Store Loaded ✓",
-  "color: #ff5c00; font-weight: bold; font-size: 14px;"
-);
-console.log(
-  "%cRemember to update CONFIG with your PayPal email and store URL!",
-  "color: #a0a8c0; font-size: 12px;"
-);
+function handleHashNavigation() {
+    const hash = window.location.hash;
+    
+    if (hash === "#confirmation") {
+        const savedOrder = sessionStorage.getItem("blockfigs_order");
+        if (savedOrder) {
+            try {
+                const orderData = JSON.parse(savedOrder);
+                showConfirmation(order
