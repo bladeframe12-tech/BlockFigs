@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlockFigs — 3-Inch Roblox Avatar Figures</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- ========================
+       NAVIGATION
+  ========================= -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-block">Block</span><span class="logo-figs">Figs</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" onclick="closeMenu()">Home</a></li>
+        <li><a href="#store" onclick="closeMenu()">Store</a></li>
+        <li><a href="#about" onclick="closeMenu()">About</a></li>
+        <li><a href="#affiliates" onclick="closeMenu()">Earn</a></li>
+        <li><a href="#order" class="nav-cta" onclick="closeMenu()">Order Now</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========================
+       HERO SECTION
+  ========================= -->
+  <section class="hero" id="home">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="pixel-grid"></div>
+    </div>
+    <div class="hero-container">
+      <div class="hero-text">
+        <div class="hero-badge">✦ Limited Edition Drops</div>
+        <h1 class="hero-title">
+          Your Roblox Avatar<br>
+          <span class="title-highlight">In Real Life</span>
+        </h1>
+        <p class="hero-subtitle">
+          Custom 3-inch Roblox avatar figures built to match your exact in-game look.
+          Collectible. Detailed. 100% You.
+        </p>
+        <div class="hero-actions">
+          <a href="#store" class="btn btn-primary">
+            <i class="fas fa-shopping-bag"></i> Shop Figures
+          </a>
+          <a href="#about" class="btn btn-outline">Learn More</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">2,400+</span><span class="stat-label">Figures Sold</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Avg. Rating</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num">3"</span><span class="stat-label">Precision Craft</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="figure-showcase">
+          <!-- REPLACE: Add your product image here. Recommended: 400x500px PNG with transparent background -->
+          <div class="figure-placeholder">
+            <div class="figure-body">
+              <div class="fig-head"></div>
+              <div class="fig-torso"></div>
+              <div class="fig-arm fig-arm-l"></div>
+              <div class="fig-arm fig-arm-r"></div>
+              <div class="fig-leg fig-leg-l"></div>
+              <div class="fig-leg fig-leg-r"></div>
+            </div>
+          </div>
+          <div class="showcase-ring ring-1"></div>
+          <div class="showcase-ring ring-2"></div>
+          <div class="float-badge badge-new">NEW!</div>
+          <div class="float-badge badge-custom">Custom<br>Avatar</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <a href="#about"><i class="fas fa-chevron-down"></i></a>
+    </div>
+  </section>
+
+  <!-- ========================
+       ABOUT / FEATURES SECTION
+  ========================= -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What We Make</span>
+        <h2 class="section-title">Your Avatar. Brought to Life.</h2>
+        <p class="section-sub">We craft high-quality 3-inch figures that mirror your Roblox character — accessories, colors, and all.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="--icon-color: #ff6b35;">
+            <i class="fas fa-user-astronaut"></i>
+          </div>
+          <h3>100% Custom</h3>
+          <p>Just provide your Roblox username and we'll replicate your exact avatar with precision detailing.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="--icon-color: #00d4ff;">
+            <i class="fas fa-ruler"></i>
+          </div>
+          <h3>3-Inch Scale</h3>
+          <p>The perfect collectible size — detailed enough to show off, compact enough for your desk or shelf.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="--icon-color: #7c3aed;">
+            <i class="fas fa-paint-brush"></i>
+          </div>
+          <h3>Premium Materials</h3>
+          <p>Made with durable resin and vibrant UV-resistant paints that keep colors bold for years.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="--icon-color: #10b981;">
+            <i class="fas fa-box-open"></i>
+          </div>
+          <h3>Gift-Ready Box</h3>
+          <p>Each figure ships in a collectible display box — perfect as a gift or to add to your collection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       STORE / PRODUCTS SECTION
+  ========================= -->
+  <section class="store" id="store">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">The Shop</span>
+        <h2 class="section-title">Pick Your Figure</h2>
+        <p class="section-sub">One figure, endless possibilities. Your avatar, your rules.</p>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- ============================================================
+             PRODUCT CARD 1 — EDIT THIS to change name, price, description
+             Replace the image placeholder with <img src="images/figure1.png" alt="...">
+        ============================================================= -->
+        <div class="product-card featured">
+          <div class="product-badge">Most Popular</div>
+          <div class="product-image">
+            <!-- REPLACE: <img src="images/your-figure.png" alt="Custom Roblox Figure"> -->
+            <div class="product-img-placeholder">
+              <div class="mini-figure">
+                <div class="mf-head"></div>
+                <div class="mf-torso"></div>
+                <div class="mf-arm mf-arm-l"></div>
+                <div class="mf-arm mf-arm-r"></div>
+                <div class="mf-leg mf-leg-l"></div>
+                <div class="mf-leg mf-leg-r"></div>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Custom Avatar Figure</h3>
+            <!-- REPLACE: Change the price below -->
+            <p class="product-price">$15<span class="price-note">.00</span></p>
+            <p class="product-desc">A hand-crafted 3-inch figure of YOUR Roblox avatar. Comes in a collectible display box.</p>
+            <ul class="product-features">
+              <li><i class="fas fa-check"></i> 3-inch precision figure</li>
+              <li><i class="fas fa-check"></i> Based on your Roblox username</li>
+              <li><i class="fas fa-check"></i> Ships in 7–10 business days</li>
+            </ul>
+            <a href="#order" class="btn btn-primary btn-full">
+              <i class="fas fa-shopping-cart"></i> Order Now — $15
+            </a>
+          </div>
+        </div>
+
+        <!-- ============================================================
+             ADD MORE PRODUCTS: Copy the block above and paste it here
+             Change the product name, price, description, and image src
+        ============================================================= -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       ORDER FORM SECTION
+  ========================= -->
+  <section class="order-section" id="order">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Checkout</span>
+        <h2 class="section-title">Place Your Order</h2>
+        <p class="section-sub">Fill out your info below and complete payment via PayPal. We'll handle the rest!</p>
+      </div>
+
+      <div class="order-wrapper">
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-item">
+            <span>Custom Avatar Figure</span>
+            <!-- REPLACE: Update price to match your product -->
+            <span class="summary-price">$15.00</span>
+          </div>
+          <div class="summary-item">
+            <span>Shipping</span>
+            <span class="summary-price">FREE</span>
+          </div>
+          <div class="summary-divider"></div>
+          <div class="summary-item summary-total">
+            <span>Total</span>
+            <span class="summary-price">$15.00</span>
+          </div>
+          <div class="order-notes">
+            <i class="fas fa-shield-alt"></i>
+            <span>Secure checkout via PayPal. Your info is never stored on our servers.</span>
+          </div>
+          <div class="order-notes">
+            <i class="fas fa-clock"></i>
+            <span>Orders ship within 7–10 business days after payment confirmation.</span>
+          </div>
+        </div>
+
+        <!-- ORDER FORM -->
+        <form class="order-form" id="orderForm" novalidate>
+          <div class="form-group">
+            <label for="fullName">Full Name <span class="required">*</span></label>
+            <input type="text" id="fullName" name="fullName" placeholder="e.g. Alex Johnson" required />
+            <span class="form-error" id="fullNameError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            <span class="form-error" id="emailError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="robloxUsername">Roblox Username <span class="required">*</span></label>
+            <div class="input-with-icon">
+              <i class="fas fa-gamepad input-icon"></i>
+              <input type="text" id="robloxUsername" name="robloxUsername" placeholder="Your exact Roblox username" required />
+            </div>
+            <span class="form-hint">We use this to recreate your avatar exactly. Double-check spelling!</span>
+            <span class="form-error" id="robloxUsernameError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Street Address <span class="required">*</span></label>
+            <input type="text" id="address" name="address" placeholder="123 Main Street, Apt 4B" required />
+            <span class="form-error" id="addressError"></span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">City <span class="required">*</span></label>
+              <input type="text" id="city" name="city" placeholder="New York" required />
+              <span class="form-error" id="cityError"></span>
+            </div>
+            <div class="form-group">
+              <label for="state">State / Province <span class="required">*</span></label>
+              <input type="text" id="state" name="state" placeholder="NY" required />
+              <span class="form-error" id="stateError"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="zip">ZIP / Postal Code <span class="required">*</span></label>
+              <input type="text" id="zip" name="zip" placeholder="10001" required />
+              <span class="form-error" id="zipError"></span>
+            </div>
+            <div class="form-group">
+              <label for="country">Country <span class="required">*</span></label>
+              <select id="country" name="country" required>
+                <option value="">Select country...</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="GB">United Kingdom</option>
+                <option value="AU">Australia</option>
+                <option value="OTHER">Other</option>
+              </select>
+              <span class="form-error" id="countryError"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Special Notes (optional)</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Any special requests or notes about your order..."></textarea>
+          </div>
+
+          <!-- ============================================================
+               PAYPAL BUTTON INTEGRATION
+               
+               HOW TO SET UP:
+               1. Log into your PayPal Business account at paypal.com
+               2. Go to: My Account → Seller Tools → PayPal Buttons
+               3. Create a "Buy Now" button for $15.00
+               4. Copy the "Email" or "Hosted Button ID" PayPal gives you
+               5. Replace "YOUR_PAYPAL_EMAIL@example.com" below with your PayPal email
+               6. Replace "YOUR_BUTTON_ID_HERE" with your actual hosted button ID
+               
+               OPTION A — Simple Email-based PayPal (easiest):
+               Change the action URL to use your PayPal email (see js/main.js)
+               
+               OPTION B — Hosted Button (recommended):
+               Use the hosted button ID from your PayPal dashboard
+          ============================================================= -->
+
+          <div class="paypal-section">
+            <p class="paypal-label">
+              <i class="fas fa-lock"></i> Complete payment securely with PayPal
+            </p>
+            <button type="submit" class="btn btn-paypal" id="proceedBtn">
+              <i class="fab fa-paypal"></i> Review & Pay with PayPal
+            </button>
+            <p class="paypal-note">You'll be redirected to PayPal after reviewing your order.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       ORDER CONFIRMATION PAGE
+       (hidden until form submitted)
+  ========================= -->
+  <section class="confirmation" id="confirmation" style="display:none;">
+    <div class="container">
+      <div class="confirmation-card">
+        <div class="confirm-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h2>Order Received! 🎉</h2>
+        <p class="confirm-sub">Thank you for your order. Here's what happens next:</p>
+
+        <div class="confirm-details" id="confirmDetails">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="confirm-steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text"><strong>Payment Confirmed</strong><br>PayPal will send you a receipt.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text"><strong>We Build Your Figure</strong><br>Using your Roblox username.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text"><strong>Ships to You</strong><br>Arrives in 7–10 business days.</div>
+          </div>
+        </div>
+
+        <a href="#home" class="btn btn-primary" onclick="document.getElementById('confirmation').style.display='none';">
+          <i class="fas fa-home"></i> Back to Store
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       AFFILIATES / CREATOR SECTION
+  ========================= -->
+  <section class="affiliates" id="affiliates">
+    <div class="container">
+      <div class="affiliate-card">
+        <div class="affiliate-content">
+          <div class="affiliate-badge">💸 Creator Program</div>
+          <h2>Share & Earn</h2>
+          <p>Are you a Roblox content creator, streamer, or influencer? Join our affiliate program and earn a commission on every sale you refer!</p>
+
+          <div class="affiliate-perks">
+            <!-- REPLACE: Update commission percentage below -->
+            <div class="perk"><i class="fas fa-percent"></i> <strong>10% commission</strong> per sale</div>
+            <div class="perk"><i class="fas fa-link"></i> <strong>Custom referral link</strong> just for you</div>
+            <div class="perk"><i class="fas fa-chart-line"></i> <strong>Real-time tracking</strong> of your earnings</div>
+            <div class="perk"><i class="fas fa-bolt"></i> <strong>Monthly payouts</strong> via PayPal</div>
+          </div>
+
+          <div class="affiliate-actions">
+            <!-- REPLACE: Update the mailto email address below -->
+            <a href="mailto:affiliates@yourstore.com?subject=Affiliate Program Application" class="btn btn-primary">
+              <i class="fas fa-envelope"></i> Apply to Become an Affiliate
+            </a>
+            <button class="btn btn-outline share-btn" id="shareBtn">
+              <i class="fas fa-share-alt"></i> Share This Store
+            </button>
+          </div>
+
+          <div class="share-options" id="shareOptions" style="display:none;">
+            <p>Share your link:</p>
+            <div class="share-links">
+              <!-- REPLACE: Update YOUR_STORE_URL with your actual GitHub Pages URL -->
+              <a href="https://twitter.com/intent/tweet?text=Check%20out%20these%20awesome%20custom%20Roblox%20figures!&url=YOUR_STORE_URL" target="_blank" class="share-link twitter"><i class="fab fa-twitter"></i> Twitter/X</a>
+              <a href="https://www.youtube.com" target="_blank" class="share-link youtube"><i class="fab fa-youtube"></i> YouTube</a>
+              <button class="share-link copy" onclick="copyLink()"><i class="fas fa-copy"></i> Copy Link</button>
+            </div>
+          </div>
+        </div>
+        <div class="affiliate-visual">
+          <div class="earning-display">
+            <div class="earn-label">You could earn</div>
+            <!-- REPLACE: Update to reflect your product price × commission rate -->
+            <div class="earn-amount">$1.50</div>
+            <div class="earn-sub">per figure sold</div>
+            <div class="earn-example">10 sales = $15/month</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       FOOTER
+  ========================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="nav-logo">
+            <span class="logo-block">Block</span><span class="logo-figs">Figs</span>
+          </a>
+          <p>Bringing Roblox avatars to life, one figure at a time.</p>
+          <!-- REPLACE: Add your social media links -->
+          <div class="social-links">
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#store">Store</a></li>
+            <li><a href="#order">Order</a></li>
+            <li><a href="#affiliates">Affiliates</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Info</h4>
+          <ul>
+            <!-- REPLACE: Link to actual policy pages if needed -->
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Returns & Refunds</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <!-- REPLACE: Update email below -->
+            <li><a href="mailto:support@yourstore.com">Contact Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Legal</h4>
+          <p class="footer-disclaimer">BlockFigs is an independent store and is not affiliated with, endorsed by, or sponsored by Roblox Corporation.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <!-- REPLACE: Update year and store name -->
+        <p>© 2025 BlockFigs. All rights reserved.</p>
+        <p>Powered with ❤️ for the Roblox community</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Hidden PayPal form (submitted programmatically) -->
+  <!--
+    ================================================================
+    PAYPAL SETUP INSTRUCTIONS (Hidden form method):
+    
+    1. Replace "YOUR_PAYPAL_EMAIL@example.com" with your PayPal email
+    2. The amount is set in main.js — search for "paypal_amount"
+    3. For hosted buttons: replace form action with PayPal hosted URL
+    
+    ALTERNATIVE — PayPal.me:
+    If you just want a simple link, in main.js change the redirect
+    to: https://www.paypal.me/YOURUSERNAME/15
+    ================================================================
+  -->
+  <form id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="display:none;">
+    <input type="hidden" name="cmd" value="_xclick">
+    <!-- REPLACE: Your PayPal email address -->
+    <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL@example.com" id="paypalBusiness">
+    <input type="hidden" name="item_name" value="Custom 3-Inch Roblox Avatar Figure" id="paypalItemName">
+    <!-- REPLACE: Update amount to match your product price -->
+    <input type="hidden" name="amount" value="15.00">
+    <input type="hidden" name="currency_code" value="USD">
+    <input type="hidden" name="no_shipping" value="2">
+    <!-- This field carries the Roblox username into the PayPal notes -->
+    <input type="hidden" name="custom" value="" id="paypalCustom">
+    <input type="hidden" name="return" value="YOUR_STORE_URL/index.html#confirmation">
+    <input type="hidden" name="cancel_return" value="YOUR_STORE_URL/index.html#order">
+  </form>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
