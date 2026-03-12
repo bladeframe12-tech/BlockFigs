@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> <meta charset="UTF-8"/> <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <title>BlockFigs - Custom 3" Roblox Figures</title> <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- PayPal SDK - REPLACE 'test' with your actual PayPal Client ID --> <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+<head> <meta charset="UTF-8"/> <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <title>BlockFigs - Custom 3" Roblox Figures</title> <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!--
+  ════════════════════════════════════════════════════
+  EMAILJS SETUP — 3 steps:
+  1. Sign up free at https://www.emailjs.com
+  2. Create a Gmail service (connect mounirbenji12@gmail.com)
+  3. Create an email template — use these variable names:
+       {{order_date}}, {{customer_name}}, {{customer_email}},
+       {{roblox_username}}, {{product_name}}, {{price}},
+       {{shipping_address}}, {{notes}}
+  4. Replace the three values below with your real IDs
+  ════════════════════════════════════════════════════
+-->
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // ── STEP 1: Replace with your EmailJS Public Key ──
+  // Found at: emailjs.com → Account → API Keys
+  (function(){
+    emailjs.init("tq8vaamQ8OqaghTBi");
+  })();
+</script>
+
+<!--
+  PayPal SDK
+  ── STEP 2: Replace 'test' with your PayPal Client ID ──
+  Get it at: developer.paypal.com → My Apps & Credentials → Live
+-->
+<script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
 <style>
 /* 
  BLOCKFIGS - All-in-one stylesheet
@@ -401,7 +428,7 @@ select option{background:var(--card)}
 </select> <span class="ferr" id="countryErr"></span>
 </div>
 </div> <div class="fgrp"> <label for="notes">Notes (optional)</label> <textarea id="notes" rows="3" placeholder="Anything special about your order?"></textarea>
-</div> <div class="pp-box"> <div class="pp-secure"><i class="fas fa-lock"></i> Safe & secure payment via PayPal</div> <!-- PayPal Smart Button renders here --> <div id="paypal-button-container"></div> <p class="pp-note">You'll complete payment in a PayPal popup. Your order is confirmed once payment succeeds.</p>
+</div> <div class="pp-box"> <div class="pp-secure"><i class="fas fa-lock"></i> Safe & secure payment via PayPal</div> <!-- PayPal Smart Button renders here --> <div id="paypal-button-container"></div> <p class="pp-note">Filling out the form and clicking Pay will first email your order details, then open PayPal checkout.</p>
 </div>
 </form>
 </div>
@@ -413,7 +440,7 @@ select option{background:var(--card)}
 </div>
 </section> <!-- AFFILIATES -->
 <section class="section aff-sec" id="affiliates"> <div class="sec-inner"> <div class="aff-card"> <div class="aff-left"> <div class="sec-label" style="display:inline-block">Creator Program</div> <h2 class="sec-title" style="text-align:left;margin-top:12px">Share & Earn</h2> <p style="color:var(--mu);margin-bottom:28px;max-width:500px">Are you a Roblox YouTuber, streamer, or content creator? Promote BlockFigs to your audience and earn real money on every sale you refer.</p> <div class="aff-perks"> <!-- REPLACE: Update commission % and payout details --> <div class="ap2"><div class="ap2-icon"></div><div><strong>10% per sale</strong><span>Earn $1.50 on every $15 figure sold</span></div></div> <div class="ap2"><div class="ap2-icon"></div><div><strong>Custom link</strong><span>Your personal referral URL</span></div></div> <div class="ap2"><div class="ap2-icon"></div><div><strong>Live tracking</strong><span>See your clicks and earnings</span></div></div> <div class="ap2"><div class="ap2-icon"></div><div><strong>Monthly PayPal payout</strong><span>No minimum withdrawal</span></div></div>
-</div> <div class="aff-acts"> <!-- REPLACE: Update affiliate contact email --> <a href="mailto:affiliates@yourstore.com?subject=Affiliate Application" class="btn btn-fire"><i class="fas fa-envelope"></i> Apply Now</a> <button class="btn btn-outline" id="shareBtn" onclick="toggleShare()"><i class="fas fa-share-alt"></i> Share Store</button>
+</div> <div class="aff-acts"> <!-- REPLACE: Update affiliate contact email --> <a href="/cdn-cgi/l/email-protection#224344444b4e4b43564751625b4d575051564d50470c414d4f1d515740484741561f6344444b4e4b435647026352524e4b4143564b4d4c" class="btn btn-fire"><i class="fas fa-envelope"></i> Apply Now</a> <button class="btn btn-outline" id="shareBtn" onclick="toggleShare()"><i class="fas fa-share-alt"></i> Share Store</button>
 </div> <div class="share-panel" id="sharePanel"> <p>Share your store link:</p> <div class="sbtns"> <!-- REPLACE: YOUR_STORE_URL with your GitHub Pages link --> <a href="https://twitter.com/intent/tweet?text=Check%20out%20these%20custom%20Roblox%20figures!&url=YOUR_STORE_URL" target="_blank" class="sbtn sb-tw"><i class="fab fa-twitter"></i> Twitter / X</a> <a href="https://www.tiktok.com" target="_blank" class="sbtn sb-tt"><i class="fab fa-tiktok"></i> TikTok</a> <button class="sbtn sb-cp" onclick="copyLink()"><i class="fas fa-copy"></i> Copy Link</button>
 </div>
 </div>
@@ -426,12 +453,400 @@ select option{background:var(--card)}
 <footer class="footer"> <div class="sec-inner"> <div class="footer-grid"> <div class="footer-brand"> <a href="#home" class="logo">Block<span>Figs</span></a> <p>Bringing Roblox avatars to life, one figure at a time. Made with for the community.</p> <!-- REPLACE: Add your social links --> <div class="socials"> <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a> <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a> <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
 </div>
 </div> <div class="footer-col"> <h4>Navigate</h4> <a href="#home">Home</a> <a href="#how">How It Works</a> <a href="#product">Shop</a> <a href="#faq">FAQ</a> <a href="#affiliates">Earn</a>
-</div> <div class="footer-col"> <h4>Support</h4> <!-- REPLACE: your support email --> <a href="mailto:support@yourstore.com">Contact Us</a> <a href="#">Shipping Policy</a> <a href="#">Returns & Refunds</a> <a href="#">Privacy Policy</a>
+</div> <div class="footer-col"> <h4>Support</h4> <!-- REPLACE: your support email --> <a href="/cdn-cgi/l/email-protection#e5969095958a9791a59c8a909796918a9780cb868a88">Contact Us</a> <a href="#">Shipping Policy</a> <a href="#">Returns & Refunds</a> <a href="#">Privacy Policy</a>
 </div>
 </div> <div class="footer-bottom"> <!-- REPLACE: update year --> <p>(c) 2025 BlockFigs. Not affiliated with Roblox Corporation.</p> <p>Secure payments via PayPal</p>
 </div>
 </div>
-</footer> <script>
+</footer> <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ════════════════════════════════════════════════════════════════
+   BLOCKFIGS — Main JavaScript
+   
+   SETUP CHECKLIST:
+   [ ] Step 1: Replace YOUR_EMAILJS_PUBLIC_KEY  (in <head> above)
+   [ ] Step 2: Replace YOUR_EMAILJS_SERVICE_ID  (line below)
+   [ ] Step 3: Replace YOUR_EMAILJS_TEMPLATE_ID (line below)
+   [ ] Step 4: Replace client-id=test in the PayPal SDK URL
+   
+   EmailJS template variables to add in your template:
+     {{order_date}}      - when the order was placed
+     {{customer_name}}   - full name
+     {{customer_email}}  - email address
+     {{roblox_username}} - their Roblox username
+     {{product_name}}    - "3 Inch Roblox Figure"
+     {{price}}           - "$15.00"
+     {{shipping_address}}- full address string
+     {{notes}}           - any special notes
+════════════════════════════════════════════════════════════════ */
+
+// ── EMAILJS CONFIG ────────────────────────────────────────────
+// Step 2: Replace with your EmailJS Service ID
+// Found at: emailjs.com → Email Services → your service
+const EMAILJS_SERVICE_ID  = "service_4573wtn";
+
+// Step 3: Replace with your EmailJS Template ID  
+// Found at: emailjs.com → Email Templates → your template
+const EMAILJS_TEMPLATE_ID = "template_r0xrxii";
+
+// ── NAV ───────────────────────────────────────────────────────
+const nav      = document.getElementById('nav');
+const burger   = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+
+window.addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 30));
+
+burger.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  const s = burger.querySelectorAll('span');
+  if (open) {
+    s[0].style.transform = 'translateY(7px) rotate(45deg)';
+    s[1].style.opacity   = '0';
+    s[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+  } else {
+    s.forEach(x => { x.style.transform = ''; x.style.opacity = ''; });
+  }
+});
+
+document.addEventListener('click', e => {
+  if (!nav.contains(e.target) && navLinks.classList.contains('open')) closeMenu();
+});
+
+function closeMenu() {
+  navLinks.classList.remove('open');
+  burger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+}
+
+// ── SCROLL REVEAL ─────────────────────────────────────────────
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.animationDelay = e.target.style.getPropertyValue('--d') || '0s';
+      e.target.style.animation = `revUp .55s ${e.target.style.getPropertyValue('--d') || '0s'} ease both`;
+      e.target.style.opacity = '1';
+      ro.unobserve(e.target);
+    }
+  });
+}, { threshold: .1, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('[data-rev], .review-card, .step, .prod-card').forEach(el => {
+  el.style.opacity = '0';
+  ro.observe(el);
+});
+
+// ── FAQ ───────────────────────────────────────────────────────
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ── FORM FIELDS & VALIDATION ──────────────────────────────────
+const FIELDS = [
+  ['fullName',   'fullNameErr',  'Full name'],
+  ['email',      'emailErr',     'Email address'],
+  ['robloxUser', 'robloxErr',    'Roblox username'],
+  ['address',    'addressErr',   'Street address'],
+  ['city',       'cityErr',      'City'],
+  ['state',      'stateErr',     'State / Province'],
+  ['zip',        'zipErr',       'ZIP code'],
+  ['country',    'countryErr',   'Country'],
+];
+
+function validateAll() {
+  let ok = true;
+  FIELDS.forEach(([id, errId, label]) => {
+    const el  = document.getElementById(id);
+    const err = document.getElementById(errId);
+    const val = el.value.trim();
+    el.classList.remove('err');
+    err.textContent = '';
+
+    if (!val) {
+      el.classList.add('err');
+      err.textContent = `${label} is required.`;
+      ok = false;
+      return;
+    }
+    if (id === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+      el.classList.add('err');
+      err.textContent = 'Enter a valid email address.';
+      ok = false;
+      return;
+    }
+    if (id === 'robloxUser' && !/^[a-zA-Z0-9_]{3,20}$/.test(val)) {
+      el.classList.add('err');
+      err.textContent = '3-20 characters: letters, numbers, underscores only.';
+      ok = false;
+    }
+  });
+  return ok;
+}
+
+// Clear errors as user types
+FIELDS.forEach(([id, errId]) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('input', () => {
+    el.classList.remove('err');
+    document.getElementById(errId).textContent = '';
+  });
+});
+
+// Collect all form values into one object
+function getOrderData() {
+  return {
+    customer_name:    document.getElementById('fullName').value.trim(),
+    customer_email:   document.getElementById('email').value.trim(),
+    roblox_username:  document.getElementById('robloxUser').value.trim(),
+    address:          document.getElementById('address').value.trim(),
+    city:             document.getElementById('city').value.trim(),
+    state:            document.getElementById('state').value.trim(),
+    zip:              document.getElementById('zip').value.trim(),
+    country:          document.getElementById('country').value,
+    notes:            document.getElementById('notes').value.trim() || 'None',
+    product_name:     '3 Inch Roblox Figure',
+    price:            '$15.00',
+    // Full address string for the email
+    shipping_address: `${document.getElementById('address').value.trim()}, ${document.getElementById('city').value.trim()}, ${document.getElementById('state').value.trim()} ${document.getElementById('zip').value.trim()}, ${document.getElementById('country').value}`,
+    // Formatted date & time
+    order_date: new Date().toLocaleString('en-US', {
+      weekday: 'long', year: 'numeric', month: 'long',
+      day: 'numeric', hour: '2-digit', minute: '2-digit'
+    }),
+  };
+}
+
+// ── SEND EMAIL VIA EMAILJS ─────────────────────────────────────
+// This sends all order data to mounirbenji12@gmail.com
+// using the EmailJS template you configured.
+function sendOrderEmail(orderData) {
+  return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, orderData);
+}
+
+// ── LOADING STATE HELPERS ──────────────────────────────────────
+function setPayPalLoading(isLoading) {
+  const container = document.getElementById('paypal-button-container');
+  const note      = document.querySelector('.pp-note');
+  if (isLoading) {
+    container.style.opacity  = '0.4';
+    container.style.pointerEvents = 'none';
+    note.textContent = 'Sending your order details... please wait.';
+    note.style.color = 'var(--ye)';
+  } else {
+    container.style.opacity  = '1';
+    container.style.pointerEvents = 'auto';
+    note.textContent = 'Filling out the form and clicking Pay will first email your order details, then open PayPal checkout.';
+    note.style.color = '';
+  }
+}
+
+// ── PAYPAL SMART BUTTONS ──────────────────────────────────────
+/*
+  PayPal Smart Buttons flow:
+  1. User clicks PayPal button
+  2. onClick fires → validate form → send email via EmailJS
+  3. If email sends OK → allow PayPal popup to open (actions.resolve)
+  4. If email fails  → show error but still allow PayPal (we don't block payment)
+  5. onApprove fires after payment → show confirmation screen
+*/
+paypal.Buttons({
+  style: {
+    layout: 'vertical',
+    color:  'blue',
+    shape:  'rect',
+    label:  'pay',
+    height: 50,
+  },
+
+  // ── STEP A: Validate form + send email BEFORE PayPal opens ──
+  onClick: async function(data, actions) {
+    // 1. Validate all fields first
+    if (!validateAll()) {
+      document.querySelector('.err')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const form = document.querySelector('.oform');
+      form.style.animation = 'none';
+      void form.offsetHeight; // force reflow
+      form.style.animation = 'shake .4s ease';
+      setTimeout(() => form.style.animation = '', 400);
+      return actions.reject(); // stop PayPal from opening
+    }
+
+    // 2. Collect order data
+    const orderData = getOrderData();
+
+    // 3. Try to send the email
+    setPayPalLoading(true);
+    try {
+      await sendOrderEmail(orderData);
+      console.log('Order email sent successfully to mounirbenji12@gmail.com');
+      setPayPalLoading(false);
+      return actions.resolve(); // allow PayPal popup to open
+    } catch (err) {
+      console.error('EmailJS error:', err);
+      setPayPalLoading(false);
+      // Email failed — show a warning but still let payment proceed
+      // (we don't want to block a customer from paying just because of an email issue)
+      const note = document.querySelector('.pp-note');
+      note.textContent = 'Note: Could not send order email, but you can still pay. Please screenshot this order.';
+      note.style.color = '#f59e0b';
+      return actions.resolve(); // still allow PayPal
+    }
+  },
+
+  // ── STEP B: Create the PayPal order ──
+  createOrder: function(data, actions) {
+    const d = getOrderData();
+    return actions.order.create({
+      purchase_units: [{
+        // REPLACE: Update amount if you change the price
+        amount: {
+          value: '15.00',
+          currency_code: 'USD'
+        },
+        description: `3 Inch Roblox Figure - @${d.roblox_username}`,
+        // Roblox username is passed in custom_id so you can see it in PayPal transactions
+        custom_id: `roblox:${d.roblox_username}|customer:${d.customer_name}|email:${d.customer_email}`,
+      }]
+    });
+  },
+
+  // ── STEP C: Payment approved → show confirmation ──
+  onApprove: function(data, actions) {
+    return actions.order.capture().then(function(details) {
+      showConfirmation(getOrderData(), details);
+    });
+  },
+
+  onError: function(err) {
+    console.error('PayPal error:', err);
+    alert('There was a payment error. Please try again or contact support at mounirbenji12@gmail.com');
+  },
+
+  onCancel: function() {
+    // User closed PayPal popup without paying — do nothing
+    const note = document.querySelector('.pp-note');
+    note.textContent = 'Payment cancelled. Click Pay again when ready.';
+    note.style.color = 'var(--mu)';
+  }
+
+}).render('#paypal-button-container');
+
+// ── ORDER CONFIRMATION SCREEN ─────────────────────────────────
+/*
+  Shows after successful PayPal payment.
+  Hides the order form and displays the thank-you message
+  with the customer's Roblox username prominently shown.
+*/
+function showConfirmation(d, paypalDetails) {
+  // Hide order section
+  document.getElementById('order').style.display = 'none';
+
+  // Show confirmation section
+  const sec = document.getElementById('confirmSec');
+  sec.style.display = 'block';
+
+  const notesRow = d.notes && d.notes !== 'None'
+    ? `<div class="cdr"><span class="cl">Notes</span><span class="cv">${esc(d.notes)}</span></div>`
+    : '';
+
+  document.getElementById('confirmDetails').innerHTML = `
+    <div class="cdr">
+      <span class="cl">Name</span>
+      <span class="cv">${esc(d.customer_name)}</span>
+    </div>
+    <div class="cdr">
+      <span class="cl">Email</span>
+      <span class="cv">${esc(d.customer_email)}</span>
+    </div>
+    <div class="cdr">
+      <span class="cl">Roblox Username</span>
+      <span class="cv cv-rb">${esc(d.roblox_username)}</span>
+    </div>
+    <div class="cdr">
+      <span class="cl">Ship To</span>
+      <span class="cv">${esc(d.shipping_address)}</span>
+    </div>
+    <div class="cdr">
+      <span class="cl">Product</span>
+      <span class="cv">${esc(d.product_name)}</span>
+    </div>
+    <div class="cdr">
+      <span class="cl">Total Paid</span>
+      <span class="cv" style="color:var(--or)">$15.00</span>
+    </div>
+    <div class="cdr">
+      <span class="cl">Order Date</span>
+      <span class="cv">${esc(d.order_date)}</span>
+    </div>
+    ${notesRow}
+  `;
+
+  // Update the confirmation message with their Roblox username
+  const confirmSub = sec.querySelector('.confirm-sub');
+  if (confirmSub) {
+    confirmSub.innerHTML = `Thank you for your order! Your custom Roblox avatar figure will be created using the Roblox username you provided: <strong style="color:var(--or)">${esc(d.roblox_username)}</strong>. A confirmation has been sent to ${esc(d.customer_email)}.`;
+  }
+
+  sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Reset everything back to the order form
+function resetOrder() {
+  document.getElementById('order').style.display = '';
+  document.getElementById('confirmSec').style.display = 'none';
+  document.getElementById('orderForm').reset();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Escape HTML to prevent XSS
+function esc(s) {
+  return String(s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// ── AFFILIATES ────────────────────────────────────────────────
+function toggleShare() {
+  const p    = document.getElementById('sharePanel');
+  const open = p.style.display === 'block';
+  p.style.display = open ? 'none' : 'block';
+  document.getElementById('shareBtn').innerHTML = open
+    ? '<i class="fas fa-share-alt"></i> Share Store'
+    : '<i class="fas fa-times"></i> Close';
+}
+
+function copyLink() {
+  const url = window.location.href;
+  navigator.clipboard.writeText(url).then(() => {
+    const b = document.querySelector('.sb-cp');
+    const o = b.innerHTML;
+    b.innerHTML = '<i class="fas fa-check"></i> Copied!';
+    b.style.cssText = 'background:rgba(0,230,118,.15);color:var(--gr)';
+    setTimeout(() => { b.innerHTML = o; b.style.cssText = ''; }, 2500);
+  }).catch(() => prompt('Copy this link:', url));
+}
+
+// ── EARNINGS COUNTER ANIMATION ────────────────────────────────
+function animateEarnings() {
+  const el   = document.getElementById('earnNum');
+  const fill = document.getElementById('earnFill');
+  if (!el) return;
+  let n = 0;
+  const iv = setInterval(() => {
+    n++;
+    el.textContent = '$' + n;
+    if (n >= 150) { el.textContent = '$150'; clearInterval(iv); }
+  }, 10);
+  if (fill) fill.style.width = '65%';
+}
+
+const affObs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) { animateEarnings(); affObs.disconnect(); }
+}, { threshold: .3 });
+const affSec = document.querySelector('.aff-sec');
+if (affSec) affObs.observe(affSec);
+</script><script>
 /* 
  BLOCKFIGS - JavaScript
  
@@ -653,11 +1068,4 @@ function animateEarnings(){
 }
 
 // Trigger earnings animation when affiliate section is visible
-const affObs = new IntersectionObserver(entries=>{
- if(entries[0].isIntersecting){ animateEarnings(); affObs.disconnect(); }
-},{threshold:.3});
-const affSec = document.querySelector('.aff-sec');
-if(affSec) affObs.observe(affSec);
-</script>
-</body>
-</html>
+const affObs = new Intersec
