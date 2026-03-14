@@ -1,514 +1,918 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> <meta charset="UTF-8"/> <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <title>BlockFigs - Custom 3" Roblox Figures</title> <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!--
-  ════════════════════════════════════════════════════
-  EMAILJS SETUP — 3 steps:
-  1. Sign up free at https://www.emailjs.com
-  2. Create a Gmail service (connect mounirbenji12@gmail.com)
-  3. Create an email template — use these variable names:
-       {{order_date}}, {{customer_name}}, {{customer_email}},
-       {{roblox_username}}, {{product_name}}, {{price}},
-       {{shipping_address}}, {{notes}}
-  4. Replace the three values below with your real IDs
-  ════════════════════════════════════════════════════
--->
-<!-- EmailJS SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-  // ── STEP 1: Replace with your EmailJS Public Key ──
-  // Found at: emailjs.com → Account → API Keys
-  (function(){
-    emailjs.init("tq8vaamQ8OqaghTBi");
-  })();
-</script>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BlockFigs - Custom 3" Roblox Figures</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!--
-  PayPal SDK
-  ── STEP 2: Replace 'test' with your PayPal Client ID ──
-  Get it at: developer.paypal.com → My Apps & Credentials → Live
--->
-<script src="AV1vhhsniMX3TE8aGQ4UNLGeNlfpsWdAZoVTBJ9VvQr9qq2b57icmxGXjUYjev42Qogyl1qu9rH85_mN"></script>
+  <!--
+  ╔══════════════════════════════════════════════════════╗
+  ║  EMAILJS SETUP (required to receive order emails)   ║
+  ║                                                      ║
+  ║  1. Go to https://emailjs.com and create account    ║
+  ║  2. Add Gmail service → connect mounirbenji12@gmail ║
+  ║  3. Create email template with these variables:     ║
+  ║       {{customer_name}}   {{customer_email}}        ║
+  ║       {{roblox_username}} {{shipping_address}}      ║
+  ║       {{product_name}}    {{price}}  {{order_date}} ║
+  ║       {{notes}}                                     ║
+  ║  4. Replace the 3 placeholder values below          ║
+  ╚══════════════════════════════════════════════════════╝
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // REPLACE: Your EmailJS Public Key (emailjs.com → Account → API Keys)
+    emailjs.init("YOUR_EMAILJS_PUBLIC_KEY");
+  </script>
+
+  <!--
+  ╔══════════════════════════════════════════════════════╗
+  ║  PAYPAL SETUP                                        ║
+  ║  Replace 'test' below with your PayPal Client ID    ║
+  ║  Get it at: developer.paypal.com → My Apps          ║
+  ╚══════════════════════════════════════════════════════╝
+  -->
+  <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+
 <style>
-/* 
- BLOCKFIGS - All-in-one stylesheet
- Aesthetic: Dark gaming + neon orange energy
- */
-:root{
- --or:#ff5722;--or2:#ff8a50;--ye:#ffc107;
- --cy:#00e5ff;--gr:#00e676;--pu:#7c4dff;
- --bg:#09090f;--bg2:#0e0e1c;--card:#141428;
- --card2:#1a1a35;--bd:rgba(255,255,255,.07);
- --tx:#fff;--mu:#7a7a9a;
- --ff:'Fredoka One',cursive;
- --fb:'Nunito',sans-serif;
+/* ── ROOT VARIABLES ── */
+:root {
+  --orange: #ff5722;
+  --orange2: #ff8a50;
+  --yellow: #ffc107;
+  --green: #00e676;
+  --bg: #09090f;
+  --bg2: #0e0e1c;
+  --card: #141428;
+  --border: rgba(255,255,255,0.08);
+  --text: #ffffff;
+  --muted: #7a7a9a;
+  --font-title: 'Fredoka One', cursive;
+  --font-body: 'Nunito', sans-serif;
+  --radius: 14px;
+  --radius-lg: 22px;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:66px}
-body{font-family:var(--fb);background:var(--bg);color:var(--tx);overflow-x:hidden;line-height:1.65}
-a{text-decoration:none;color:inherit}
-ul{list-style:none}
-img{max-width:100%;display:block}
 
-/* SCROLLBAR */
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--or);border-radius:3px}
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.65; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 3px; }
 
-/* BUTTONS */
-.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:12px;font-family:var(--fb);font-weight:800;font-size:.96rem;cursor:pointer;border:none;transition:transform .18s,box-shadow .18s;white-space:nowrap;text-decoration:none}
-.btn:hover{transform:translateY(-3px)}
-.btn-fire{background:linear-gradient(135deg,var(--or),var(--or2));color:#fff;box-shadow:0 6px 24px rgba(255,87,34,.45)}
-.btn-fire:hover{box-shadow:0 12px 32px rgba(255,87,34,.6)}
-.btn-outline{background:transparent;color:var(--mu);border:1.5px solid rgba(255,255,255,.14)}
-.btn-outline:hover{color:#fff;border-color:rgba(255,255,255,.4)}
-.btn-paypal{background:linear-gradient(135deg,#003087,#0057c2);color:#fff;box-shadow:0 6px 20px rgba(0,48,135,.45);width:100%;justify-content:center;font-size:1.05rem;padding:15px}
-.btn-paypal:hover{box-shadow:0 12px 30px rgba(0,48,135,.6)}
-.btn-full{width:100%;justify-content:center}
+/* ── NAVBAR ── */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  background: rgba(9,9,15,0.92); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.navbar.scrolled { background: rgba(9,9,15,0.99); box-shadow: 0 2px 24px rgba(0,0,0,0.5); }
+.nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 24px;
+  height: 68px; display: flex; align-items: center; justify-content: space-between;
+}
+.logo { font-family: var(--font-title); font-size: 1.8rem; }
+.logo span { color: var(--orange); }
+.nav-links { display: flex; align-items: center; gap: 6px; }
+.nav-links a {
+  padding: 8px 14px; border-radius: 10px; color: var(--muted);
+  font-weight: 700; font-size: 0.88rem; transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: #fff; background: rgba(255,255,255,0.06); }
+.nav-links .nav-order {
+  background: var(--orange); color: #fff !important;
+  padding: 9px 20px; box-shadow: 0 3px 14px rgba(255,87,34,0.4);
+  border-radius: 10px;
+}
+.nav-links .nav-order:hover { background: var(--orange2); }
+.burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+.burger span { display: block; width: 23px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
 
-/* NAV */
-.nav{position:fixed;inset:0 0 auto;z-index:999;background:rgba(9,9,15,.85);backdrop-filter:blur(18px);border-bottom:1px solid var(--bd);transition:background .3s}
-.nav.solid{background:rgba(9,9,15,.98);box-shadow:0 2px 30px rgba(0,0,0,.6)}
-.nav-wrap{max-width:1140px;margin:0 auto;padding:0 24px;height:66px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:var(--ff);font-size:1.75rem;letter-spacing:.01em}
-.logo span{color:var(--or)}
-.nav-links{display:flex;align-items:center;gap:4px}
-.nav-links a{padding:8px 14px;border-radius:10px;color:var(--mu);font-weight:700;font-size:.88rem;transition:color .2s,background .2s}
-.nav-links a:hover{color:#fff;background:rgba(255,255,255,.06)}
-.nav-links .nav-cta{background:var(--or);color:#fff;padding:9px 20px;box-shadow:0 3px 14px rgba(255,87,34,.4)}
-.nav-links .nav-cta:hover{background:var(--or2)}
-.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
-.burger span{display:block;width:23px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 13px 28px; border-radius: var(--radius); border: none;
+  font-family: var(--font-body); font-weight: 800; font-size: 0.97rem;
+  cursor: pointer; transition: transform 0.18s, box-shadow 0.18s;
+  text-decoration: none; white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-orange {
+  background: linear-gradient(135deg, var(--orange), var(--orange2));
+  color: #fff; box-shadow: 0 6px 22px rgba(255,87,34,0.45);
+}
+.btn-orange:hover { box-shadow: 0 10px 28px rgba(255,87,34,0.6); }
+.btn-full { width: 100%; }
 
-/* HERO */
-.hero{min-height:100vh;padding-top:66px;display:flex;flex-direction:column;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;pointer-events:none}
-.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.2}
-.b1{width:580px;height:580px;background:var(--or);top:-180px;right:-140px}
-.b2{width:420px;height:420px;background:var(--pu);bottom:-80px;left:-100px}
-.b3{width:280px;height:280px;background:var(--cy);top:45%;left:35%;opacity:.1}
-.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,87,34,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,87,34,.03) 1px,transparent 1px);background-size:44px 44px}
-
-.hero-inner{flex:1;max-width:1140px;margin:0 auto;padding:70px 24px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;width:100%;position:relative;z-index:1}
-
-/* Hero text */
-.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.28);color:var(--gr);font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:7px 16px;border-radius:999px;margin-bottom:22px;animation:fd .5s ease both}
-.tag-dot{width:7px;height:7px;border-radius:50%;background:var(--gr);box-shadow:0 0 8px var(--gr);animation:blink 1.6s infinite}
-.hero-h1{font-family:var(--ff);font-size:clamp(3rem,6.2vw,5.2rem);line-height:1.05;margin-bottom:22px;animation:fd .5s .08s ease both}
-.hero-h1 em{font-style:normal;background:linear-gradient(100deg,var(--or),var(--ye));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-p{color:var(--mu);font-size:1.08rem;max-width:460px;margin-bottom:36px;animation:fd .5s .16s ease both}
-.hero-p strong{color:#fff}
-.hero-btns{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:44px;animation:fd .5s .24s ease both}
-.trust{display:flex;align-items:center;gap:18px;flex-wrap:wrap;animation:fd .5s .32s ease both}
-.t-item{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--mu)}
-.t-sep{color:rgba(255,255,255,.15);font-size:1.2rem}
-.stars{color:var(--ye);font-size:.7rem;display:flex;gap:2px}
-
-/* Hero figure stage */
-.stage{position:relative;width:340px;height:420px;display:flex;align-items:center;justify-content:center;margin:0 auto;animation:fu .7s .1s ease both}
-.glow-ring{position:absolute;border-radius:50%;border:1.5px dashed}
-.gr1{width:230px;height:230px;border-color:rgba(255,87,34,.2);animation:spin 18s linear infinite}
-.gr2{width:310px;height:310px;border-color:rgba(0,229,255,.1);animation:spin 30s linear infinite reverse}
-.gr3{width:390px;height:390px;border-color:rgba(124,77,255,.08);animation:spin 50s linear infinite}
-.stage-glow{position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,87,34,.3) 0%,transparent 70%);animation:pulse 3s ease-in-out infinite}
-.fig-shadow{position:absolute;bottom:24px;width:80px;height:12px;background:rgba(0,0,0,.6);border-radius:50%;filter:blur(8px)}
-
-/* Floating tags */
-.ftag{position:absolute;background:var(--card2);border:1px solid var(--bd);border-radius:10px;padding:8px 13px;font-size:.75rem;font-weight:800;box-shadow:0 8px 30px rgba(0,0,0,.4);white-space:nowrap}
-.ft1{top:12%;right:-4px;color:var(--cy);border-color:rgba(0,229,255,.3);animation:fl 3.2s ease-in-out infinite}
-.ft2{bottom:28%;left:-10px;color:var(--ye);border-color:rgba(255,193,7,.3);animation:fl 3.8s 1.2s ease-in-out infinite}
-.ft3{bottom:10%;right:10px;color:var(--gr);border-color:rgba(0,230,118,.3);animation:fl 4.2s .6s ease-in-out infinite}
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; padding-top: 68px;
+  display: flex; flex-direction: column; align-items: center;
+  position: relative; overflow: hidden;
+}
+.hero-blobs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.blob {
+  position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.18;
+}
+.blob-1 { width: 550px; height: 550px; background: var(--orange); top: -150px; right: -120px; }
+.blob-2 { width: 400px; height: 400px; background: #7c4dff; bottom: -80px; left: -80px; }
+.grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,87,34,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,87,34,0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+.hero-content {
+  flex: 1; max-width: 1100px; width: 100%; margin: 0 auto; padding: 80px 24px 60px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(0,230,118,0.1); border: 1px solid rgba(0,230,118,0.3);
+  color: var(--green); font-size: 0.75rem; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 7px 16px; border-radius: 999px; margin-bottom: 20px;
+  animation: fadeDown 0.5s ease both;
+}
+.live-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green); box-shadow: 0 0 8px var(--green);
+  animation: blink 1.6s infinite;
+}
+.hero h1 {
+  font-family: var(--font-title); font-size: clamp(2.8rem, 6vw, 5rem);
+  line-height: 1.08; margin-bottom: 20px;
+  animation: fadeDown 0.5s 0.08s ease both;
+}
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(100deg, var(--orange), var(--yellow));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-desc {
+  color: var(--muted); font-size: 1.05rem; max-width: 440px;
+  margin-bottom: 34px; animation: fadeDown 0.5s 0.16s ease both;
+}
+.hero-desc strong { color: #fff; }
+.hero-btns {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  margin-bottom: 40px; animation: fadeDown 0.5s 0.24s ease both;
+}
+.trust-row {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  animation: fadeDown 0.5s 0.32s ease both;
+}
+.trust-item { display: flex; align-items: center; gap: 7px; font-size: 0.8rem; color: var(--muted); }
+.trust-item i { font-size: 0.78rem; }
+.trust-sep { color: rgba(255,255,255,0.15); }
 
 /* CSS Roblox Figure */
-/* REPLACE: swap .roblox-fig with <img src="your-image.png" style="height:210px;object-fit:contain"> */
-.rfig{position:relative;z-index:2;width:120px;height:214px;animation:fl 4s ease-in-out infinite;filter:drop-shadow(0 18px 36px rgba(255,87,34,.35))}
-.rf-head{position:absolute;width:74px;height:74px;border-radius:14px;background:linear-gradient(145deg,#ffa575,#ff6030);top:0;left:50%;transform:translateX(-50%);box-shadow:0 6px 20px rgba(255,96,48,.5)}
-.rf-el{position:absolute;width:13px;height:13px;background:#1a0800;border-radius:3px;top:27px}
-.rf-el-l{left:14px}.rf-el-r{right:14px}
-.rf-mouth{position:absolute;width:28px;height:10px;border:3px solid #1a0800;border-top:none;border-radius:0 0 14px 14px;bottom:12px;left:50%;transform:translateX(-50%)}
-.rf-neck{position:absolute;width:20px;height:7px;background:#ff6030;border-radius:3px;top:76px;left:50%;transform:translateX(-50%)}
-.rf-torso{position:absolute;width:82px;height:58px;border-radius:12px;background:linear-gradient(145deg,#8c5af0,#6030e0);top:85px;left:50%;transform:translateX(-50%);box-shadow:0 6px 20px rgba(96,48,224,.5)}
-.rf-logo{position:absolute;width:30px;height:20px;background:rgba(255,255,255,.15);border-radius:5px;top:50%;left:50%;transform:translate(-50%,-50%)}
-.rf-arm{position:absolute;width:22px;height:58px;border-radius:9px;background:linear-gradient(145deg,#ffa575,#ff6030);top:85px;box-shadow:0 4px 12px rgba(255,96,48,.4)}
-.rf-arm-l{left:0;transform:rotate(6deg)}.rf-arm-r{right:0;transform:rotate(-6deg)}
-.rf-hip{position:absolute;width:86px;height:14px;border-radius:5px;background:linear-gradient(90deg,#3a2090,#6030e0);top:143px;left:50%;transform:translateX(-50%)}
-.rf-leg{position:absolute;width:34px;height:56px;border-radius:9px 9px 11px 11px;background:linear-gradient(145deg,#2a1860,#180e38);bottom:0;box-shadow:0 4px 12px rgba(0,0,0,.5)}
-.rf-leg-l{left:8px}.rf-leg-r{right:8px}
+.stage {
+  position: relative; width: 320px; height: 400px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto; animation: fadeUp 0.7s 0.1s ease both;
+}
+.ring {
+  position: absolute; border-radius: 50%; border: 1.5px dashed;
+}
+.ring-1 { width: 220px; height: 220px; border-color: rgba(255,87,34,0.2); animation: spin 18s linear infinite; }
+.ring-2 { width: 310px; height: 310px; border-color: rgba(0,229,255,0.1); animation: spin 30s linear infinite reverse; }
+.glow { position: absolute; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(255,87,34,0.28) 0%, transparent 70%); animation: pulse 3s ease-in-out infinite; }
+
+/* The actual CSS figure */
+/* REPLACE: add <img src="your-image.png" style="height:220px;object-fit:contain;position:relative;z-index:2"> instead */
+.fig { position: relative; z-index: 2; width: 120px; height: 214px; animation: float 4s ease-in-out infinite; filter: drop-shadow(0 20px 36px rgba(255,87,34,0.35)); }
+.fig-head { position: absolute; width: 74px; height: 74px; border-radius: 14px; background: linear-gradient(145deg,#ffa575,#ff6030); top: 0; left: 50%; transform: translateX(-50%); box-shadow: 0 6px 20px rgba(255,96,48,0.5); }
+.fig-eye { position: absolute; width: 13px; height: 13px; background: #1a0800; border-radius: 3px; top: 27px; }
+.fig-eye.l { left: 14px; } .fig-eye.r { right: 14px; }
+.fig-mouth { position: absolute; width: 28px; height: 10px; border: 3px solid #1a0800; border-top: none; border-radius: 0 0 14px 14px; bottom: 12px; left: 50%; transform: translateX(-50%); }
+.fig-neck { position: absolute; width: 20px; height: 7px; background: #ff6030; border-radius: 3px; top: 76px; left: 50%; transform: translateX(-50%); }
+.fig-torso { position: absolute; width: 82px; height: 58px; border-radius: 12px; background: linear-gradient(145deg,#8c5af0,#6030e0); top: 85px; left: 50%; transform: translateX(-50%); box-shadow: 0 6px 20px rgba(96,48,224,0.5); }
+.fig-arm { position: absolute; width: 22px; height: 58px; border-radius: 9px; background: linear-gradient(145deg,#ffa575,#ff6030); top: 85px; }
+.fig-arm.l { left: 0; transform: rotate(6deg); } .fig-arm.r { right: 0; transform: rotate(-6deg); }
+.fig-hip { position: absolute; width: 86px; height: 14px; border-radius: 5px; background: linear-gradient(90deg,#3a2090,#6030e0); top: 143px; left: 50%; transform: translateX(-50%); }
+.fig-leg { position: absolute; width: 34px; height: 56px; border-radius: 9px 9px 11px 11px; background: linear-gradient(145deg,#2a1860,#180e38); bottom: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+.fig-leg.l { left: 8px; } .fig-leg.r { right: 8px; }
+.fig-shadow { position: absolute; bottom: 20px; width: 80px; height: 12px; background: rgba(0,0,0,0.5); border-radius: 50%; filter: blur(8px); }
+
+.ftag {
+  position: absolute; background: var(--card);
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: 8px 13px; font-size: 0.75rem; font-weight: 800;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.4); white-space: nowrap;
+}
+.ftag-1 { top: 12%; right: 0; color: #00e5ff; border-color: rgba(0,229,255,0.3); animation: float 3.2s ease-in-out infinite; }
+.ftag-2 { bottom: 26%; left: 0; color: var(--yellow); border-color: rgba(255,193,7,0.3); animation: float 3.8s 1.2s ease-in-out infinite; }
 
 /* Marquee */
-.marquee-bar{background:var(--or);overflow:hidden;padding:13px 0;border-top:3px solid rgba(255,255,255,.15);border-bottom:3px solid rgba(255,255,255,.15)}
-.marquee-track{display:flex;white-space:nowrap;animation:mq 22s linear infinite}
-.marquee-track span{font-family:var(--ff);font-size:1rem;color:#fff;padding:0 28px;flex-shrink:0;letter-spacing:.04em}
+.marquee { background: var(--orange); overflow: hidden; padding: 12px 0; border-top: 3px solid rgba(255,255,255,0.15); }
+.marquee-track { display: flex; white-space: nowrap; animation: marquee 20s linear infinite; }
+.marquee-track span { font-family: var(--font-title); font-size: 0.97rem; color: #fff; padding: 0 28px; flex-shrink: 0; }
 
-/* SECTION SHARED */
-.section{padding:96px 0}
-.sec-inner{max-width:1140px;margin:0 auto;padding:0 24px}
-.sec-label{display:inline-block;background:rgba(255,87,34,.12);border:1px solid rgba(255,87,34,.28);color:var(--or);font-size:.7rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;padding:5px 14px;border-radius:999px;margin-bottom:14px}
-.sec-title{font-family:var(--ff);font-size:clamp(2rem,4vw,2.85rem);line-height:1.15;margin-bottom:14px;text-align:center}
-.sec-sub{color:var(--mu);font-size:1rem;text-align:center;max-width:520px;margin:0 auto 52px}
-
-/* HOW IT WORKS */
-.how{background:var(--bg2)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:52px}
-.step{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:32px 28px;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden}
-.step::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--or),var(--or2));opacity:0;transition:opacity .3s}
-.step:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.35)}
-.step:hover::before{opacity:1}
-.step-n{font-family:var(--ff);font-size:4rem;color:rgba(255,255,255,.04);line-height:1;margin-bottom:6px}
-.step-icon{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px}
-.si-or{background:rgba(255,87,34,.12);color:var(--or)}
-.si-cy{background:rgba(0,229,255,.1);color:var(--cy)}
-.si-gr{background:rgba(0,230,118,.1);color:var(--gr)}
-.step h3{font-family:var(--ff);font-size:1.25rem;margin-bottom:10px}
-.step p{color:var(--mu);font-size:.9rem;line-height:1.6}
-
-.perks{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
-.perk{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--bd);border-radius:999px;padding:10px 20px;font-size:.86rem;font-weight:700;color:var(--mu);transition:all .2s}
-.perk:hover{color:#fff;border-color:rgba(255,87,34,.4);background:rgba(255,87,34,.06)}
-.perk i{color:var(--gr)}
-
-/* REVIEWS */
-.reviews{background:var(--bg)}
-.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.review-card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:26px;transition:transform .3s}
-.review-card:hover{transform:translateY(-4px)}
-.rv-stars{display:flex;gap:3px;color:var(--ye);font-size:.85rem;margin-bottom:14px}
-.rv-text{color:var(--mu);font-size:.9rem;line-height:1.65;margin-bottom:18px;font-style:italic}
-.rv-text::before{content:'"'}
-.rv-text::after{content:'"'}
-.rv-author{display:flex;align-items:center;gap:10px}
-.rv-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--or),var(--pu));display:flex;align-items:center;justify-content:center;font-family:var(--ff);font-size:1rem;font-weight:700;color:#fff}
-.rv-name{font-weight:800;font-size:.88rem}
-.rv-tag{font-size:.75rem;color:var(--or)}
-
-/* PRODUCT */
-.product-sec{background:var(--bg2)}
-.prod-wrap{max-width:780px;margin:0 auto}
-.prod-card{background:var(--card);border:2px solid rgba(255,87,34,.25);border-radius:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 60px rgba(255,87,34,.1)}
-.prod-img-side{background:linear-gradient(145deg,#10103a,#1e1060);display:flex;align-items:center;justify-content:center;min-height:400px;position:relative;overflow:hidden}
-.prod-img-side img{width:100%;height:100%;object-fit:cover}
-.prod-img-shine{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.05) 0%,transparent 55%);pointer-events:none}
-.prod-badge-wrap{position:absolute;top:20px;left:20px;display:flex;flex-direction:column;gap:8px}
-.pbadge{display:inline-block;padding:5px 13px;border-radius:999px;font-size:.68rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
-.pb-hot{background:var(--or);color:#fff}
-.pb-new{background:var(--gr);color:#000}
-.prod-body{padding:40px 36px;display:flex;flex-direction:column;justify-content:center}
-.prod-name{font-family:var(--ff);font-size:1.9rem;line-height:1.2;margin-bottom:8px}
-.prod-sub{color:var(--mu);font-size:.9rem;margin-bottom:20px}
-.prod-price-block{display:flex;align-items:baseline;gap:6px;margin-bottom:6px}
-.prod-price{font-family:var(--ff);font-size:3rem;color:var(--or);line-height:1}
-.prod-cents{font-size:1.5rem;color:var(--or)}
-.free-ship{display:inline-flex;align-items:center;gap:6px;background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.25);color:var(--gr);font-size:.78rem;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:22px}
-.prod-features{margin-bottom:28px}
-.pf{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.9rem;color:var(--mu)}
-.pf:last-child{border-bottom:none}
-.pf i{color:var(--gr);width:16px;font-size:.8rem}
-.prod-cta .btn{margin-bottom:12px}
-.secure-note{display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--mu);justify-content:center}
-.secure-note i{color:var(--gr)}
-
-/* FAQ */
-.faq-sec{background:var(--bg)}
-.faq-list{max-width:680px;margin:0 auto}
-.faq-item{background:var(--card);border:1px solid var(--bd);border-radius:14px;margin-bottom:12px;overflow:hidden}
-.faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer;font-weight:700;font-size:.96rem;gap:16px;transition:color .2s}
-.faq-q:hover{color:var(--or)}
-.faq-q i{color:var(--or);font-size:.8rem;transition:transform .3s;flex-shrink:0}
-.faq-a{padding:0 24px;max-height:0;overflow:hidden;color:var(--mu);font-size:.9rem;line-height:1.7;transition:max-height .35s ease,padding .35s ease}
-.faq-item.open .faq-a{max-height:200px;padding:0 24px 20px}
-.faq-item.open .faq-q i{transform:rotate(180deg)}
-.faq-item.open .faq-q{color:var(--or)}
-
-/* ORDER */
-.order-sec{background:var(--bg2)}
-.order-layout{display:grid;grid-template-columns:320px 1fr;gap:32px;align-items:start}
-.aside{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:28px;position:sticky;top:80px}
-.aside h3{font-family:var(--ff);font-size:1.1rem;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--bd)}
-.aside-prod{display:flex;align-items:center;gap:14px;background:var(--card2);border-radius:12px;padding:14px;margin-bottom:20px}
-.ap-img{width:48px;height:74px;position:relative;flex-shrink:0}
-.ap-info{display:flex;flex-direction:column;gap:3px}
-.ap-name{font-weight:800;font-size:.9rem}
-.ap-price{color:var(--or);font-weight:900;font-size:1.1rem}
-.a-row{display:flex;justify-content:space-between;font-size:.87rem;color:var(--mu);padding:7px 0}
-.a-total{display:flex;justify-content:space-between;font-weight:900;font-size:1.05rem;padding:12px 0;border-top:1px solid var(--bd);margin-top:4px}
-.a-total span:last-child{color:var(--or);font-size:1.2rem}
-.a-note{display:flex;align-items:center;gap:9px;font-size:.78rem;color:var(--mu);background:rgba(255,255,255,.03);border-radius:10px;padding:10px 12px;margin-top:10px}
-.a-note i{color:var(--gr);flex-shrink:0}
-.a-green{color:var(--gr)!important;font-weight:700}
-
-/* Form */
-.oform{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:36px}
-.fsec-title{display:flex;align-items:center;gap:10px;font-weight:800;font-size:.93rem;margin-bottom:20px;color:var(--tx)}
-.fsec-title i{color:var(--or)}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.fgrp{margin-bottom:18px}
-label{display:block;font-weight:700;font-size:.82rem;color:var(--mu);margin-bottom:7px}
-.req{color:var(--or)}
-input[type=text],input[type=email],textarea,select{width:100%;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:10px;color:#fff;font-family:var(--fb);font-size:.94rem;padding:12px 15px;outline:none;transition:border-color .2s,background .2s;-webkit-appearance:none}
-input::placeholder,textarea::placeholder{color:rgba(255,255,255,.22)}
-input:focus,textarea:focus,select:focus{border-color:var(--or);background:rgba(255,87,34,.05)}
-input.err,select.err{border-color:#f44336;background:rgba(244,67,54,.05)}
-select option{background:var(--card)}
-.fgrp-hl{background:rgba(255,87,34,.06);border:1.5px solid rgba(255,87,34,.22);border-radius:12px;padding:16px;margin-bottom:18px}
-.fgrp-hl label{color:var(--or);font-size:.88rem}
-.fgrp-hl input{background:rgba(255,255,255,.07);border-color:rgba(255,87,34,.3)}
-.fhint{font-size:.77rem;color:var(--mu);margin-top:6px;display:block}
-.ferr{font-size:.77rem;color:#f44336;margin-top:5px;display:block;min-height:16px}
-.pp-box{margin-top:26px;padding-top:24px;border-top:1px solid var(--bd);text-align:center}
-.pp-secure{font-size:.8rem;color:var(--mu);margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:7px}
-.pp-secure i{color:var(--gr)}
-#paypal-button-container{margin-top:4px}
-.pp-note{font-size:.76rem;color:var(--mu);margin-top:10px}
-
-/* CONFIRM */
-.confirm-sec{display:none;padding:96px 0;background:var(--bg)}
-.confirm-box{background:var(--card);border:2px solid rgba(0,230,118,.25);border-radius:28px;padding:60px 48px;max-width:680px;margin:0 auto;text-align:center}
-.confirm-icon{width:84px;height:84px;border-radius:50%;background:rgba(0,230,118,.12);display:flex;align-items:center;justify-content:center;font-size:2.4rem;color:var(--gr);margin:0 auto 24px;box-shadow:0 0 40px rgba(0,230,118,.2)}
-.confirm-box h2{font-family:var(--ff);font-size:2.3rem;margin-bottom:10px}
-.confirm-sub{color:var(--mu);margin-bottom:32px}
-.confirm-details{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:12px;padding:20px 24px;text-align:left;margin-bottom:32px}
-.cdr{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.9rem}
-.cdr:last-child{border-bottom:none}
-.cdr .cl{color:var(--mu)}.cdr .cv{font-weight:700}
-.cv-rb{color:var(--or)!important}
-.confirm-steps{display:flex;align-items:center;gap:10px;margin-bottom:32px;text-align:left}
-.cs{flex:1;display:flex;align-items:flex-start;gap:10px;background:rgba(255,255,255,.03);border-radius:12px;padding:14px;font-size:.82rem;color:var(--mu);line-height:1.5}
-.cs strong{color:#fff}.cs-n{width:28px;height:28px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.83rem;flex-shrink:0}
-.cs-arr{color:var(--mu);font-size:1rem;flex-shrink:0}
-
-/* AFFILIATES */
-.aff-sec{background:var(--bg2)}
-.aff-card{background:linear-gradient(135deg,#0e0e2e,#1a1060,#0c1e2e);border:1px solid rgba(124,77,255,.2);border-radius:28px;padding:64px;display:grid;grid-template-columns:1fr 260px;gap:56px;align-items:center;position:relative;overflow:hidden}
-.aff-card::before{content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;background:radial-gradient(circle,rgba(124,77,255,.18) 0%,transparent 70%);pointer-events:none}
-.aff-perks{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:30px}
-.ap2{display:flex;align-items:flex-start;gap:12px;font-size:.87rem;color:var(--mu)}
-.ap2-icon{font-size:1.4rem;flex-shrink:0}
-.ap2 strong{color:#fff;display:block;margin-bottom:2px}
-.aff-acts{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
-.share-panel{display:none;background:rgba(255,255,255,.04);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-top:12px}
-.share-panel p{font-size:.82rem;color:var(--mu);margin-bottom:12px}
-.sbtns{display:flex;gap:10px;flex-wrap:wrap}
-.sbtn{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:9px;font-size:.82rem;font-weight:700;cursor:pointer;border:none;font-family:var(--fb);transition:opacity .2s,transform .15s}
-.sbtn:hover{opacity:.85;transform:translateY(-1px)}
-.sb-tw{background:#1da1f2;color:#fff}.sb-tt{background:#010101;color:#fff;border:1px solid #333}
-.sb-cp{background:rgba(255,255,255,.09);color:#fff;border:1px solid rgba(255,255,255,.15)}
-.earn-card{background:rgba(255,255,255,.04);border:1px solid rgba(124,77,255,.22);border-radius:20px;padding:34px;text-align:center;position:relative;z-index:1}
-.earn-lbl{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-bottom:8px}
-.earn-num{font-family:var(--ff);font-size:4rem;color:var(--gr);line-height:1;margin-bottom:6px;text-shadow:0 0 30px rgba(0,230,118,.4)}
-.earn-sub{font-size:.82rem;color:var(--mu);margin-bottom:22px}
-.earn-bar-labels{display:flex;justify-content:space-between;font-size:.7rem;color:var(--mu);margin-bottom:7px}
-.earn-bar{height:8px;background:rgba(255,255,255,.07);border-radius:999px;overflow:hidden;margin-bottom:14px}
-.earn-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gr),var(--cy));border-radius:999px;transition:width 1.5s 0.5s ease}
-.earn-badge{font-size:.78rem;color:var(--gr);background:rgba(0,230,118,.08);border:1px solid rgba(0,230,118,.2);border-radius:999px;padding:6px 14px;display:inline-block}
-
-/* FOOTER */
-.footer{background:#06060e;border-top:1px solid var(--bd);padding:64px 0 0}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
-.footer-brand p{color:var(--mu);font-size:.87rem;margin:12px 0 20px;max-width:240px;line-height:1.65}
-.socials{display:flex;gap:10px}
-.socials a{width:38px;height:38px;border-radius:9px;background:var(--card);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;color:var(--mu);font-size:.9rem;transition:all .2s}
-.socials a:hover{background:var(--or);color:#fff;border-color:var(--or);transform:translateY(-2px)}
-.footer-col h4{font-family:var(--ff);font-size:1rem;margin-bottom:16px}
-.footer-col a{display:block;color:var(--mu);font-size:.87rem;margin-bottom:10px;transition:color .2s}
-.footer-col a:hover{color:#fff}
-.footer-bottom{border-top:1px solid var(--bd);padding:22px 0;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--mu)}
-
-/* ANIMATIONS */
-@keyframes fd{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
-@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes pulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
-@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
-@keyframes revUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-
-/* RESPONSIVE */
-@media(max-width:960px){
- .hero-inner{grid-template-columns:1fr;text-align:center}
- .hero-right-wrap{order:-1}
- .hero-p,.hero-btns,.trust{justify-content:center;margin-left:auto;margin-right:auto}
- .steps{grid-template-columns:1fr}
- .reviews-grid{grid-template-columns:1fr}
- .prod-card{grid-template-columns:1fr}
- .prod-img-side{min-height:300px}
- .order-layout{grid-template-columns:1fr}
- .aside{position:static}
- .aff-card{grid-template-columns:1fr;padding:40px}
- .aff-right{display:none}
- .footer-grid{grid-template-columns:1fr 1fr}
+/* ── SECTIONS SHARED ── */
+.section { padding: 90px 0; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.sec-tag {
+  display: inline-block; background: rgba(255,87,34,0.12);
+  border: 1px solid rgba(255,87,34,0.28); color: var(--orange);
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.18em;
+  text-transform: uppercase; padding: 5px 14px; border-radius: 999px; margin-bottom: 14px;
 }
-@media(max-width:640px){
- .nav-links{display:none;position:fixed;inset:66px 0 0;background:rgba(9,9,15,.98);flex-direction:column;align-items:center;padding:32px 24px;gap:8px;z-index:998}
- .nav-links.open{display:flex}
- .nav-links a{font-size:1.1rem;padding:14px 28px;width:100%;text-align:center;border-radius:12px}
- .burger{display:flex}
- .frow{grid-template-columns:1fr}
- .confirm-steps{flex-direction:column}
- .cs-arr{transform:rotate(90deg)}
- .footer-grid{grid-template-columns:1fr}
- .footer-bottom{flex-direction:column;gap:8px;text-align:center}
- .aff-perks{grid-template-columns:1fr}
- .oform{padding:24px}
- .stage{width:260px;height:340px}
- .gr1{width:180px;height:180px}
- .gr2{width:240px;height:240px}
- .gr3{width:300px;height:300px}
+.sec-title { font-family: var(--font-title); font-size: clamp(1.9rem, 3.5vw, 2.7rem); margin-bottom: 12px; text-align: center; }
+.sec-sub { color: var(--muted); font-size: 0.97rem; text-align: center; max-width: 500px; margin: 0 auto 50px; }
+
+/* ── PRODUCT SECTION ── */
+.product-section { background: var(--bg2); }
+.product-card {
+  background: var(--card); border: 2px solid rgba(255,87,34,0.2);
+  border-radius: var(--radius-lg); overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1fr;
+  max-width: 860px; margin: 0 auto;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.5), 0 0 50px rgba(255,87,34,0.08);
+}
+.product-img {
+  background: linear-gradient(145deg, #0f0f36, #1e1060);
+  display: flex; align-items: center; justify-content: center;
+  min-height: 380px; position: relative; overflow: hidden;
+}
+/* REPLACE: <img src="your-image.png" style="width:100%;height:100%;object-fit:cover"> */
+.product-img-inner { position: relative; z-index: 2; animation: float 3.5s ease-in-out infinite; }
+.product-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 60%); pointer-events: none; }
+.prod-badge {
+  position: absolute; top: 18px; left: 18px;
+  background: var(--orange); color: #fff;
+  font-size: 0.68rem; font-weight: 900; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 5px 13px; border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(255,87,34,0.5); z-index: 3;
+}
+.product-info { padding: 40px 36px; display: flex; flex-direction: column; justify-content: center; }
+.product-name { font-family: var(--font-title); font-size: 1.85rem; margin-bottom: 6px; }
+.product-tagline { color: var(--muted); font-size: 0.9rem; margin-bottom: 20px; }
+.product-price-row { display: flex; align-items: baseline; gap: 4px; margin-bottom: 6px; }
+.product-price { font-family: var(--font-title); font-size: 3rem; color: var(--orange); line-height: 1; }
+.product-cents { font-size: 1.4rem; color: var(--orange); }
+.free-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(0,230,118,0.1); border: 1px solid rgba(0,230,118,0.25);
+  color: var(--green); font-size: 0.77rem; font-weight: 700;
+  padding: 4px 12px; border-radius: 999px; margin-bottom: 24px;
+}
+.product-features { margin-bottom: 28px; }
+.product-features li {
+  display: flex; align-items: center; gap: 10px;
+  padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.9rem; color: var(--muted);
+}
+.product-features li:last-child { border-bottom: none; }
+.product-features li i { color: var(--green); font-size: 0.78rem; width: 14px; }
+.order-btn-wrap { margin-bottom: 12px; }
+.secure-line { display: flex; align-items: center; justify-content: center; gap: 7px; font-size: 0.78rem; color: var(--muted); }
+.secure-line i { color: var(--green); }
+
+/* ── ORDER SECTION ── */
+.order-section { background: var(--bg); }
+.order-grid { display: grid; grid-template-columns: 300px 1fr; gap: 30px; align-items: start; }
+
+/* Order summary sidebar */
+.order-aside {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 28px; position: sticky; top: 80px;
+}
+.order-aside h3 { font-family: var(--font-title); font-size: 1.15rem; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+.aside-item { display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem; color: var(--muted); padding: 8px 0; }
+.aside-item span:last-child { font-weight: 700; color: var(--text); }
+.aside-divider { height: 1px; background: var(--border); margin: 8px 0; }
+.aside-total { display: flex; justify-content: space-between; font-weight: 900; font-size: 1.05rem; padding: 10px 0; }
+.aside-total span:last-child { color: var(--orange); font-size: 1.2rem; }
+.aside-note { display: flex; align-items: flex-start; gap: 9px; font-size: 0.78rem; color: var(--muted); background: rgba(255,255,255,0.03); border-radius: 10px; padding: 10px 12px; margin-top: 10px; }
+.aside-note i { color: var(--green); flex-shrink: 0; margin-top: 1px; }
+
+/* Order form */
+.order-form {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 36px;
+}
+.form-section-label {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 800; font-size: 0.93rem; margin-bottom: 20px;
+}
+.form-section-label i { color: var(--orange); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-weight: 700; font-size: 0.82rem; color: var(--muted); margin-bottom: 7px; }
+.req { color: var(--orange); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(255,255,255,0.1); border-radius: 10px;
+  color: #fff; font-family: var(--font-body); font-size: 0.94rem;
+  padding: 12px 15px; outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,0.22); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--orange); background: rgba(255,87,34,0.05); }
+.form-group input.error,
+.form-group select.error { border-color: #f44336; background: rgba(244,67,54,0.05); }
+.form-group select option { background: var(--card); }
+.form-error { font-size: 0.77rem; color: #f44336; margin-top: 5px; display: block; min-height: 16px; }
+.roblox-group {
+  background: rgba(255,87,34,0.06); border: 1.5px solid rgba(255,87,34,0.22);
+  border-radius: var(--radius); padding: 16px; margin-bottom: 18px;
+}
+.roblox-group label { color: var(--orange); font-size: 0.88rem; }
+.roblox-group input { background: rgba(255,255,255,0.07); border-color: rgba(255,87,34,0.3); }
+.form-hint { font-size: 0.77rem; color: var(--muted); margin-top: 6px; display: block; }
+
+/* PayPal box */
+.paypal-box { margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--border); }
+.paypal-secure { font-size: 0.8rem; color: var(--muted); margin-bottom: 14px; display: flex; align-items: center; justify-content: center; gap: 7px; }
+.paypal-secure i { color: var(--green); }
+#paypal-button-container { min-height: 55px; }
+.paypal-note { font-size: 0.76rem; color: var(--muted); text-align: center; margin-top: 10px; }
+
+/* Loading spinner overlay */
+.form-loading {
+  display: none; position: fixed; inset: 0;
+  background: rgba(9,9,15,0.8); backdrop-filter: blur(4px);
+  z-index: 9999; align-items: center; justify-content: center;
+  flex-direction: column; gap: 16px;
+}
+.form-loading.active { display: flex; }
+.spinner {
+  width: 50px; height: 50px; border-radius: 50%;
+  border: 4px solid rgba(255,255,255,0.1);
+  border-top-color: var(--orange);
+  animation: spin 0.8s linear infinite;
+}
+.form-loading p { color: #fff; font-weight: 700; font-size: 1rem; }
+
+/* ── CONFIRMATION ── */
+.confirm-section { display: none; padding: 90px 0; background: var(--bg2); }
+.confirm-box {
+  background: var(--card); border: 2px solid rgba(0,230,118,0.25);
+  border-radius: var(--radius-lg); padding: 56px 44px;
+  max-width: 640px; margin: 0 auto; text-align: center;
+}
+.confirm-icon {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: rgba(0,230,118,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.2rem; color: var(--green);
+  margin: 0 auto 24px; box-shadow: 0 0 40px rgba(0,230,118,0.2);
+}
+.confirm-box h2 { font-family: var(--font-title); font-size: 2.1rem; margin-bottom: 10px; }
+.confirm-message { color: var(--muted); font-size: 0.97rem; margin-bottom: 30px; line-height: 1.7; }
+.confirm-message strong { color: var(--orange); }
+.confirm-details {
+  background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px 24px; text-align: left; margin-bottom: 28px;
+}
+.detail-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.88rem; gap: 16px; }
+.detail-row:last-child { border-bottom: none; }
+.detail-row .dl { color: var(--muted); flex-shrink: 0; }
+.detail-row .dv { font-weight: 700; text-align: right; }
+.detail-row .dv.highlight { color: var(--orange); }
+.confirm-steps {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 28px; text-align: left;
+}
+.cstep {
+  flex: 1; display: flex; align-items: flex-start; gap: 10px;
+  background: rgba(255,255,255,0.03); border-radius: 12px; padding: 14px;
+  font-size: 0.82rem; color: var(--muted); line-height: 1.5;
+}
+.cstep strong { color: #fff; display: block; margin-bottom: 2px; }
+.cstep-num {
+  width: 28px; height: 28px; border-radius: 50%; background: var(--orange);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 0.82rem; flex-shrink: 0;
+}
+.cstep-arrow { color: var(--muted); flex-shrink: 0; }
+
+/* ── FAQ ── */
+.faq-section { background: var(--bg); }
+.faq-list { max-width: 660px; margin: 0 auto; }
+.faq-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; overflow: hidden; }
+.faq-q { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; cursor: pointer; font-weight: 700; font-size: 0.94rem; gap: 16px; transition: color 0.2s; }
+.faq-q:hover, .faq-item.open .faq-q { color: var(--orange); }
+.faq-q i { color: var(--orange); font-size: 0.78rem; transition: transform 0.3s; flex-shrink: 0; }
+.faq-item.open .faq-q i { transform: rotate(180deg); }
+.faq-a { padding: 0 22px; max-height: 0; overflow: hidden; color: var(--muted); font-size: 0.9rem; line-height: 1.7; transition: max-height 0.35s ease, padding 0.35s ease; }
+.faq-item.open .faq-a { max-height: 200px; padding: 0 22px 18px; }
+
+/* ── FOOTER ── */
+.footer { background: #06060e; border-top: 1px solid var(--border); padding: 48px 0 0; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-brand p { color: var(--muted); font-size: 0.87rem; margin: 10px 0 18px; max-width: 220px; line-height: 1.6; }
+.footer-socials { display: flex; gap: 10px; }
+.footer-socials a {
+  width: 38px; height: 38px; border-radius: 9px; background: var(--card);
+  border: 1px solid var(--border); display: flex; align-items: center;
+  justify-content: center; color: var(--muted); transition: all 0.2s;
+}
+.footer-socials a:hover { background: var(--orange); color: #fff; border-color: var(--orange); }
+.footer-col h4 { font-family: var(--font-title); font-size: 0.97rem; margin-bottom: 14px; }
+.footer-col a { display: block; color: var(--muted); font-size: 0.86rem; margin-bottom: 9px; transition: color 0.2s; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom {
+  border-top: 1px solid var(--border); padding: 20px 0;
+  display: flex; justify-content: space-between;
+  font-size: 0.78rem; color: var(--muted);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeUp   { from { opacity: 0; transform: translateY(28px);  } to { opacity: 1; transform: translateY(0); } }
+@keyframes float    { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-13px); } }
+@keyframes spin     { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes pulse    { 0%,100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
+@keyframes blink    { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+@keyframes marquee  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes shake    { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-8px); } 40% { transform: translateX(8px); } 60% { transform: translateX(-5px); } 80% { transform: translateX(5px); } }
+@keyframes revealUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-content { grid-template-columns: 1fr; text-align: center; }
+  .stage { order: -1; }
+  .hero-desc, .hero-btns, .trust-row { justify-content: center; margin-left: auto; margin-right: auto; }
+  .product-card { grid-template-columns: 1fr; }
+  .product-img { min-height: 280px; }
+  .order-grid { grid-template-columns: 1fr; }
+  .order-aside { position: static; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .nav-links {
+    display: none; position: fixed; inset: 68px 0 0;
+    background: rgba(9,9,15,0.98); flex-direction: column;
+    align-items: center; padding: 28px 24px; gap: 8px; z-index: 998;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 1.1rem; padding: 14px 28px; width: 100%; text-align: center; border-radius: 12px; }
+  .burger { display: flex; }
+  .form-row { grid-template-columns: 1fr; }
+  .confirm-steps { flex-direction: column; }
+  .cstep-arrow { transform: rotate(90deg); }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .order-form { padding: 24px; }
 }
 </style>
 </head>
-<body> <!-- NAVBAR -->
-<nav class="nav" id="nav"> <div class="nav-wrap"> <a href="#home" class="logo">Block<span>Figs</span></a> <ul class="nav-links" id="navLinks"> <li><a href="#home" onclick="closeMenu()">Home</a></li> <li><a href="#how" onclick="closeMenu()">How It Works</a></li> <li><a href="#product" onclick="closeMenu()">Shop</a></li> <li><a href="#faq" onclick="closeMenu()">FAQ</a></li> <li><a href="#affiliates" onclick="closeMenu()">Earn</a></li> <li><a href="#order" class="nav-cta" onclick="closeMenu()">Order Now &rarr;</a></li>
-</ul> <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+<body>
+
+<!-- Loading overlay (shown while sending email) -->
+<div class="form-loading" id="loadingOverlay">
+  <div class="spinner"></div>
+  <p>Sending your order... please wait</p>
 </div>
-</nav> <!-- HERO -->
-<section class="hero" id="home"> <div class="hero-bg"> <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div> <div class="grid-bg"></div>
-</div> <div class="hero-inner"> <div class="hero-left"> <div class="hero-tag"><span class="tag-dot"></span>Now Taking Orders</div> <h1 class="hero-h1">Your Avatar.<br><em>For Real.</em></h1> <p class="hero-p">We hand-craft a <strong>3-inch Roblox figure</strong> of your exact in-game avatar - every color, accessory, and detail. Just give us your username.</p> <div class="hero-btns"> <a href="#product" class="btn btn-fire"><i class="fas fa-shopping-bag"></i> Shop Now</a> <a href="#how" class="btn btn-outline">How It Works &darr;</a>
-</div> <div class="trust"> <div class="t-item"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span>4.9 / 5 rating</span></div> <span class="t-sep">·</span> <div class="t-item"><i class="fas fa-box" style="color:var(--cy)"></i><span>2,400+ sold</span></div> <span class="t-sep">·</span> <div class="t-item"><i class="fas fa-shield-alt" style="color:var(--gr)"></i><span>PayPal protected</span></div>
-</div>
-</div> <div class="hero-right-wrap"> <div class="stage"> <div class="stage-glow"></div> <div class="glow-ring gr1"></div> <div class="glow-ring gr2"></div> <div class="glow-ring gr3"></div> <!-- CSS Roblox figure. REPLACE with: <img src="your-figure.png" style="height:210px;object-fit:contain;position:relative;z-index:2"> --> <div class="rfig"> <div class="rf-head"><div class="rf-el rf-el-l"></div><div class="rf-el rf-el-r"></div><div class="rf-mouth"></div></div> <div class="rf-neck"></div> <div class="rf-torso"><div class="rf-logo"></div></div> <div class="rf-arm rf-arm-l"></div> <div class="rf-arm rf-arm-r"></div> <div class="rf-hip"></div> <div class="rf-leg rf-leg-l"></div> <div class="rf-leg rf-leg-r"></div>
-</div> <div class="fig-shadow"></div> <div class="ftag ft1"><i class="fas fa-ruler"></i> 3 inches tall</div> <div class="ftag ft2"> 100% Custom</div> <div class="ftag ft3"> Your Avatar</div>
-</div>
-</div>
-</div> <div class="marquee-bar"> <div class="marquee-track"> <span>Custom Avatar |</span><span>3-Inch Figure |</span><span>Your Roblox Username |</span><span>Gift Ready |</span><span>Ships Worldwide |</span><span>Only $15 |</span><span>Premium Resin |</span><span>Display Box Included |</span> <span>Custom Avatar |</span><span>3-Inch Figure |</span><span>Your Roblox Username |</span><span>Gift Ready |</span><span>Ships Worldwide |</span><span>Only $15 |</span><span>Premium Resin |</span><span>Display Box Included |</span>
-</div>
-</div>
-</section> <!-- HOW IT WORKS -->
-<section class="section how" id="how"> <div class="sec-inner"> <div style="text-align:center"><div class="sec-label">The Process</div></div> <h2 class="sec-title">How It Works</h2> <p class="sec-sub">Three simple steps from order to holding your figure in your hands.</p> <div class="steps"> <div class="step" data-rev> <div class="step-n">01</div> <div class="step-icon si-or"><i class="fas fa-gamepad"></i></div> <h3>Give Us Your Username</h3> <p>Enter your exact Roblox username at checkout. We use it to look up your avatar's full appearance - outfit, accessories, colors, everything.</p>
-</div> <div class="step" data-rev style="--d:.15s"> <div class="step-n">02</div> <div class="step-icon si-cy"><i class="fas fa-paint-brush"></i></div> <h3>We Build Your Figure</h3> <p>Our artists hand-craft your 3-inch figure using premium resin and UV-resistant paint. Each figure takes 3–5 days to complete to our quality standard.</p>
-</div> <div class="step" data-rev style="--d:.3s"> <div class="step-n">03</div> <div class="step-icon si-gr"><i class="fas fa-box-open"></i></div> <h3>Delivered to Your Door</h3> <p>Your figure ships in a collectible display box with foam padding. Arrives in 7–10 business days. Perfect as a gift or desk piece.</p>
-</div>
-</div> <div class="perks"> <div class="perk"><i class="fas fa-check-circle"></i> Exact avatar match</div> <div class="perk"><i class="fas fa-check-circle"></i> Premium resin build</div> <div class="perk"><i class="fas fa-check-circle"></i> Display box included</div> <div class="perk"><i class="fas fa-check-circle"></i> Ships worldwide</div> <div class="perk"><i class="fas fa-check-circle"></i> PayPal buyer protection</div> <div class="perk"><i class="fas fa-check-circle"></i> Satisfaction guaranteed</div>
-</div>
-</div>
-</section> <!-- REVIEWS -->
-<section class="section reviews" id="reviews"> <div class="sec-inner"> <div style="text-align:center"><div class="sec-label">Customer Love</div></div> <h2 class="sec-title">Real Reviews</h2> <p class="sec-sub">From Roblox players who got their figures.</p> <div class="reviews-grid"> <div class="review-card" data-rev> <div class="rv-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div> <p class="rv-text">It literally looks exactly like my avatar. The colors are perfect and the detail on the accessories blew me away. Best $15 I've ever spent.</p> <div class="rv-author"><div class="rv-avatar">X</div><div><div class="rv-name">xXDarkSlayer99Xx</div><div class="rv-tag">Verified buyer</div></div></div>
-</div> <div class="review-card" data-rev style="--d:.12s"> <div class="rv-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div> <p class="rv-text">Got this as a gift for my little brother who is obsessed with Roblox. He screamed when he opened it. The box it came in was super nice too.</p> <div class="rv-author"><div class="rv-avatar" style="background:linear-gradient(135deg,var(--cy),var(--pu))">S</div><div><div class="rv-name">SunsetRider22</div><div class="rv-tag">Verified buyer</div></div></div>
-</div> <div class="review-card" data-rev style="--d:.24s"> <div class="rv-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div> <p class="rv-text">Ordered for myself and honestly it sits on my desk now. Quality is way better than I expected for $15. Shipping was fast too - came in 8 days.</p> <div class="rv-author"><div class="rv-avatar" style="background:linear-gradient(135deg,var(--gr),var(--cy))">N</div><div><div class="rv-name">NoobMaster_Elite</div><div class="rv-tag">Verified buyer</div></div></div>
-</div>
-</div>
-</div>
-</section> <!-- PRODUCT -->
-<section class="section product-sec" id="product"> <div class="sec-inner"> <div style="text-align:center"><div class="sec-label">The Shop</div></div> <h2 class="sec-title">The Figure</h2> <p class="sec-sub">One product, endlessly personal. Every order is completely unique to you.</p> <div class="prod-wrap"> <div class="prod-card"> <div class="prod-img-side"> <!-- REPLACE: <img src="your-product-image.png" alt="3 Inch Roblox Figure"> --> <!-- CSS figure placeholder --> <div style="position:relative;z-index:2;animation:fl 3.5s ease-in-out infinite"> <div class="rfig" style="transform:scale(1.3);margin-top:30px"></div>
-</div> <div class="prod-img-shine"></div> <div class="prod-badge-wrap"> <span class="pbadge pb-hot"> Hot</span> <span class="pbadge pb-new">New</span>
-</div>
-</div> <div class="prod-body"> <!-- REPLACE: Update name, price, description as needed --> <h3 class="prod-name">3 Inch Roblox Figure</h3> <p class="prod-sub">Your exact Roblox avatar, in your hands.</p> <div class="prod-price-block"> <span class="prod-price">$15</span> <span class="prod-cents">.00</span>
-</div> <div class="free-ship"><i class="fas fa-truck"></i> Free worldwide shipping</div> <div class="prod-features"> <div class="pf"><i class="fas fa-check"></i> Custom-built from your Roblox username</div> <div class="pf"><i class="fas fa-check"></i> 3 inches tall, premium resin</div> <div class="pf"><i class="fas fa-check"></i> UV-resistant paint - colors stay vibrant</div> <div class="pf"><i class="fas fa-check"></i> Includes collectible display box</div> <div class="pf"><i class="fas fa-check"></i> Ships in 7–10 business days</div> <div class="pf"><i class="fas fa-check"></i> PayPal buyer protection</div>
-</div> <div class="prod-cta"> <a href="#order" class="btn btn-fire btn-full"><i class="fas fa-shopping-cart"></i> Order Mine for $15</a>
-</div> <div class="secure-note"><i class="fas fa-lock"></i> Secure checkout via PayPal</div>
-</div>
-</div>
-</div>
-</div>
-</section> <!-- FAQ -->
-<section class="section faq-sec" id="faq"> <div class="sec-inner"> <div style="text-align:center"><div class="sec-label">FAQ</div></div> <h2 class="sec-title">Frequently Asked</h2> <p class="sec-sub">Everything you need to know before ordering.</p> <div class="faq-list"> <div class="faq-item"> <div class="faq-q" onclick="toggleFaq(this)">How exactly do you recreate my avatar? <i class="fas fa-chevron-down"></i></div> <div class="faq-a">You give us your Roblox username and we manually look up your avatar in-game. Our artists then paint and sculpt the figure to match your exact look - including outfit colors, accessories, hair, and body type. We do not need your password or any login access.</div>
-</div> <div class="faq-item"> <div class="faq-q" onclick="toggleFaq(this)">What if I change my avatar after ordering? <i class="fas fa-chevron-down"></i></div> <div class="faq-a">We capture your avatar's appearance at the time of order. If you update your avatar after purchasing and want the new look, please contact us within 24 hours of ordering - we can accommodate changes before production begins.</div>
-</div> <div class="faq-item"> <div class="faq-q" onclick="toggleFaq(this)">How long does shipping take? <i class="fas fa-chevron-down"></i></div> <div class="faq-a">Production takes 3–5 business days, and shipping takes an additional 4–7 business days depending on your location. Total time from order to delivery is typically 7–10 business days. We ship worldwide!</div>
-</div> <div class="faq-item"> <div class="faq-q" onclick="toggleFaq(this)">What is the figure made of? <i class="fas fa-chevron-down"></i></div> <div class="faq-a">Each figure is made from high-quality PVC/resin and painted with UV-resistant acrylic paints. The figure is 3 inches (7.6cm) tall and comes in a foam-padded collectible display box.</div>
-</div> <div class="faq-item"> <div class="faq-q" onclick="toggleFaq(this)">What if I'm not happy with my figure? <i class="fas fa-chevron-down"></i></div> <div class="faq-a">We stand behind every figure we make. If your figure doesn't match your avatar or arrives damaged, contact us and we'll make it right - either with a replacement or a full refund. Customer satisfaction is our priority.</div>
-</div> <div class="faq-item"> <div class="faq-q" onclick="toggleFaq(this)">Is this store affiliated with Roblox? <i class="fas fa-chevron-down"></i></div> <div class="faq-a">No. BlockFigs is an independent store and is not affiliated with, endorsed by, or sponsored by Roblox Corporation. We are fans creating fan-made collectibles for the community.</div>
-</div>
-</div>
-</div>
-</section> <!-- ORDER -->
-<section class="section order-sec" id="order"> <div class="sec-inner"> <div style="text-align:center"><div class="sec-label">Checkout</div></div> <h2 class="sec-title">Place Your Order</h2> <p class="sec-sub">Fill in your details and pay securely via PayPal.</p> <div class="order-layout"> <aside class="aside"> <h3>Your Order</h3> <div class="aside-prod"> <div class="ap-img"> <div class="rfig" style="transform:scale(.42);transform-origin:top left;animation:fl 3s ease-in-out infinite"></div>
-</div> <div class="ap-info"> <!-- REPLACE: Update product name and price --> <span class="ap-name">3 Inch Roblox Figure</span> <span class="ap-price">$15.00</span>
-</div>
-</div> <div class="a-row"><span>Subtotal</span><span>$15.00</span></div> <div class="a-row"><span>Shipping</span><span class="a-green">FREE</span></div> <div class="a-total"><span>Total</span><span>$15.00</span></div> <div class="a-note"><i class="fas fa-lock"></i> Secure PayPal checkout</div> <div class="a-note"><i class="fas fa-clock"></i> Ships in 7–10 business days</div> <div class="a-note"><i class="fas fa-redo"></i> Satisfaction guaranteed</div> <div class="a-note"><i class="fas fa-globe"></i> Worldwide shipping</div>
-</aside> <form class="oform" id="orderForm" novalidate> <div class="fsec-title"><i class="fas fa-user"></i> Your Info</div> <div class="frow"> <div class="fgrp"> <label for="fullName">Full Name <span class="req">*</span></label> <input type="text" id="fullName" placeholder="Alex Johnson" required> <span class="ferr" id="fullNameErr"></span>
-</div> <div class="fgrp"> <label for="email">Email <span class="req">*</span></label> <input type="email" id="email" placeholder="you@example.com" required> <span class="ferr" id="emailErr"></span>
-</div>
-</div> <div class="fgrp-hl"> <label for="robloxUser"><i class="fas fa-gamepad"></i> Roblox Username <span class="req">*</span></label> <input type="text" id="robloxUser" placeholder="YourExactRobloxName" required> <span class="fhint">Note: We use this to build your figure - double-check your spelling!</span> <span class="ferr" id="robloxErr"></span>
-</div> <div class="fsec-title" style="margin-top:24px"><i class="fas fa-map-marker-alt"></i> Shipping Address</div> <div class="fgrp"> <label for="address">Street Address <span class="req">*</span></label> <input type="text" id="address" placeholder="123 Main Street, Apt 4B" required> <span class="ferr" id="addressErr"></span>
-</div> <div class="frow"> <div class="fgrp"> <label for="city">City <span class="req">*</span></label> <input type="text" id="city" placeholder="New York" required> <span class="ferr" id="cityErr"></span>
-</div> <div class="fgrp"> <label for="state">State / Province <span class="req">*</span></label> <input type="text" id="state" placeholder="NY" required> <span class="ferr" id="stateErr"></span>
-</div>
-</div> <div class="frow"> <div class="fgrp"> <label for="zip">ZIP Code <span class="req">*</span></label> <input type="text" id="zip" placeholder="10001" required> <span class="ferr" id="zipErr"></span>
-</div> <div class="fgrp"> <label for="country">Country <span class="req">*</span></label> <select id="country" required> <option value="">Select...</option> <option value="US">United States</option> <option value="CA">Canada</option> <option value="GB">United Kingdom</option> <option value="AU">Australia</option> <option value="OTHER">Other</option>
-</select> <span class="ferr" id="countryErr"></span>
-</div>
-</div> <div class="fgrp"> <label for="notes">Notes (optional)</label> <textarea id="notes" rows="3" placeholder="Anything special about your order?"></textarea>
-</div> <div class="pp-box"> <div class="pp-secure"><i class="fas fa-lock"></i> Safe & secure payment via PayPal</div> <!-- PayPal Smart Button renders here --> <div id="paypal-button-container"></div> <p class="pp-note">Filling out the form and clicking Pay will first email your order details, then open PayPal checkout.</p>
-</div>
-</form>
-</div>
-</div>
-</section> <!-- CONFIRMATION -->
-<section class="confirm-sec" id="confirmSec"> <div class="sec-inner"> <div class="confirm-box"> <div class="confirm-icon"><i class="fas fa-check"></i></div> <h2>Order Confirmed!</h2> <p class="confirm-sub">Your payment was successful. We're already planning your figure!</p> <div class="confirm-details" id="confirmDetails"></div> <div class="confirm-steps"> <div class="cs"><div class="cs-n">1</div><div><strong>Payment Done</strong><br>PayPal receipt sent to your email</div></div> <div class="cs-arr">&rarr;</div> <div class="cs"><div class="cs-n">2</div><div><strong>We Build It</strong><br>Using your Roblox username</div></div> <div class="cs-arr">&rarr;</div> <div class="cs"><div class="cs-n">3</div><div><strong>Ships to You</strong><br>7–10 business days</div></div>
-</div> <button class="btn btn-fire" onclick="resetOrder()"><i class="fas fa-home"></i> Back to Store</button>
-</div>
-</div>
-</section> <!-- AFFILIATES -->
-<section class="section aff-sec" id="affiliates"> <div class="sec-inner"> <div class="aff-card"> <div class="aff-left"> <div class="sec-label" style="display:inline-block">Creator Program</div> <h2 class="sec-title" style="text-align:left;margin-top:12px">Share & Earn</h2> <p style="color:var(--mu);margin-bottom:28px;max-width:500px">Are you a Roblox YouTuber, streamer, or content creator? Promote BlockFigs to your audience and earn real money on every sale you refer.</p> <div class="aff-perks"> <!-- REPLACE: Update commission % and payout details --> <div class="ap2"><div class="ap2-icon"></div><div><strong>10% per sale</strong><span>Earn $1.50 on every $15 figure sold</span></div></div> <div class="ap2"><div class="ap2-icon"></div><div><strong>Custom link</strong><span>Your personal referral URL</span></div></div> <div class="ap2"><div class="ap2-icon"></div><div><strong>Live tracking</strong><span>See your clicks and earnings</span></div></div> <div class="ap2"><div class="ap2-icon"></div><div><strong>Monthly PayPal payout</strong><span>No minimum withdrawal</span></div></div>
-</div> <div class="aff-acts"> <!-- REPLACE: Update affiliate contact email --> <a href="/cdn-cgi/l/email-protection#224344444b4e4b43564751625b4d575051564d50470c414d4f1d515740484741561f6344444b4e4b435647026352524e4b4143564b4d4c" class="btn btn-fire"><i class="fas fa-envelope"></i> Apply Now</a> <button class="btn btn-outline" id="shareBtn" onclick="toggleShare()"><i class="fas fa-share-alt"></i> Share Store</button>
-</div> <div class="share-panel" id="sharePanel"> <p>Share your store link:</p> <div class="sbtns"> <!-- REPLACE: YOUR_STORE_URL with your GitHub Pages link --> <a href="https://twitter.com/intent/tweet?text=Check%20out%20these%20custom%20Roblox%20figures!&url=YOUR_STORE_URL" target="_blank" class="sbtn sb-tw"><i class="fab fa-twitter"></i> Twitter / X</a> <a href="https://www.tiktok.com" target="_blank" class="sbtn sb-tt"><i class="fab fa-tiktok"></i> TikTok</a> <button class="sbtn sb-cp" onclick="copyLink()"><i class="fas fa-copy"></i> Copy Link</button>
-</div>
-</div>
-</div> <div class="aff-right"> <div class="earn-card"> <div class="earn-lbl">You could earn</div> <div class="earn-num" id="earnNum">$0</div> <div class="earn-sub">per month</div> <div class="earn-bar-labels"><span>0 sales</span><span>100 sales</span></div> <div class="earn-bar"><div class="earn-fill" id="earnFill"></div></div> <div class="earn-badge">$1.50 per figure sold</div>
-</div>
-</div>
-</div>
-</div>
-</section> <!-- FOOTER -->
-<footer class="footer"> <div class="sec-inner"> <div class="footer-grid"> <div class="footer-brand"> <a href="#home" class="logo">Block<span>Figs</span></a> <p>Bringing Roblox avatars to life, one figure at a time. Made with for the community.</p> <!-- REPLACE: Add your social links --> <div class="socials"> <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a> <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a> <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-</div>
-</div> <div class="footer-col"> <h4>Navigate</h4> <a href="#home">Home</a> <a href="#how">How It Works</a> <a href="#product">Shop</a> <a href="#faq">FAQ</a> <a href="#affiliates">Earn</a>
-</div> <div class="footer-col"> <h4>Support</h4> <!-- REPLACE: your support email --> <a href="/cdn-cgi/l/email-protection#e5969095958a9791a59c8a909796918a9780cb868a88">Contact Us</a> <a href="#">Shipping Policy</a> <a href="#">Returns & Refunds</a> <a href="#">Privacy Policy</a>
-</div>
-</div> <div class="footer-bottom"> <!-- REPLACE: update year --> <p>(c) 2025 BlockFigs. Not affiliated with Roblox Corporation.</p> <p>Secure payments via PayPal</p>
-</div>
-</div>
-</footer> <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* ════════════════════════════════════════════════════════════════
-   BLOCKFIGS — Main JavaScript
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="logo">Block<span>Figs</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home"    onclick="closeMenu()">Home</a></li>
+      <li><a href="#product" onclick="closeMenu()">Shop</a></li>
+      <li><a href="#faq"     onclick="closeMenu()">FAQ</a></li>
+      <li><a href="#order" class="nav-order" onclick="closeMenu()">Order Now</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="home">
+  <div class="hero-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="grid"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-label"><span class="live-dot"></span> Now Taking Orders</div>
+      <h1>Your Avatar.<br><em>For Real.</em></h1>
+      <p class="hero-desc">
+        We 3D print a <strong>custom 3-inch figure</strong> of your exact Roblox avatar.
+        Every color, every accessory, every detail — perfectly reproduced.
+      </p>
+      <div class="hero-btns">
+        <a href="#order" class="btn btn-orange"><i class="fas fa-shopping-bag"></i> Order Now — $15</a>
+        <a href="#product" class="btn" style="background:transparent;border:1.5px solid rgba(255,255,255,0.15);color:var(--muted)">See Details</a>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item">
+          <i class="fas fa-star" style="color:var(--yellow)"></i>
+          <i class="fas fa-star" style="color:var(--yellow)"></i>
+          <i class="fas fa-star" style="color:var(--yellow)"></i>
+          <i class="fas fa-star" style="color:var(--yellow)"></i>
+          <i class="fas fa-star" style="color:var(--yellow)"></i>
+          <span>4.9 rating</span>
+        </div>
+        <span class="trust-sep">·</span>
+        <div class="trust-item"><i class="fas fa-box" style="color:#00e5ff"></i><span>2,400+ sold</span></div>
+        <span class="trust-sep">·</span>
+        <div class="trust-item"><i class="fas fa-shield-alt" style="color:var(--green)"></i><span>PayPal protected</span></div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="glow"></div>
+      <div class="ring ring-1"></div>
+      <div class="ring ring-2"></div>
+      <!-- REPLACE this entire .fig block with your product image:
+           <img src="figure.png" alt="3 Inch Roblox Figure" style="height:220px;object-fit:contain;position:relative;z-index:2">
+      -->
+      <div class="fig">
+        <div class="fig-head">
+          <div class="fig-eye l"></div>
+          <div class="fig-eye r"></div>
+          <div class="fig-mouth"></div>
+        </div>
+        <div class="fig-neck"></div>
+        <div class="fig-torso"></div>
+        <div class="fig-arm l"></div>
+        <div class="fig-arm r"></div>
+        <div class="fig-hip"></div>
+        <div class="fig-leg l"></div>
+        <div class="fig-leg r"></div>
+      </div>
+      <div class="fig-shadow"></div>
+      <div class="ftag ftag-1"><i class="fas fa-ruler"></i> 3 inches tall</div>
+      <div class="ftag ftag-2"><i class="fas fa-print"></i> 3D Printed</div>
+    </div>
+  </div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Custom 3D Print |</span>
+      <span>Your Roblox Avatar |</span>
+      <span>Only $15 |</span>
+      <span>Free Shipping |</span>
+      <span>High Quality |</span>
+      <span>Gift Ready |</span>
+      <span>Custom 3D Print |</span>
+      <span>Your Roblox Avatar |</span>
+      <span>Only $15 |</span>
+      <span>Free Shipping |</span>
+      <span>High Quality |</span>
+      <span>Gift Ready |</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRODUCT ═══ -->
+<section class="section product-section" id="product">
+  <div class="container">
+    <div style="text-align:center"><div class="sec-tag">The Product</div></div>
+    <h2 class="sec-title">3 Inch Roblox Figure</h2>
+    <p class="sec-sub">One product, completely unique to you every time.</p>
+
+    <div class="product-card">
+      <div class="product-img">
+        <div class="prod-badge">Best Seller</div>
+        <!-- REPLACE: swap .product-img-inner with your real product photo:
+             <img src="figure.png" alt="3 Inch Roblox Figure" style="width:100%;height:100%;object-fit:cover">
+        -->
+        <div class="product-img-inner">
+          <div class="fig" style="transform:scale(1.25) translateY(10px)">
+            <div class="fig-head"><div class="fig-eye l"></div><div class="fig-eye r"></div><div class="fig-mouth"></div></div>
+            <div class="fig-neck"></div>
+            <div class="fig-torso"></div>
+            <div class="fig-arm l"></div>
+            <div class="fig-arm r"></div>
+            <div class="fig-hip"></div>
+            <div class="fig-leg l"></div>
+            <div class="fig-leg r"></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-info">
+        <!-- REPLACE: Update name, price, and features as needed -->
+        <h3 class="product-name">3 Inch Roblox Figure</h3>
+        <p class="product-tagline">Your exact Roblox avatar, 3D printed and in your hands.</p>
+        <div class="product-price-row">
+          <span class="product-price">$15</span>
+          <span class="product-cents">.00</span>
+        </div>
+        <div class="free-badge"><i class="fas fa-truck"></i> Free worldwide shipping</div>
+        <ul class="product-features">
+          <li><i class="fas fa-check"></i> Built from your Roblox username</li>
+          <li><i class="fas fa-check"></i> High quality 3D print — precise details</li>
+          <li><i class="fas fa-check"></i> Vibrant, durable colors</li>
+          <li><i class="fas fa-check"></i> Ships in a protective display box</li>
+          <li><i class="fas fa-check"></i> Delivered in 7–10 business days</li>
+          <li><i class="fas fa-check"></i> PayPal buyer protection</li>
+        </ul>
+        <div class="order-btn-wrap">
+          <a href="#order" class="btn btn-orange btn-full">
+            <i class="fas fa-shopping-cart"></i> Order Mine for $15
+          </a>
+        </div>
+        <div class="secure-line"><i class="fas fa-lock"></i> Secure checkout via PayPal</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ORDER FORM ═══ -->
+<section class="section order-section" id="order">
+  <div class="container">
+    <div style="text-align:center"><div class="sec-tag">Checkout</div></div>
+    <h2 class="sec-title">Place Your Order</h2>
+    <p class="sec-sub">Fill in your details below. Your order info will be sent to us automatically.</p>
+
+    <div class="order-grid">
+      <!-- Summary -->
+      <aside class="order-aside">
+        <h3>Order Summary</h3>
+        <div class="aside-item">
+          <span>3 Inch Roblox Figure</span>
+          <span>$15.00</span>
+        </div>
+        <div class="aside-item">
+          <span>Shipping</span>
+          <span style="color:var(--green)">FREE</span>
+        </div>
+        <div class="aside-divider"></div>
+        <div class="aside-total">
+          <span>Total</span>
+          <span>$15.00</span>
+        </div>
+        <div class="aside-note"><i class="fas fa-lock"></i> Secure PayPal checkout — buyer protection included</div>
+        <div class="aside-note"><i class="fas fa-clock"></i> Ships within 7–10 business days</div>
+        <div class="aside-note"><i class="fas fa-envelope"></i> Order details sent to your email automatically</div>
+      </aside>
+
+      <!-- Form -->
+      <form class="order-form" id="orderForm" novalidate>
+
+        <div class="form-section-label"><i class="fas fa-user"></i> Your Information</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullName">Full Name <span class="req">*</span></label>
+            <input type="text" id="fullName" placeholder="Alex Johnson">
+            <span class="form-error" id="err-fullName"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <input type="email" id="email" placeholder="you@example.com">
+            <span class="form-error" id="err-email"></span>
+          </div>
+        </div>
+
+        <!-- Roblox username — highlighted because it's critical -->
+        <div class="roblox-group">
+          <label for="robloxUser">
+            <i class="fas fa-gamepad"></i> Roblox Username <span class="req">*</span>
+          </label>
+          <input type="text" id="robloxUser" placeholder="YourExactRobloxUsername">
+          <span class="form-hint">We use this to 3D print your exact avatar — double-check the spelling!</span>
+          <span class="form-error" id="err-robloxUser"></span>
+        </div>
+
+        <div class="form-section-label" style="margin-top:10px"><i class="fas fa-map-marker-alt"></i> Shipping Address</div>
+
+        <div class="form-group">
+          <label for="address">Street Address <span class="req">*</span></label>
+          <input type="text" id="address" placeholder="123 Main Street, Apt 4B">
+          <span class="form-error" id="err-address"></span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city">City <span class="req">*</span></label>
+            <input type="text" id="city" placeholder="New York">
+            <span class="form-error" id="err-city"></span>
+          </div>
+          <div class="form-group">
+            <label for="state">State / Province <span class="req">*</span></label>
+            <input type="text" id="state" placeholder="NY">
+            <span class="form-error" id="err-state"></span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="zip">ZIP / Postal Code <span class="req">*</span></label>
+            <input type="text" id="zip" placeholder="10001">
+            <span class="form-error" id="err-zip"></span>
+          </div>
+          <div class="form-group">
+            <label for="country">Country <span class="req">*</span></label>
+            <select id="country">
+              <option value="">Select country...</option>
+              <option value="US">United States</option>
+              <option value="CA">Canada</option>
+              <option value="GB">United Kingdom</option>
+              <option value="AU">Australia</option>
+              <option value="FR">France</option>
+              <option value="DE">Germany</option>
+              <option value="MA">Morocco</option>
+              <option value="OTHER">Other</option>
+            </select>
+            <span class="form-error" id="err-country"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" rows="3" placeholder="Anything we should know about your order?"></textarea>
+        </div>
+
+        <!-- PayPal button area -->
+        <div class="paypal-box">
+          <div class="paypal-secure">
+            <i class="fas fa-lock"></i> Safe & secure payment via PayPal
+          </div>
+          <!--
+            PayPal Smart Buttons render here automatically.
+            Flow: click -> validate form -> send email to mounirbenji12@gmail.com -> open PayPal -> confirm
+          -->
+          <div id="paypal-button-container"></div>
+          <p class="paypal-note" id="paypalNote">
+            Clicking Pay will first send your order to us, then open PayPal checkout.
+          </p>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONFIRMATION ═══ -->
+<section class="confirm-section" id="confirmSection">
+  <div class="container">
+    <div class="confirm-box">
+      <div class="confirm-icon"><i class="fas fa-check"></i></div>
+      <h2>Order Confirmed!</h2>
+      <p class="confirm-message" id="confirmMessage">
+        Thank you for your order! Your custom Roblox avatar figure will be
+        created using the Roblox username you provided.
+        We have received all your details and will begin production shortly.
+      </p>
+      <div class="confirm-details" id="confirmDetails"></div>
+      <div class="confirm-steps">
+        <div class="cstep">
+          <div class="cstep-num">1</div>
+          <div><strong>Payment Done</strong>PayPal receipt sent to your email</div>
+        </div>
+        <div class="cstep-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="cstep">
+          <div class="cstep-num">2</div>
+          <div><strong>We 3D Print It</strong>Using your Roblox username</div>
+        </div>
+        <div class="cstep-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="cstep">
+          <div class="cstep-num">3</div>
+          <div><strong>Shipped to You</strong>7–10 business days</div>
+        </div>
+      </div>
+      <button class="btn btn-orange" onclick="resetOrder()">
+        <i class="fas fa-home"></i> Back to Store
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="section faq-section" id="faq">
+  <div class="container">
+    <div style="text-align:center"><div class="sec-tag">FAQ</div></div>
+    <h2 class="sec-title">Common Questions</h2>
+    <p class="sec-sub">Everything you need to know before ordering.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How do you recreate my avatar? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">You provide your Roblox username at checkout. We look up your avatar in-game and 3D print a figure that matches your exact look — outfit, colors, accessories, everything. We do not need your password.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is the figure made of? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">Each figure is 3D printed using high quality materials with precise detail. The figure stands 3 inches (7.6cm) tall and comes in a protective display box.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How long does shipping take? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">Production takes 3–5 business days, shipping takes 4–7 more days. Total: approximately 7–10 business days from order to delivery. We ship worldwide.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What if I change my avatar after ordering? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">We capture your avatar at the time of order. If you want a different look, contact us within 24 hours at mounirbenji12@gmail.com and we can make changes before printing begins.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What if I am not happy with my order? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">If your figure does not match your avatar or arrives damaged, contact us and we will send a replacement or give you a full refund. Your satisfaction is guaranteed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#home" class="logo">Block<span>Figs</span></a>
+        <p>Custom 3D printed Roblox figures made just for you.</p>
+        <!-- REPLACE: Add your real social links -->
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="#home">Home</a>
+        <a href="#product">Shop</a>
+        <a href="#order">Order</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <!-- REPLACE: your email is already here -->
+        <a href="mailto:mounirbenji12@gmail.com">Contact Us</a>
+        <a href="#">Shipping Policy</a>
+        <a href="#">Returns</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 BlockFigs. Not affiliated with Roblox Corporation.</p>
+      <p>Secure payments via PayPal</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ════════════════════════════════════════════════════════
+   BLOCKFIGS - JavaScript
    
-   SETUP CHECKLIST:
-   [ ] Step 1: Replace YOUR_EMAILJS_PUBLIC_KEY  (in <head> above)
-   [ ] Step 2: Replace YOUR_EMAILJS_SERVICE_ID  (line below)
-   [ ] Step 3: Replace YOUR_EMAILJS_TEMPLATE_ID (line below)
-   [ ] Step 4: Replace client-id=test in the PayPal SDK URL
+   BEFORE THIS WORKS YOU NEED TO:
    
-   EmailJS template variables to add in your template:
-     {{order_date}}      - when the order was placed
-     {{customer_name}}   - full name
-     {{customer_email}}  - email address
-     {{roblox_username}} - their Roblox username
-     {{product_name}}    - "3 Inch Roblox Figure"
-     {{price}}           - "$15.00"
-     {{shipping_address}}- full address string
-     {{notes}}           - any special notes
-════════════════════════════════════════════════════════════════ */
+   1. EMAILJS (to receive order emails at mounirbenji12@gmail.com):
+      a. Go to emailjs.com, create a free account
+      b. Add New Service → Gmail → connect mounirbenji12@gmail.com
+         Copy the Service ID (e.g. "service_abc123")
+      c. Create Email Template with subject: "New BlockFigs Order"
+         Add these variables in the body:
+           {{order_date}}, {{customer_name}}, {{customer_email}},
+           {{roblox_username}}, {{product_name}}, {{price}},
+           {{shipping_address}}, {{notes}}
+         Set "To Email" = mounirbenji12@gmail.com
+         Copy the Template ID (e.g. "template_xyz456")
+      d. Go to Account → API Keys, copy your Public Key
+      e. Replace these 3 values:
+         - "YOUR_EMAILJS_PUBLIC_KEY" in the <head> above
+         - EMAILJS_SERVICE_ID below
+         - EMAILJS_TEMPLATE_ID below
+   
+   2. PAYPAL (to receive real payments):
+      a. Go to developer.paypal.com
+      b. My Apps & Credentials → Create App → get Client ID
+      c. Replace 'test' in the PayPal SDK URL in <head>
+════════════════════════════════════════════════════════ */
 
-// ── EMAILJS CONFIG ────────────────────────────────────────────
-// Step 2: Replace with your EmailJS Service ID
-// Found at: emailjs.com → Email Services → your service
-const EMAILJS_SERVICE_ID  = "service_4573wtn";
+// ── REPLACE these two values with your real EmailJS IDs ──
+const EMAILJS_SERVICE_ID  = "YOUR_EMAILJS_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_EMAILJS_TEMPLATE_ID";
 
-// Step 3: Replace with your EmailJS Template ID  
-// Found at: emailjs.com → Email Templates → your template
-const EMAILJS_TEMPLATE_ID = "template_r0xrxii";
-
-// ── NAV ───────────────────────────────────────────────────────
-const nav      = document.getElementById('nav');
+// ── NAVBAR ────────────────────────────────────────────────
+const navbar   = document.getElementById('navbar');
 const burger   = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
 
-window.addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 30));
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 30);
+});
 
 burger.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  const s = burger.querySelectorAll('span');
-  if (open) {
-    s[0].style.transform = 'translateY(7px) rotate(45deg)';
-    s[1].style.opacity   = '0';
-    s[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+  const isOpen = navLinks.classList.toggle('open');
+  const spans  = burger.querySelectorAll('span');
+  if (isOpen) {
+    spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+    spans[1].style.opacity   = '0';
+    spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
   } else {
-    s.forEach(x => { x.style.transform = ''; x.style.opacity = ''; });
+    spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
   }
 });
 
 document.addEventListener('click', e => {
-  if (!nav.contains(e.target) && navLinks.classList.contains('open')) closeMenu();
+  if (!navbar.contains(e.target) && navLinks.classList.contains('open')) closeMenu();
 });
 
 function closeMenu() {
@@ -516,140 +920,133 @@ function closeMenu() {
   burger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
 }
 
-// ── SCROLL REVEAL ─────────────────────────────────────────────
-const ro = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.style.animationDelay = e.target.style.getPropertyValue('--d') || '0s';
-      e.target.style.animation = `revUp .55s ${e.target.style.getPropertyValue('--d') || '0s'} ease both`;
-      e.target.style.opacity = '1';
-      ro.unobserve(e.target);
+// ── SCROLL REVEAL ─────────────────────────────────────────
+const scrollObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animation = 'revealUp 0.55s ease both';
+      entry.target.style.opacity   = '1';
+      scrollObserver.unobserve(entry.target);
     }
   });
-}, { threshold: .1, rootMargin: '0px 0px -30px 0px' });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 
-document.querySelectorAll('[data-rev], .review-card, .step, .prod-card').forEach(el => {
+document.querySelectorAll('.product-card, .faq-item, .order-aside, .order-form').forEach(el => {
   el.style.opacity = '0';
-  ro.observe(el);
+  scrollObserver.observe(el);
 });
 
-// ── FAQ ───────────────────────────────────────────────────────
+// ── FAQ ACCORDION ─────────────────────────────────────────
 function toggleFaq(btn) {
-  const item = btn.parentElement;
+  const item    = btn.parentElement;
   const wasOpen = item.classList.contains('open');
   document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
   if (!wasOpen) item.classList.add('open');
 }
 
-// ── FORM FIELDS & VALIDATION ──────────────────────────────────
-const FIELDS = [
-  ['fullName',   'fullNameErr',  'Full name'],
-  ['email',      'emailErr',     'Email address'],
-  ['robloxUser', 'robloxErr',    'Roblox username'],
-  ['address',    'addressErr',   'Street address'],
-  ['city',       'cityErr',      'City'],
-  ['state',      'stateErr',     'State / Province'],
-  ['zip',        'zipErr',       'ZIP code'],
-  ['country',    'countryErr',   'Country'],
+// ── FORM VALIDATION ───────────────────────────────────────
+// All required fields with their IDs and display labels
+const FORM_FIELDS = [
+  { id: 'fullName',   label: 'Full name'          },
+  { id: 'email',      label: 'Email address'      },
+  { id: 'robloxUser', label: 'Roblox username'    },
+  { id: 'address',    label: 'Street address'     },
+  { id: 'city',       label: 'City'               },
+  { id: 'state',      label: 'State / Province'   },
+  { id: 'zip',        label: 'ZIP code'           },
+  { id: 'country',    label: 'Country'            },
 ];
 
-function validateAll() {
-  let ok = true;
-  FIELDS.forEach(([id, errId, label]) => {
-    const el  = document.getElementById(id);
-    const err = document.getElementById(errId);
-    const val = el.value.trim();
-    el.classList.remove('err');
-    err.textContent = '';
+function showError(id, msg) {
+  const el  = document.getElementById(id);
+  const err = document.getElementById('err-' + id);
+  if (el)  el.classList.add('error');
+  if (err) err.textContent = msg;
+}
 
+function clearError(id) {
+  const el  = document.getElementById(id);
+  const err = document.getElementById('err-' + id);
+  if (el)  el.classList.remove('error');
+  if (err) err.textContent = '';
+}
+
+function validateForm() {
+  let valid = true;
+
+  FORM_FIELDS.forEach(({ id, label }) => {
+    clearError(id);
+    const val = document.getElementById(id)?.value.trim() || '';
     if (!val) {
-      el.classList.add('err');
-      err.textContent = `${label} is required.`;
-      ok = false;
+      showError(id, `${label} is required.`);
+      valid = false;
       return;
     }
+    // Email format check
     if (id === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
-      el.classList.add('err');
-      err.textContent = 'Enter a valid email address.';
-      ok = false;
+      showError(id, 'Please enter a valid email address.');
+      valid = false;
       return;
     }
+    // Roblox username: 3-20 chars, letters/numbers/underscores only
     if (id === 'robloxUser' && !/^[a-zA-Z0-9_]{3,20}$/.test(val)) {
-      el.classList.add('err');
-      err.textContent = '3-20 characters: letters, numbers, underscores only.';
-      ok = false;
+      showError(id, '3-20 characters: letters, numbers, and underscores only.');
+      valid = false;
     }
   });
-  return ok;
+
+  return valid;
 }
 
 // Clear errors as user types
-FIELDS.forEach(([id, errId]) => {
+FORM_FIELDS.forEach(({ id }) => {
   const el = document.getElementById(id);
-  if (!el) return;
-  el.addEventListener('input', () => {
-    el.classList.remove('err');
-    document.getElementById(errId).textContent = '';
-  });
+  if (el) el.addEventListener('input', () => clearError(id));
 });
 
-// Collect all form values into one object
+// ── COLLECT ORDER DATA ────────────────────────────────────
 function getOrderData() {
+  const address = document.getElementById('address').value.trim();
+  const city    = document.getElementById('city').value.trim();
+  const state   = document.getElementById('state').value.trim();
+  const zip     = document.getElementById('zip').value.trim();
+  const country = document.getElementById('country').value;
+
   return {
     customer_name:    document.getElementById('fullName').value.trim(),
     customer_email:   document.getElementById('email').value.trim(),
     roblox_username:  document.getElementById('robloxUser').value.trim(),
-    address:          document.getElementById('address').value.trim(),
-    city:             document.getElementById('city').value.trim(),
-    state:            document.getElementById('state').value.trim(),
-    zip:              document.getElementById('zip').value.trim(),
-    country:          document.getElementById('country').value,
-    notes:            document.getElementById('notes').value.trim() || 'None',
+    shipping_address: `${address}, ${city}, ${state} ${zip}, ${country}`,
     product_name:     '3 Inch Roblox Figure',
     price:            '$15.00',
-    // Full address string for the email
-    shipping_address: `${document.getElementById('address').value.trim()}, ${document.getElementById('city').value.trim()}, ${document.getElementById('state').value.trim()} ${document.getElementById('zip').value.trim()}, ${document.getElementById('country').value}`,
-    // Formatted date & time
-    order_date: new Date().toLocaleString('en-US', {
+    notes:            document.getElementById('notes').value.trim() || 'None',
+    order_date:       new Date().toLocaleString('en-US', {
       weekday: 'long', year: 'numeric', month: 'long',
       day: 'numeric', hour: '2-digit', minute: '2-digit'
     }),
   };
 }
 
-// ── SEND EMAIL VIA EMAILJS ─────────────────────────────────────
-// This sends all order data to mounirbenji12@gmail.com
-// using the EmailJS template you configured.
-function sendOrderEmail(orderData) {
-  return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, orderData);
+// ── SEND EMAIL VIA EMAILJS ────────────────────────────────
+// Sends all order details to mounirbenji12@gmail.com
+function sendOrderEmail(data) {
+  return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, data);
 }
 
-// ── LOADING STATE HELPERS ──────────────────────────────────────
-function setPayPalLoading(isLoading) {
-  const container = document.getElementById('paypal-button-container');
-  const note      = document.querySelector('.pp-note');
-  if (isLoading) {
-    container.style.opacity  = '0.4';
-    container.style.pointerEvents = 'none';
-    note.textContent = 'Sending your order details... please wait.';
-    note.style.color = 'var(--ye)';
-  } else {
-    container.style.opacity  = '1';
-    container.style.pointerEvents = 'auto';
-    note.textContent = 'Filling out the form and clicking Pay will first email your order details, then open PayPal checkout.';
-    note.style.color = '';
-  }
+// ── LOADING OVERLAY ───────────────────────────────────────
+function showLoading(show) {
+  const overlay = document.getElementById('loadingOverlay');
+  overlay.classList.toggle('active', show);
 }
 
-// ── PAYPAL SMART BUTTONS ──────────────────────────────────────
-/*
-  PayPal Smart Buttons flow:
-  1. User clicks PayPal button
-  2. onClick fires → validate form → send email via EmailJS
-  3. If email sends OK → allow PayPal popup to open (actions.resolve)
-  4. If email fails  → show error but still allow PayPal (we don't block payment)
-  5. onApprove fires after payment → show confirmation screen
-*/
+// ── PAYPAL SMART BUTTONS ──────────────────────────────────
+// This is the main purchase flow:
+// 1. Customer clicks Pay button
+// 2. Form is validated — if invalid, PayPal does NOT open
+// 3. Email is sent to mounirbenji12@gmail.com with all order details
+// 4. PayPal popup opens for payment
+// 5. After payment, confirmation screen is shown
+
 paypal.Buttons({
   style: {
     layout: 'vertical',
@@ -659,413 +1056,151 @@ paypal.Buttons({
     height: 50,
   },
 
-  // ── STEP A: Validate form + send email BEFORE PayPal opens ──
+  // Step 1 — validate form BEFORE PayPal popup opens
   onClick: async function(data, actions) {
-    // 1. Validate all fields first
-    if (!validateAll()) {
-      document.querySelector('.err')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      const form = document.querySelector('.oform');
+    if (!validateForm()) {
+      // Scroll to first error
+      const firstError = document.querySelector('.error');
+      if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // Shake the form
+      const form = document.querySelector('.order-form');
       form.style.animation = 'none';
-      void form.offsetHeight; // force reflow
-      form.style.animation = 'shake .4s ease';
-      setTimeout(() => form.style.animation = '', 400);
-      return actions.reject(); // stop PayPal from opening
+      void form.offsetHeight;
+      form.style.animation = 'shake 0.4s ease';
+      setTimeout(() => { form.style.animation = ''; }, 400);
+
+      return actions.reject(); // block PayPal from opening
     }
 
-    // 2. Collect order data
+    // Step 2 — send order email
+    showLoading(true);
     const orderData = getOrderData();
 
-    // 3. Try to send the email
-    setPayPalLoading(true);
     try {
       await sendOrderEmail(orderData);
-      console.log('Order email sent successfully to mounirbenji12@gmail.com');
-      setPayPalLoading(false);
-      return actions.resolve(); // allow PayPal popup to open
-    } catch (err) {
-      console.error('EmailJS error:', err);
-      setPayPalLoading(false);
-      // Email failed — show a warning but still let payment proceed
-      // (we don't want to block a customer from paying just because of an email issue)
-      const note = document.querySelector('.pp-note');
-      note.textContent = 'Note: Could not send order email, but you can still pay. Please screenshot this order.';
-      note.style.color = '#f59e0b';
-      return actions.resolve(); // still allow PayPal
+      console.log('Order email sent to mounirbenji12@gmail.com');
+    } catch (emailError) {
+      console.error('EmailJS failed:', emailError);
+      // Email failed — still let payment proceed, just log it
+      document.getElementById('paypalNote').textContent =
+        'Note: could not send order email. Please screenshot this page.';
+      document.getElementById('paypalNote').style.color = '#ffc107';
     }
+
+    showLoading(false);
+    return actions.resolve(); // allow PayPal to open
   },
 
-  // ── STEP B: Create the PayPal order ──
+  // Step 3 — create the PayPal order
   createOrder: function(data, actions) {
-    const d = getOrderData();
+    const order = getOrderData();
     return actions.order.create({
       purchase_units: [{
-        // REPLACE: Update amount if you change the price
         amount: {
-          value: '15.00',
-          currency_code: 'USD'
+          value:         '15.00',  // REPLACE if you change the price
+          currency_code: 'USD',
         },
-        description: `3 Inch Roblox Figure - @${d.roblox_username}`,
-        // Roblox username is passed in custom_id so you can see it in PayPal transactions
-        custom_id: `roblox:${d.roblox_username}|customer:${d.customer_name}|email:${d.customer_email}`,
+        description: `3 Inch Roblox Figure - @${order.roblox_username}`,
+        // Roblox username stored in custom_id — visible in your PayPal dashboard
+        custom_id: `roblox:${order.roblox_username} | name:${order.customer_name}`,
       }]
     });
   },
 
-  // ── STEP C: Payment approved → show confirmation ──
+  // Step 4 — payment approved, show confirmation
   onApprove: function(data, actions) {
     return actions.order.capture().then(function(details) {
-      showConfirmation(getOrderData(), details);
+      showConfirmation(getOrderData());
     });
   },
 
   onError: function(err) {
     console.error('PayPal error:', err);
-    alert('There was a payment error. Please try again or contact support at mounirbenji12@gmail.com');
+    showLoading(false);
+    alert('Payment error. Please try again or contact mounirbenji12@gmail.com');
   },
 
   onCancel: function() {
-    // User closed PayPal popup without paying — do nothing
-    const note = document.querySelector('.pp-note');
-    note.textContent = 'Payment cancelled. Click Pay again when ready.';
-    note.style.color = 'var(--mu)';
+    document.getElementById('paypalNote').textContent = 'Payment cancelled. Click Pay again when ready.';
   }
 
 }).render('#paypal-button-container');
 
-// ── ORDER CONFIRMATION SCREEN ─────────────────────────────────
-/*
-  Shows after successful PayPal payment.
-  Hides the order form and displays the thank-you message
-  with the customer's Roblox username prominently shown.
-*/
-function showConfirmation(d, paypalDetails) {
-  // Hide order section
+// ── SHOW CONFIRMATION SCREEN ──────────────────────────────
+function showConfirmation(order) {
+  // Hide the order form section
   document.getElementById('order').style.display = 'none';
 
-  // Show confirmation section
-  const sec = document.getElementById('confirmSec');
-  sec.style.display = 'block';
+  // Show the confirmation section
+  const confirmSec = document.getElementById('confirmSection');
+  confirmSec.style.display = 'block';
 
-  const notesRow = d.notes && d.notes !== 'None'
-    ? `<div class="cdr"><span class="cl">Notes</span><span class="cv">${esc(d.notes)}</span></div>`
-    : '';
-
-  document.getElementById('confirmDetails').innerHTML = `
-    <div class="cdr">
-      <span class="cl">Name</span>
-      <span class="cv">${esc(d.customer_name)}</span>
-    </div>
-    <div class="cdr">
-      <span class="cl">Email</span>
-      <span class="cv">${esc(d.customer_email)}</span>
-    </div>
-    <div class="cdr">
-      <span class="cl">Roblox Username</span>
-      <span class="cv cv-rb">${esc(d.roblox_username)}</span>
-    </div>
-    <div class="cdr">
-      <span class="cl">Ship To</span>
-      <span class="cv">${esc(d.shipping_address)}</span>
-    </div>
-    <div class="cdr">
-      <span class="cl">Product</span>
-      <span class="cv">${esc(d.product_name)}</span>
-    </div>
-    <div class="cdr">
-      <span class="cl">Total Paid</span>
-      <span class="cv" style="color:var(--or)">$15.00</span>
-    </div>
-    <div class="cdr">
-      <span class="cl">Order Date</span>
-      <span class="cv">${esc(d.order_date)}</span>
-    </div>
-    ${notesRow}
+  // Personalized message with their Roblox username
+  document.getElementById('confirmMessage').innerHTML = `
+    Thank you for your order! Your custom Roblox avatar figure will be
+    created using the Roblox username you provided:
+    <strong>${esc(order.roblox_username)}</strong>.
+    We have received all your details and will begin production right away.
   `;
 
-  // Update the confirmation message with their Roblox username
-  const confirmSub = sec.querySelector('.confirm-sub');
-  if (confirmSub) {
-    confirmSub.innerHTML = `Thank you for your order! Your custom Roblox avatar figure will be created using the Roblox username you provided: <strong style="color:var(--or)">${esc(d.roblox_username)}</strong>. A confirmation has been sent to ${esc(d.customer_email)}.`;
-  }
+  // Show order details
+  document.getElementById('confirmDetails').innerHTML = `
+    <div class="detail-row">
+      <span class="dl">Name</span>
+      <span class="dv">${esc(order.customer_name)}</span>
+    </div>
+    <div class="detail-row">
+      <span class="dl">Email</span>
+      <span class="dv">${esc(order.customer_email)}</span>
+    </div>
+    <div class="detail-row">
+      <span class="dl">Roblox Username</span>
+      <span class="dv highlight">${esc(order.roblox_username)}</span>
+    </div>
+    <div class="detail-row">
+      <span class="dl">Ship To</span>
+      <span class="dv">${esc(order.shipping_address)}</span>
+    </div>
+    <div class="detail-row">
+      <span class="dl">Product</span>
+      <span class="dv">${esc(order.product_name)}</span>
+    </div>
+    <div class="detail-row">
+      <span class="dl">Total Paid</span>
+      <span class="dv highlight">$15.00</span>
+    </div>
+    <div class="detail-row">
+      <span class="dl">Date</span>
+      <span class="dv">${esc(order.order_date)}</span>
+    </div>
+    ${order.notes !== 'None' ? `
+    <div class="detail-row">
+      <span class="dl">Notes</span>
+      <span class="dv">${esc(order.notes)}</span>
+    </div>` : ''}
+  `;
 
-  sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  confirmSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// Reset everything back to the order form
+// Reset back to order form
 function resetOrder() {
   document.getElementById('order').style.display = '';
-  document.getElementById('confirmSec').style.display = 'none';
+  document.getElementById('confirmSection').style.display = 'none';
   document.getElementById('orderForm').reset();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Escape HTML to prevent XSS
-function esc(s) {
-  return String(s)
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// Escape HTML to prevent security issues
+function esc(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
+</script>
 
-// ── AFFILIATES ────────────────────────────────────────────────
-function toggleShare() {
-  const p    = document.getElementById('sharePanel');
-  const open = p.style.display === 'block';
-  p.style.display = open ? 'none' : 'block';
-  document.getElementById('shareBtn').innerHTML = open
-    ? '<i class="fas fa-share-alt"></i> Share Store'
-    : '<i class="fas fa-times"></i> Close';
-}
-
-function copyLink() {
-  const url = window.location.href;
-  navigator.clipboard.writeText(url).then(() => {
-    const b = document.querySelector('.sb-cp');
-    const o = b.innerHTML;
-    b.innerHTML = '<i class="fas fa-check"></i> Copied!';
-    b.style.cssText = 'background:rgba(0,230,118,.15);color:var(--gr)';
-    setTimeout(() => { b.innerHTML = o; b.style.cssText = ''; }, 2500);
-  }).catch(() => prompt('Copy this link:', url));
-}
-
-// ── EARNINGS COUNTER ANIMATION ────────────────────────────────
-function animateEarnings() {
-  const el   = document.getElementById('earnNum');
-  const fill = document.getElementById('earnFill');
-  if (!el) return;
-  let n = 0;
-  const iv = setInterval(() => {
-    n++;
-    el.textContent = '$' + n;
-    if (n >= 150) { el.textContent = '$150'; clearInterval(iv); }
-  }, 10);
-  if (fill) fill.style.width = '65%';
-}
-
-const affObs = new IntersectionObserver(entries => {
-  if (entries[0].isIntersecting) { animateEarnings(); affObs.disconnect(); }
-}, { threshold: .3 });
-const affSec = document.querySelector('.aff-sec');
-if (affSec) affObs.observe(affSec);
-</script><script>
-/* 
- BLOCKFIGS - JavaScript
- 
- SETUP:
- 1. Replace PAYPAL_CLIENT_ID in the SDK URL in <head> 2. Replace support/affiliate email addresses
- 3. Replace YOUR_STORE_URL in the share section
- */
-
-// NAV 
-const nav = document.getElementById('nav');
-const burger = document.getElementById('burger');
-const navLinks = document.getElementById('navLinks');
-
-window.addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 30));
-
-burger.addEventListener('click', () => {
- const open = navLinks.classList.toggle('open');
- const s = burger.querySelectorAll('span');
- if(open){ s[0].style.transform='translateY(7px) rotate(45deg)'; s[1].style.opacity='0'; s[2].style.transform='translateY(-7px) rotate(-45deg)' }
- else { s.forEach(x=>{x.style.transform='';x.style.opacity=''}) }
-});
-
-document.addEventListener('click', e => { if(!nav.contains(e.target) && navLinks.classList.contains('open')) closeMenu() });
-function closeMenu(){
- navLinks.classList.remove('open');
- burger.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity=''});
-}
-
-// SCROLL REVEAL 
-const ro = new IntersectionObserver(entries=>{
- entries.forEach(e=>{
- if(e.isIntersecting){
- e.target.style.animationDelay = e.target.style.getPropertyValue('--d') || '0s';
- e.target.style.animation = `revUp .55s ${e.target.style.getPropertyValue('--d')||'0s'} ease both`;
- e.target.style.opacity = '1';
- ro.unobserve(e.target);
- }
- });
-},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
-
-document.querySelectorAll('[data-rev], .review-card, .step, .prod-card').forEach(el=>{
- el.style.opacity='0';
- ro.observe(el);
-});
-
-// FAQ 
-function toggleFaq(btn){
- const item = btn.parentElement;
- const wasOpen = item.classList.contains('open');
- document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
- if(!wasOpen) item.classList.add('open');
-}
-
-// FORM VALIDATION 
-const FIELDS = [
- ['fullName','fullNameErr','Full name'],
- ['email','emailErr','Email'],
- ['robloxUser','robloxErr','Roblox username'],
- ['address','addressErr','Street address'],
- ['city','cityErr','City'],
- ['state','stateErr','State'],
- ['zip','zipErr','ZIP code'],
- ['country','countryErr','Country'],
-];
-
-function validateAll(){
- let ok = true;
- FIELDS.forEach(([id,errId,label])=>{
- const el = document.getElementById(id);
- const err = document.getElementById(errId);
- const val = el.value.trim();
- el.classList.remove('err'); err.textContent='';
- if(!val){ el.classList.add('err'); err.textContent=`${label} is required.`; ok=false; return; }
- if(id==='email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)){ el.classList.add('err'); err.textContent='Enter a valid email.'; ok=false; return; }
- if(id==='robloxUser' && !/^[a-zA-Z0-9_]{3,20}$/.test(val)){ el.classList.add('err'); err.textContent='3–20 chars, letters/numbers/underscores only.'; ok=false; }
- });
- return ok;
-}
-
-FIELDS.forEach(([id,errId])=>{
- const el = document.getElementById(id);
- if(!el) return;
- el.addEventListener('input',()=>{ el.classList.remove('err'); document.getElementById(errId).textContent=''; });
-});
-
-function getOrderData(){
- return {
- name: document.getElementById('fullName').value.trim(),
- email: document.getElementById('email').value.trim(),
- roblox: document.getElementById('robloxUser').value.trim(),
- address: document.getElementById('address').value.trim(),
- city: document.getElementById('city').value.trim(),
- state: document.getElementById('state').value.trim(),
- zip: document.getElementById('zip').value.trim(),
- country: document.getElementById('country').value,
- notes: document.getElementById('notes').value.trim(),
- };
-}
-
-// PAYPAL SMART BUTTONS 
-// These are PayPal's hosted Smart Buttons - they handle the full payment flow.
-// The client-id='test' in the SDK URL above creates sandbox buttons.
-// REPLACE with your real PayPal client ID for live payments.
-// Get your Client ID at: developer.paypal.com &rarr; My Apps & Credentials
-
-paypal.Buttons({
- style: {
- layout: 'vertical',
- color: 'blue',
- shape: 'rect',
- label: 'pay',
- height: 50,
- },
-
- // Called when PayPal button is clicked - validate form first
- onClick: function(data, actions){
- if(!validateAll()){
- document.querySelector('.err')?.scrollIntoView({behavior:'smooth',block:'center'});
- const form = document.querySelector('.oform');
- form.style.animation='shake .4s ease';
- setTimeout(()=>form.style.animation='',400);
- return actions.reject();
- }
- return actions.resolve();
- },
-
- // Create the PayPal order with the price
- createOrder: function(data, actions){
- const d = getOrderData();
- return actions.order.create({
- purchase_units:[{
- // REPLACE: Update amount and description as needed
- amount:{ value:'15.00', currency_code:'USD' },
- description:`3 Inch Roblox Figure - @${d.roblox}`,
- custom_id: `roblox:${d.roblox}|name:${d.name}|email:${d.email}`,
- }]
- });
- },
-
- // Called when payment is approved
- onApprove: function(data, actions){
- return actions.order.capture().then(function(details){
- showConfirmation(getOrderData(), details);
- });
- },
-
- onError: function(err){
- console.error('PayPal error:', err);
- alert('There was a payment error. Please try again or contact support.');
- },
-
- onCancel: function(){
- // User cancelled - do nothing, let them stay on form
- }
-
-}).render('#paypal-button-container');
-
-// CONFIRMATION 
-function showConfirmation(d, paypalDetails){
- document.getElementById('order').style.display='none';
- const sec = document.getElementById('confirmSec');
- sec.style.display='block';
-
- const notes = d.notes ? `<div class="cdr"><span class="cl">Notes</span><span class="cv">${esc(d.notes)}</span></div>` : '';
- const ppName = paypalDetails?.payer?.name?.given_name || '';
-
- document.getElementById('confirmDetails').innerHTML = `
- <div class="cdr"><span class="cl">Name</span><span class="cv">${esc(d.name)}</span></div> <div class="cdr"><span class="cl">Email</span><span class="cv">${esc(d.email)}</span></div> <div class="cdr"><span class="cl"> Roblox Username</span><span class="cv cv-rb">${esc(d.roblox)}</span></div> <div class="cdr"><span class="cl">Ship To</span><span class="cv">${esc(d.address)}, ${esc(d.city)}, ${esc(d.state)} ${esc(d.zip)}, ${esc(d.country)}</span></div> <div class="cdr"><span class="cl">Total Paid</span><span class="cv" style="color:var(--or)">$15.00</span></div> ${notes}
- `;
- sec.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function resetOrder(){
- document.getElementById('order').style.display='';
- document.getElementById('confirmSec').style.display='none';
- document.getElementById('orderForm').reset();
- window.scrollTo({top:0,behavior:'smooth'});
-}
-
-function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') }
-
-// AFFILIATES 
-function toggleShare(){
- const p = document.getElementById('sharePanel');
- const open = p.style.display === 'block';
- p.style.display = open ? 'none' : 'block';
- document.getElementById('shareBtn').innerHTML = open
- ? '<i class="fas fa-share-alt"></i> Share Store'
- : '<i class="fas fa-times"></i> Close';
-}
-
-function copyLink(){
- // REPLACE: YOUR_STORE_URL
- const url = 'YOUR_STORE_URL' !== 'YOUR_STORE_URL' ? 'YOUR_STORE_URL' : window.location.href;
- navigator.clipboard.writeText(url).then(()=>{
- const b = document.querySelector('.sb-cp');
- const o = b.innerHTML;
- b.innerHTML='<i class="fas fa-check"></i> Copied!';
- b.style.cssText='background:rgba(0,230,118,.15);color:var(--gr)';
- setTimeout(()=>{b.innerHTML=o;b.style.cssText=''},2500);
- }).catch(()=>prompt('Copy this link:',url));
-}
-
-// Animate earnings counter
-function animateEarnings(){
- const el = document.getElementById('earnNum');
- const fill = document.getElementById('earnFill');
- if(!el) return;
- let n = 0;
- const target = 150;
- const dur = 1500;
- const step = dur / target;
- const iv = setInterval(()=>{
- n++;
- el.textContent = '$' + n;
- if(n >= target){ el.textContent='$150'; clearInterval(iv); }
- }, step);
- if(fill) fill.style.width='65%';
-}
-
-// Trigger earnings animation when affiliate section is visible
-const affObs = new Intersec
+</body>
+</html>
