@@ -24,7 +24,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
     // REPLACE: Your EmailJS Public Key (emailjs.com → Account → API Keys)
-    emailjs.init("YOUR_EMAILJS_PUBLIC_KEY");
+    emailjs.init("tq8vaamQ8OqaghTBi");
   </script>
 
   <!--
@@ -887,8 +887,8 @@ img { max-width: 100%; display: block; }
 ════════════════════════════════════════════════════════ */
 
 // ── REPLACE these two values with your real EmailJS IDs ──
-const EMAILJS_SERVICE_ID  = "YOUR_EMAILJS_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "YOUR_EMAILJS_TEMPLATE_ID";
+const EMAILJS_SERVICE_ID  = "service_4573wtn";
+const EMAILJS_TEMPLATE_ID = "template_r0xrxii";
 
 // ── NAVBAR ────────────────────────────────────────────────
 const navbar   = document.getElementById('navbar');
@@ -1098,10 +1098,10 @@ paypal.Buttons({
     return actions.order.create({
       purchase_units: [{
         amount: {
-          value:         '15.00',  // REPLACE if you change the price
+          value:         '35.00',  // REPLACE if you change the price
           currency_code: 'USD',
         },
-        description: `3 Inch Roblox Figure - @${order.roblox_username}`,
+        description: ` Roblox Figure - @${order.roblox_username}`,
         // Roblox username stored in custom_id — visible in your PayPal dashboard
         custom_id: `roblox:${order.roblox_username} | name:${order.customer_name}`,
       }]
