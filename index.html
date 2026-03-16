@@ -6,27 +6,18 @@
   <title>BlockFigs — Custom Roblox Figures</title>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>emailjs.init("tq8vaamQ8OqaghTBi");</script>
-
-  <!-- PayPal Live -->
   <script src="https://www.paypal.com/sdk/js?client-id=AV1vhhsniMX3TE8aGQ4UNLGeNlfpsWdAZoVTBJ9VvQr9qq2b57icmxGXjUYjev42Qogyl1qu9rH85_mN&currency=USD"></script>
-
 <style>
-/* ══ VARIABLES ══════════════════════════════════════════ */
 :root {
-  --or:  #ff5722; --or2: #ff8a50; --ye: #ffc107;
-  --gr:  #00e676; --cy:  #00e5ff; --pu: #7c4dff;
-  --bg:  #08080f; --bg2: #0d0d1a; --card: #111128;
-  --card2: #171734; --bd: rgba(255,255,255,0.07);
-  --tx:  #ffffff;  --mu: #7a7a9d;
-  --ff:  'Fredoka One', cursive;
-  --fb:  'Nunito', sans-serif;
+  --or:#ff5722;--or2:#ff8a50;--ye:#ffc107;
+  --gr:#00e676;--cy:#00e5ff;--pu:#7c4dff;
+  --bg:#08080f;--bg2:#0d0d1a;--card:#111128;
+  --card2:#171734;--bd:rgba(255,255,255,.07);
+  --tx:#ffffff;--mu:#7a7a9d;
+  --ff:'Fredoka One',cursive;--fb:'Nunito',sans-serif;
 }
-
-/* ══ RESET ══════════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:68px}
 body{font-family:var(--fb);background:var(--bg);color:var(--tx);overflow-x:hidden;line-height:1.65}
@@ -36,8 +27,8 @@ img{max-width:100%;display:block}
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-thumb{background:var(--or);border-radius:3px}
 
-/* ══ NAVBAR ═════════════════════════════════════════════ */
-.navbar{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(8,8,15,0.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--bd);transition:all .3s}
+/* ── NAVBAR ── */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(8,8,15,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--bd);transition:all .3s}
 .navbar.scrolled{background:rgba(8,8,15,.99);box-shadow:0 2px 30px rgba(0,0,0,.6)}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:var(--ff);font-size:1.8rem}
@@ -50,7 +41,7 @@ img{max-width:100%;display:block}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
 .burger span{display:block;width:23px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
 
-/* ══ BUTTONS ════════════════════════════════════════════ */
+/* ── BUTTONS ── */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 28px;border-radius:14px;border:none;font-family:var(--fb);font-weight:800;font-size:.97rem;cursor:pointer;transition:transform .18s,box-shadow .18s;text-decoration:none;white-space:nowrap}
 .btn:hover{transform:translateY(-2px)}
 .btn-or{background:linear-gradient(135deg,var(--or),var(--or2));color:#fff;box-shadow:0 6px 22px rgba(255,87,34,.45)}
@@ -61,24 +52,20 @@ img{max-width:100%;display:block}
 .btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.36)}
 .btn-full{width:100%}
 
-/* ══ HERO ═══════════════════════════════════════════════ */
+/* ── HERO ── */
 .hero{min-height:100vh;padding-top:68px;display:flex;flex-direction:column;position:relative;overflow:hidden}
 .blob{position:absolute;border-radius:50%;filter:blur(88px);opacity:.17;pointer-events:none}
 .b1{width:580px;height:580px;background:var(--or);top:-180px;right:-150px}
 .b2{width:420px;height:420px;background:var(--pu);bottom:-100px;left:-100px}
 .b3{width:260px;height:260px;background:var(--cy);top:48%;left:40%;opacity:.09}
 .hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,87,34,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,87,34,.04) 1px,transparent 1px);background-size:44px 44px}
-
-/* Decorations */
 .deco-ring{position:absolute;border-radius:50%;border:1px dashed;pointer-events:none}
 .dr1{width:500px;height:500px;border-color:rgba(255,87,34,.07);top:-120px;right:-120px;animation:spin 50s linear infinite}
 .dr2{width:320px;height:320px;border-color:rgba(124,77,255,.07);bottom:40px;left:40px;animation:spin 36s linear infinite reverse}
 .deco-dots{position:absolute;pointer-events:none;background-image:radial-gradient(circle,rgba(255,87,34,.3) 1.2px,transparent 1.2px);background-size:22px 22px;border-radius:8px}
 .dd1{width:160px;height:160px;top:20%;left:4%;opacity:.5}
 .dd2{width:120px;height:120px;bottom:16%;right:5%;opacity:.35}
-
 .hero-inner{flex:1;max-width:1100px;width:100%;margin:0 auto;padding:80px 24px 50px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
-
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.28);color:var(--gr);font-size:.73rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:7px 16px;border-radius:999px;margin-bottom:22px;animation:fd .5s ease both}
 .live-dot{width:7px;height:7px;border-radius:50%;background:var(--gr);box-shadow:0 0 8px var(--gr);animation:blink 1.6s infinite}
 .hero h1{font-family:var(--ff);font-size:clamp(2.8rem,5.5vw,4.8rem);line-height:1.07;margin-bottom:22px;animation:fd .5s .08s ease both}
@@ -102,8 +89,6 @@ img{max-width:100%;display:block}
 .ft1{top:13%;right:-6px;color:var(--cy);border-color:rgba(0,229,255,.3);animation:fl 3.2s ease-in-out infinite}
 .ft2{bottom:27%;left:-8px;color:var(--ye);border-color:rgba(255,193,7,.3);animation:fl 3.8s 1.2s ease-in-out infinite}
 .ft3{bottom:10%;right:4px;color:var(--gr);border-color:rgba(0,230,118,.3);animation:fl 4.2s .6s ease-in-out infinite}
-
-/* Roblox figure parts */
 .fig{position:relative;z-index:2;width:120px;height:214px;animation:fl 4s ease-in-out infinite;filter:drop-shadow(0 20px 36px rgba(255,87,34,.35))}
 .fh{position:absolute;width:74px;height:74px;border-radius:14px;background:linear-gradient(145deg,#ffa575,#ff6030);top:0;left:50%;transform:translateX(-50%);box-shadow:0 6px 20px rgba(255,96,48,.5)}
 .fe{position:absolute;width:13px;height:13px;background:#1a0800;border-radius:3px;top:27px}
@@ -122,39 +107,33 @@ img{max-width:100%;display:block}
 .marquee-track{display:flex;white-space:nowrap;animation:mq 22s linear infinite}
 .marquee-track span{font-family:var(--ff);font-size:.97rem;color:#fff;padding:0 28px;flex-shrink:0}
 
-/* ══ SHARED SECTION ══════════════════════════════════════ */
+/* ── SHARED ── */
 .section{padding:96px 0}
 .container{max-width:1100px;margin:0 auto;padding:0 24px}
 .sec-tag{display:inline-block;background:rgba(255,87,34,.12);border:1px solid rgba(255,87,34,.28);color:var(--or);font-size:.7rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;padding:5px 14px;border-radius:999px;margin-bottom:14px}
 .sec-title{font-family:var(--ff);font-size:clamp(1.9rem,3.5vw,2.75rem);margin-bottom:12px;text-align:center}
 .sec-sub{color:var(--mu);font-size:.97rem;text-align:center;max-width:500px;margin:0 auto 52px}
 
-/* ══ PRODUCTS ════════════════════════════════════════════ */
+/* ── PRODUCTS ── */
 .products-sec{background:var(--bg2);position:relative;overflow:hidden}
 .products-sec::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,87,34,.03) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
-
 .products-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:960px;margin:0 auto;position:relative;z-index:1}
-
 .prod-card{background:var(--card);border-radius:22px;overflow:hidden;border:2px solid var(--bd);transition:transform .3s,box-shadow .3s;position:relative}
-.prod-card:hover{transform:translateY(-8px);box-shadow:0 28px 60px rgba(0,0,0,.5)}
+.prod-card:hover{transform:translateY(-8px)}
 .prod-card.card-or{border-color:rgba(255,87,34,.25)}
 .prod-card.card-or:hover{box-shadow:0 28px 60px rgba(0,0,0,.5),0 0 50px rgba(255,87,34,.1)}
 .prod-card.card-pu{border-color:rgba(124,77,255,.25)}
 .prod-card.card-pu:hover{box-shadow:0 28px 60px rgba(0,0,0,.5),0 0 50px rgba(124,77,255,.1)}
-
-/* Top accent bar */
 .prod-card.card-or::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--or),var(--ye));z-index:2}
 .prod-card.card-pu::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--pu),var(--cy));z-index:2}
-
 .prod-img{height:280px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.prod-card.card-or .prod-img{background:linear-gradient(145deg,#0f0f36,#1c1060)}
-.prod-card.card-pu .prod-img{background:linear-gradient(145deg,#0f0f2e,#1a0a40)}
+.card-or .prod-img{background:linear-gradient(145deg,#0f0f36,#1c1060)}
+.card-pu .prod-img{background:linear-gradient(145deg,#0f0f2e,#1a0a40)}
 .prod-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 55%);pointer-events:none}
 .prod-badge{position:absolute;top:16px;left:16px;font-size:.68rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;padding:5px 13px;border-radius:999px;z-index:3}
-.badge-or{background:var(--or);color:#fff;box-shadow:0 4px 14px rgba(255,87,34,.5)}
-.badge-pu{background:var(--pu);color:#fff;box-shadow:0 4px 14px rgba(124,77,255,.5)}
-.prod-fig{position:relative;z-index:2;animation:fl 3.5s ease-in-out infinite}
-
+.badge-or{background:var(--or);color:#fff}
+.badge-pu{background:var(--pu);color:#fff}
+.prod-fig{animation:fl 3.5s ease-in-out infinite}
 .prod-body{padding:28px}
 .prod-name{font-family:var(--ff);font-size:1.5rem;margin-bottom:6px}
 .prod-desc{color:var(--mu);font-size:.88rem;margin-bottom:18px;line-height:1.6}
@@ -173,13 +152,11 @@ img{max-width:100%;display:block}
 .prod-secure{display:flex;align-items:center;justify-content:center;gap:7px;font-size:.76rem;color:var(--mu);margin-top:10px}
 .prod-secure i{color:var(--gr)}
 
-/* ══ ORDER SECTION ═══════════════════════════════════════ */
+/* ── ORDER ── */
 .order-sec{background:var(--bg);position:relative;overflow:hidden}
 .order-sec::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(124,77,255,.03) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
-
-/* Product selector tabs */
 .product-tabs{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap}
-.ptab{flex:1;min-width:200px;background:var(--card);border:2px solid var(--bd);border-radius:14px;padding:16px 20px;cursor:pointer;transition:all .2s;text-align:left}
+.ptab{flex:1;min-width:200px;background:var(--card);border:2px solid var(--bd);border-radius:14px;padding:16px 20px;cursor:pointer;transition:all .2s;text-align:left;position:relative}
 .ptab:hover{border-color:rgba(255,255,255,.2)}
 .ptab.active-or{border-color:var(--or);background:rgba(255,87,34,.06)}
 .ptab.active-pu{border-color:var(--pu);background:rgba(124,77,255,.06)}
@@ -187,24 +164,21 @@ img{max-width:100%;display:block}
 .ptab-price{font-weight:900;font-size:1.1rem}
 .active-or .ptab-price{color:var(--or)}
 .active-pu .ptab-price{color:#a855f7}
-.ptab-check{float:right;font-size:1.1rem;opacity:0;transition:opacity .2s}
-.ptab.active-or .ptab-check,.ptab.active-pu .ptab-check{opacity:1;color:var(--gr)}
-
+.ptab-check{position:absolute;top:14px;right:14px;font-size:1.1rem;opacity:0;transition:opacity .2s;color:var(--gr)}
+.ptab.active-or .ptab-check,.ptab.active-pu .ptab-check{opacity:1}
 .order-grid{display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:start;position:relative;z-index:1}
-
-.aside{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:28px;position:sticky;top:80px}
+.aside{background:var(--card);border:1px solid var(--bd);border-top:3px solid var(--or);border-radius:20px;padding:28px;position:sticky;top:80px}
 .aside h3{font-family:var(--ff);font-size:1.15rem;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--bd)}
 .aside-row{display:flex;justify-content:space-between;font-size:.88rem;color:var(--mu);padding:8px 0}
 .aside-row span:last-child{font-weight:700;color:var(--tx)}
 .a-divider{height:1px;background:var(--bd);margin:6px 0}
 .aside-total{display:flex;justify-content:space-between;font-weight:900;font-size:1.07rem;padding:10px 0}
 .aside-total span:last-child{color:var(--or);font-size:1.22rem}
-#asideTotalPrice{color:var(--or)}
 .aside-note{display:flex;align-items:flex-start;gap:9px;font-size:.78rem;color:var(--mu);background:rgba(255,255,255,.03);border-radius:10px;padding:10px 12px;margin-top:10px}
 .aside-note i{color:var(--gr);flex-shrink:0;margin-top:2px}
 
 /* Form */
-.oform{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:36px}
+.oform{background:var(--card);border:1px solid var(--bd);border-top:3px solid rgba(255,87,34,.4);border-radius:20px;padding:36px}
 .fsec{display:flex;align-items:center;gap:10px;font-weight:800;font-size:.93rem;margin-bottom:20px}
 .fsec i{color:var(--or)}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -218,22 +192,25 @@ img{max-width:100%;display:block}
 .fgrp select option{background:var(--card)}
 .ferr{font-size:.77rem;color:#f44336;margin-top:5px;display:block;min-height:16px}
 .roblox-box{background:rgba(255,87,34,.06);border:1.5px solid rgba(255,87,34,.25);border-radius:12px;padding:16px;margin-bottom:18px}
-.roblox-box label{color:var(--or);font-size:.88rem}
-.roblox-box input{background:rgba(255,255,255,.07);border-color:rgba(255,87,34,.3)}
+.roblox-box label{color:var(--or);font-size:.88rem;display:block;font-weight:700;margin-bottom:7px}
+.roblox-box input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,87,34,.3);border-radius:10px;color:#fff;font-family:var(--fb);font-size:.94rem;padding:12px 15px;outline:none;transition:border-color .2s}
+.roblox-box input:focus{border-color:var(--or)}
+.roblox-box input.err{border-color:#f44336}
 .fhint{font-size:.77rem;color:var(--mu);margin-top:6px;display:block}
 .pp-box{margin-top:24px;padding-top:22px;border-top:1px solid var(--bd)}
 .pp-secure{font-size:.8rem;color:var(--mu);margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:7px}
 .pp-secure i{color:var(--gr)}
-#paypal-button-container{min-height:55px}
+#paypal-button-container{min-height:55px;transition:opacity .3s}
+#paypal-button-container.disabled{opacity:.4;pointer-events:none}
 .pp-note{font-size:.76rem;color:var(--mu);text-align:center;margin-top:10px}
 
-/* Loading overlay */
+/* Loading */
 .loading{display:none;position:fixed;inset:0;background:rgba(8,8,15,.85);backdrop-filter:blur(6px);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:16px}
 .loading.show{display:flex}
 .spinner{width:52px;height:52px;border-radius:50%;border:4px solid rgba(255,255,255,.1);border-top-color:var(--or);animation:spin .8s linear infinite}
 .loading p{color:#fff;font-weight:700;font-size:1rem}
 
-/* ══ CONFIRMATION ════════════════════════════════════════ */
+/* ── CONFIRMATION ── */
 .confirm-sec{display:none;padding:96px 0;background:var(--bg2)}
 .confirm-box{background:var(--card);border:2px solid rgba(0,230,118,.25);border-radius:24px;padding:56px 44px;max-width:640px;margin:0 auto;text-align:center;position:relative;overflow:hidden}
 .confirm-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gr),var(--cy))}
@@ -252,7 +229,7 @@ img{max-width:100%;display:block}
 .cs-n{width:28px;height:28px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.82rem;flex-shrink:0}
 .cs-arr{color:var(--mu);flex-shrink:0}
 
-/* ══ FAQ ════════════════════════════════════════════════ */
+/* ── FAQ ── */
 .faq-sec{background:var(--bg)}
 .faq-list{max-width:660px;margin:0 auto}
 .faq-item{background:var(--card);border:1px solid var(--bd);border-radius:14px;margin-bottom:10px;overflow:hidden}
@@ -261,9 +238,16 @@ img{max-width:100%;display:block}
 .faq-q i{color:var(--or);font-size:.78rem;transition:transform .3s;flex-shrink:0}
 .faq-item.open .faq-q i{transform:rotate(180deg)}
 .faq-a{padding:0 22px;max-height:0;overflow:hidden;color:var(--mu);font-size:.9rem;line-height:1.7;transition:max-height .35s ease,padding .35s ease}
-.faq-item.open .faq-a{max-height:200px;padding:0 22px 18px}
+.faq-item.open .faq-a{max-height:220px;padding:0 22px 18px}
 
-/* ══ FOOTER ═════════════════════════════════════════════ */
+/* ── POLICIES ── */
+.policy-sec{background:var(--bg2);padding:60px 0}
+.policy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:0 auto}
+.policy-card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:24px}
+.policy-card h4{font-family:var(--ff);font-size:1.1rem;margin-bottom:12px;color:var(--or)}
+.policy-card p{color:var(--mu);font-size:.86rem;line-height:1.7}
+
+/* ── FOOTER ── */
 .footer{background:#05050c;border-top:1px solid var(--bd);padding:52px 0 0}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
 .footer-brand p{color:var(--mu);font-size:.87rem;margin:10px 0 18px;max-width:220px;line-height:1.65}
@@ -275,7 +259,7 @@ img{max-width:100%;display:block}
 .footer-col a:hover{color:#fff}
 .footer-bottom{border-top:1px solid var(--bd);padding:20px 0;display:flex;justify-content:space-between;font-size:.78rem;color:var(--mu)}
 
-/* ══ ANIMATIONS ═════════════════════════════════════════ */
+/* ── ANIMATIONS ── */
 @keyframes fd{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fu{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
@@ -286,7 +270,7 @@ img{max-width:100%;display:block}
 @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
 @keyframes revUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 
-/* ══ RESPONSIVE ═════════════════════════════════════════ */
+/* ── RESPONSIVE ── */
 @media(max-width:960px){
   .hero-inner{grid-template-columns:1fr;text-align:center}
   .stage{order:-1}
@@ -294,6 +278,7 @@ img{max-width:100%;display:block}
   .products-grid{grid-template-columns:1fr}
   .order-grid{grid-template-columns:1fr}
   .aside{position:static}
+  .policy-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
@@ -319,7 +304,7 @@ img{max-width:100%;display:block}
   <p>Sending your order... please wait</p>
 </div>
 
-<!-- ═══════════ NAVBAR ═══════════ -->
+<!-- ═══ NAVBAR ═══ -->
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="#home" class="logo">Block<span>Figs</span></a>
@@ -335,7 +320,7 @@ img{max-width:100%;display:block}
   </div>
 </nav>
 
-<!-- ═══════════ HERO ═══════════ -->
+<!-- ═══ HERO ═══ -->
 <section class="hero" id="home">
   <div class="blob b1"></div>
   <div class="blob b2"></div>
@@ -365,9 +350,9 @@ img{max-width:100%;display:block}
           <span>4.9 rating</span>
         </div>
         <span class="t-sep">|</span>
-        <div class="t-item"><i class="fas fa-box" style="color:var(--cy)"></i><span>2,400+ sold</span></div>
-        <span class="t-sep">|</span>
         <div class="t-item"><i class="fas fa-shield-alt" style="color:var(--gr)"></i><span>PayPal protected</span></div>
+        <span class="t-sep">|</span>
+        <div class="t-item"><i class="fas fa-globe" style="color:var(--cy)"></i><span>Ships worldwide</span></div>
       </div>
     </div>
 
@@ -376,16 +361,13 @@ img{max-width:100%;display:block}
       <div class="s-ring sr1"></div>
       <div class="s-ring sr2"></div>
       <div class="s-ring sr3"></div>
-      <!-- Replace this .fig block with your product image if you have one -->
+      <!-- Replace .fig with <img src="your-image.png" style="height:220px;object-fit:contain;position:relative;z-index:2"> -->
       <div class="fig">
         <div class="fh"><div class="fe l"></div><div class="fe r"></div><div class="fm"></div></div>
-        <div class="fn"></div>
-        <div class="fto"></div>
-        <div class="far2 l"></div>
-        <div class="far2 r"></div>
+        <div class="fn"></div><div class="fto"></div>
+        <div class="far2 l"></div><div class="far2 r"></div>
         <div class="fhi"></div>
-        <div class="fle l"></div>
-        <div class="fle r"></div>
+        <div class="fle l"></div><div class="fle r"></div>
       </div>
       <div class="fig-shadow"></div>
       <div class="ftag ft1"><i class="fas fa-print"></i> 3D Printed</div>
@@ -408,24 +390,22 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<!-- ═══════════ PRODUCTS ═══════════ -->
+<!-- ═══ PRODUCTS ═══ -->
 <section class="section products-sec" id="products">
   <div class="container">
     <div style="text-align:center"><div class="sec-tag">Choose Your Size</div></div>
     <h2 class="sec-title">Pick Your Figure</h2>
-    <p class="sec-sub">Two sizes, same quality. Every figure is custom-built from your Roblox username.</p>
+    <p class="sec-sub">Two sizes, same quality. Every figure is 3D printed from your Roblox username.</p>
 
     <div class="products-grid">
 
-      <!-- PRODUCT 1: 2 inch -->
-      <div class="prod-card card-or" data-reveal>
+      <!-- 2 inch -->
+      <div class="prod-card card-or">
         <div class="prod-img">
           <div class="prod-badge badge-or">Popular</div>
-          <!-- Replace with: <img src="your-2inch-image.png" style="width:100%;height:100%;object-fit:cover"> -->
+          <!-- Replace with: <img src="2inch.png" style="width:100%;height:100%;object-fit:cover"> -->
           <div class="prod-fig" style="width:80px;height:148px;position:relative">
             <div class="fh" style="width:52px;height:52px;border-radius:10px;top:0;left:50%;transform:translateX(-50%)"></div>
-            <div class="fe l" style="width:9px;height:9px;top:19px;left:10px"></div>
-            <div class="fe r" style="width:9px;height:9px;top:19px;right:10px"></div>
             <div class="fn" style="width:14px;height:5px;top:54px;left:50%;transform:translateX(-50%)"></div>
             <div class="fto" style="width:58px;height:42px;border-radius:9px;top:61px;left:50%;transform:translateX(-50%)"></div>
             <div class="far2 l" style="width:16px;height:42px;top:61px;left:0"></div>
@@ -437,7 +417,7 @@ img{max-width:100%;display:block}
         </div>
         <div class="prod-body">
           <h3 class="prod-name">2 Inch Figure</h3>
-          <p class="prod-desc">Compact and detailed — perfect for your desk, shelf, or as a gift.</p>
+          <p class="prod-desc">Compact and detailed. Perfect for your desk, shelf, or as a gift.</p>
           <div class="prod-price-row">
             <span class="prod-price">$45</span>
             <span class="prod-cents">.00</span>
@@ -446,8 +426,8 @@ img{max-width:100%;display:block}
           <ul class="prod-features">
             <li><i class="fas fa-check"></i> Built from your Roblox username</li>
             <li><i class="fas fa-check"></i> High quality 3D print</li>
-            <li><i class="fas fa-check"></i> Protective display box</li>
-            <li><i class="fas fa-check"></i> Ships in 7-10 business days</li>
+            <li><i class="fas fa-check"></i> Protective display box included</li>
+            <li><i class="fas fa-check"></i> Ships in 7-12 business days</li>
           </ul>
           <a href="#order" class="btn btn-or btn-full" onclick="selectProduct('2inch')">
             <i class="fas fa-shopping-cart"></i> Order for $45
@@ -456,16 +436,15 @@ img{max-width:100%;display:block}
         </div>
       </div>
 
-      <!-- PRODUCT 2: 3 inch -->
-      <div class="prod-card card-pu" data-reveal>
+      <!-- 3 inch -->
+      <div class="prod-card card-pu">
         <div class="prod-img">
           <div class="prod-badge badge-pu">Premium</div>
-          <!-- Replace with: <img src="your-3inch-image.png" style="width:100%;height:100%;object-fit:cover"> -->
+          <!-- Replace with: <img src="3inch.png" style="width:100%;height:100%;object-fit:cover"> -->
           <div class="prod-fig" style="width:110px;height:196px;position:relative">
             <div class="fh" style="top:0;left:50%;transform:translateX(-50%)"></div>
             <div class="fe l"></div><div class="fe r"></div><div class="fm"></div>
-            <div class="fn"></div>
-            <div class="fto"></div>
+            <div class="fn"></div><div class="fto"></div>
             <div class="far2 l"></div><div class="far2 r"></div>
             <div class="fhi"></div>
             <div class="fle l"></div><div class="fle r"></div>
@@ -473,7 +452,7 @@ img{max-width:100%;display:block}
         </div>
         <div class="prod-body">
           <h3 class="prod-name">3 Inch Figure</h3>
-          <p class="prod-desc">Our largest size — maximum detail and presence for the true collector.</p>
+          <p class="prod-desc">Our largest size. Maximum detail for the true collector.</p>
           <div class="prod-price-row">
             <span class="prod-price">$60</span>
             <span class="prod-cents">.00</span>
@@ -483,7 +462,7 @@ img{max-width:100%;display:block}
             <li><i class="fas fa-check"></i> Built from your Roblox username</li>
             <li><i class="fas fa-check"></i> More detail than the 2 inch</li>
             <li><i class="fas fa-check"></i> Premium display box included</li>
-            <li><i class="fas fa-check"></i> Ships in 7-10 business days</li>
+            <li><i class="fas fa-check"></i> Ships in 7-12 business days</li>
           </ul>
           <a href="#order" class="btn btn-pu btn-full" onclick="selectProduct('3inch')">
             <i class="fas fa-shopping-cart"></i> Order for $60
@@ -496,14 +475,14 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<!-- ═══════════ ORDER ═══════════ -->
+<!-- ═══ ORDER ═══ -->
 <section class="section order-sec" id="order">
   <div class="container">
     <div style="text-align:center"><div class="sec-tag">Checkout</div></div>
     <h2 class="sec-title">Place Your Order</h2>
-    <p class="sec-sub">Fill in your details — your order info is sent to us automatically.</p>
+    <p class="sec-sub">Fill in your details below. Your order is sent to us automatically when you pay.</p>
 
-    <!-- Product selector -->
+    <!-- Product tabs -->
     <div class="product-tabs">
       <div class="ptab active-or" id="tab-2inch" onclick="selectProduct('2inch')">
         <span class="ptab-check"><i class="fas fa-check-circle"></i></span>
@@ -518,7 +497,6 @@ img{max-width:100%;display:block}
     </div>
 
     <div class="order-grid">
-      <!-- Sidebar -->
       <aside class="aside">
         <h3>Order Summary</h3>
         <div class="aside-row">
@@ -529,89 +507,86 @@ img{max-width:100%;display:block}
         <div class="a-divider"></div>
         <div class="aside-total"><span>Total</span><span id="asideTotalPrice">$45.00</span></div>
         <div class="aside-note"><i class="fas fa-lock"></i> Secure PayPal — buyer protection included</div>
-        <div class="aside-note"><i class="fas fa-clock"></i> Ships in 7-10 business days</div>
-        <div class="aside-note"><i class="fas fa-envelope"></i> Order details sent to us automatically</div>
+        <div class="aside-note"><i class="fas fa-clock"></i> Ships in 7-12 business days</div>
+        <div class="aside-note"><i class="fas fa-envelope"></i> Full order details sent to us automatically</div>
+        <div class="aside-note"><i class="fas fa-redo"></i> Contact us if you are not satisfied</div>
       </aside>
 
-      <!-- Form -->
       <form class="oform" id="orderForm" novalidate>
+
+        <!-- Honeypot spam protection — hidden from real users, bots fill it in -->
+        <input type="text" name="website" id="honeypot" style="display:none" tabindex="-1" autocomplete="off">
+
         <div class="fsec"><i class="fas fa-user"></i> Your Information</div>
         <div class="frow">
           <div class="fgrp">
             <label for="fullName">Full Name <span class="req">*</span></label>
-            <input type="text" id="fullName" placeholder="Alex Johnson">
+            <input type="text" id="fullName" name="fullName" placeholder="Alex Johnson" autocomplete="name">
             <span class="ferr" id="err-fullName"></span>
           </div>
           <div class="fgrp">
             <label for="email">Email Address <span class="req">*</span></label>
-            <input type="email" id="email" placeholder="you@example.com">
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
             <span class="ferr" id="err-email"></span>
           </div>
         </div>
 
         <div class="roblox-box">
           <label for="robloxUser"><i class="fas fa-gamepad"></i> Roblox Username <span class="req">*</span></label>
-          <input type="text" id="robloxUser" placeholder="YourExactRobloxUsername">
-          <span class="fhint">We use this to 3D print your exact avatar — double-check spelling!</span>
+          <input type="text" id="robloxUser" name="robloxUser" placeholder="YourExactRobloxUsername">
+          <span class="fhint">We use this to 3D print your exact avatar — double-check the spelling!</span>
           <span class="ferr" id="err-robloxUser"></span>
         </div>
 
         <div class="fsec" style="margin-top:4px"><i class="fas fa-map-marker-alt"></i> Shipping Address</div>
+
         <div class="fgrp">
           <label for="address">Street Address <span class="req">*</span></label>
-          <input type="text" id="address" placeholder="123 Main Street, Apt 4B">
+          <input type="text" id="address" name="address" placeholder="123 Main Street, Apt 4B" autocomplete="street-address">
           <span class="ferr" id="err-address"></span>
         </div>
         <div class="frow">
           <div class="fgrp">
             <label for="city">City <span class="req">*</span></label>
-            <input type="text" id="city" placeholder="New York">
+            <input type="text" id="city" name="city" placeholder="New York" autocomplete="address-level2">
             <span class="ferr" id="err-city"></span>
           </div>
           <div class="fgrp">
             <label for="state">State / Province <span class="req">*</span></label>
-            <input type="text" id="state" placeholder="NY">
+            <input type="text" id="state" name="state" placeholder="NY" autocomplete="address-level1">
             <span class="ferr" id="err-state"></span>
           </div>
         </div>
         <div class="frow">
           <div class="fgrp">
             <label for="zip">ZIP / Postal Code <span class="req">*</span></label>
-            <input type="text" id="zip" placeholder="10001">
+            <input type="text" id="zip" name="zip" placeholder="10001" maxlength="12" autocomplete="postal-code">
             <span class="ferr" id="err-zip"></span>
           </div>
           <div class="fgrp">
             <label for="country">Country <span class="req">*</span></label>
-            <select id="country">
-              <option value="">Select country...</option>
-              <option value="US">United States</option>
-              <option value="CA">Canada</option>
-              <option value="GB">United Kingdom</option>
-              <option value="AU">Australia</option>
-              <option value="FR">France</option>
-              <option value="DE">Germany</option>
-              <option value="MA">Morocco</option>
-              <option value="OTHER">Other</option>
-            </select>
+            <!-- Full text input so any country works -->
+            <input type="text" id="country" name="country" placeholder="e.g. United States, Morocco..." autocomplete="country-name">
             <span class="ferr" id="err-country"></span>
           </div>
         </div>
         <div class="fgrp">
           <label for="notes">Notes (optional)</label>
-          <textarea id="notes" rows="3" placeholder="Anything we should know?"></textarea>
+          <textarea id="notes" name="notes" rows="3" maxlength="300" placeholder="Anything we should know? (max 300 characters)"></textarea>
         </div>
 
         <div class="pp-box">
           <div class="pp-secure"><i class="fas fa-lock"></i> Safe & secure payment via PayPal</div>
           <div id="paypal-button-container"></div>
-          <p class="pp-note" id="ppNote">Clicking Pay sends your order details to us, then opens PayPal.</p>
+          <p class="pp-note" id="ppNote">Clicking Pay will send your order details to us, then open PayPal.</p>
         </div>
+
       </form>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ CONFIRMATION ═══════════ -->
+<!-- ═══ CONFIRMATION ═══ -->
 <section class="confirm-sec" id="confirmSec">
   <div class="container">
     <div class="confirm-box">
@@ -634,7 +609,7 @@ img{max-width:100%;display:block}
         <div class="cs-arr"><i class="fas fa-arrow-right"></i></div>
         <div class="cs">
           <div class="cs-n">3</div>
-          <div><strong>Shipped to You</strong>7-10 business days</div>
+          <div><strong>Shipped to You</strong>7-12 business days</div>
         </div>
       </div>
       <button class="btn btn-or" onclick="resetOrder()">
@@ -644,7 +619,7 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<!-- ═══════════ FAQ ═══════════ -->
+<!-- ═══ FAQ ═══ -->
 <section class="section faq-sec" id="faq">
   <div class="container">
     <div style="text-align:center"><div class="sec-tag">FAQ</div></div>
@@ -653,29 +628,53 @@ img{max-width:100%;display:block}
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">How do you recreate my avatar? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-a">Just give us your Roblox username at checkout. We look up your avatar in-game and 3D print a figure that matches your exact look — outfit, colors, and accessories. We never need your password.</div>
+        <div class="faq-a">Just give us your Roblox username at checkout. We look it up and 3D print a figure that matches your exact look. We never need your password.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">What is the difference between 2 inch and 3 inch? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-a">The 2 inch figure ($45) is compact and great for a desk or shelf. The 3 inch figure ($60) is our larger premium option with more detail — perfect for collectors or as a display piece.</div>
+        <div class="faq-a">The 2 inch figure ($45) is compact and great for a desk or shelf. The 3 inch figure ($60) is our larger premium option with more detail.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">How long does shipping take? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-a">Production takes 3-5 business days, then shipping takes 4-7 more days. You should receive your figure within 7-10 business days total. We ship worldwide.</div>
+        <div class="faq-a">Production takes 3-5 business days. Shipping takes 4-7 business days. Total estimated delivery: 7-12 business days. We ship worldwide.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">What if I am not happy with my order? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-a">Contact us at mounirbenji12@gmail.com and we will make it right. Your satisfaction matters to us.</div>
+        <div class="faq-a">Contact us at mounirbenji12@gmail.com and we will work to make it right. Custom items cannot be returned unless they arrive damaged or do not match the avatar.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">What if I change my avatar after ordering? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-a">We capture your avatar at the time of order. If you want a different look, email us within 24 hours at mounirbenji12@gmail.com before we start printing.</div>
+        <div class="faq-a">Email us within 24 hours at mounirbenji12@gmail.com. After that we may have already started printing.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I pay by credit card? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a">Yes. When the PayPal window opens you will see a "Pay with Debit or Credit Card" option at the bottom. No PayPal account is needed. Your card info goes directly to PayPal — we never see it.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ FOOTER ═══════════ -->
+<!-- ═══ POLICIES ═══ -->
+<section class="policy-sec" id="policies">
+  <div class="container">
+    <div class="policy-grid">
+      <div class="policy-card">
+        <h4><i class="fas fa-undo"></i> Refund Policy</h4>
+        <p>Custom 3D printed figures cannot be returned unless they arrive damaged or do not match your avatar. Contact us within 7 days of receiving your order at mounirbenji12@gmail.com.</p>
+      </div>
+      <div class="policy-card">
+        <h4><i class="fas fa-shipping-fast"></i> Shipping Policy</h4>
+        <p>Production: 3-5 business days. Shipping: 4-7 business days. Total estimated: 7-12 business days. We ship worldwide for free. Tracking info provided when available.</p>
+      </div>
+      <div class="policy-card">
+        <h4><i class="fas fa-user-shield"></i> Privacy Policy</h4>
+        <p>Your name, email, and shipping address are used only to fulfill your order. We do not sell or share your data. Payment info is handled entirely by PayPal — we never see your card details.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -694,12 +693,14 @@ img{max-width:100%;display:block}
         <a href="#products">Shop</a>
         <a href="#order">Order</a>
         <a href="#faq">FAQ</a>
+        <a href="#policies">Policies</a>
       </div>
       <div class="footer-col">
         <h4>Support</h4>
         <a href="mailto:mounirbenji12@gmail.com">Contact Us</a>
-        <a href="#">Shipping Policy</a>
-        <a href="#">Returns</a>
+        <a href="#policies">Refund Policy</a>
+        <a href="#policies">Shipping Policy</a>
+        <a href="#policies">Privacy Policy</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -710,18 +711,21 @@ img{max-width:100%;display:block}
 </footer>
 
 <script>
-/* ════════════════════════════════════════════════════════
-   BlockFigs — All IDs are already plugged in:
-   EmailJS Public Key : tq8vaamQ8OqaghTBi
+/* ═══════════════════════════════════════════════════════
+   BlockFigs — JavaScript
+   EmailJS Public Key : tq8vaamQ8OqaghTBi  (in head)
    EmailJS Service ID : service_4573wtn
    EmailJS Template ID: template_r0xrxii
-   PayPal Client ID   : (in SDK URL above)
-════════════════════════════════════════════════════════ */
+   PayPal Client ID   : in SDK URL above
+═══════════════════════════════════════════════════════ */
 
 const EMAILJS_SERVICE  = "service_4573wtn";
 const EMAILJS_TEMPLATE = "template_r0xrxii";
 
-// Current selected product
+// Tracks whether PayPal button was already clicked (prevent double payment)
+let paypalClicked = false;
+
+// Currently selected product
 let selectedProduct = {
   id:    "2inch",
   name:  "2 Inch Roblox Figure",
@@ -729,13 +733,12 @@ let selectedProduct = {
   label: "$45.00"
 };
 
-// ── SELECT PRODUCT ────────────────────────────────────────
+// ── SELECT PRODUCT ─────────────────────────────────────
 function selectProduct(id) {
   selectedProduct = id === "3inch"
-    ? { id: "3inch", name: "3 Inch Roblox Figure", price: "60.00", label: "$60.00" }
-    : { id: "2inch", name: "2 Inch Roblox Figure", price: "45.00", label: "$45.00" };
+    ? { id:"3inch", name:"3 Inch Roblox Figure", price:"60.00", label:"$60.00" }
+    : { id:"2inch", name:"2 Inch Roblox Figure", price:"45.00", label:"$45.00" };
 
-  // Update tabs
   const tab2 = document.getElementById("tab-2inch");
   const tab3 = document.getElementById("tab-3inch");
   tab2.className = id === "2inch" ? "ptab active-or" : "ptab";
@@ -743,17 +746,15 @@ function selectProduct(id) {
   tab2.querySelector(".ptab-price").style.color = id === "2inch" ? "var(--or)"  : "var(--mu)";
   tab3.querySelector(".ptab-price").style.color = id === "3inch" ? "#a855f7" : "var(--mu)";
 
-  // Update sidebar
   document.getElementById("asideProductName").textContent  = selectedProduct.name;
   document.getElementById("asideProductPrice").textContent = selectedProduct.label;
   document.getElementById("asideTotalPrice").textContent   = selectedProduct.label;
 
-  // Scroll to order if coming from product cards
-  const orderSec = document.getElementById("order");
-  if (orderSec) orderSec.scrollIntoView({ behavior: "smooth", block: "start" });
+  // Scroll to order section
+  document.getElementById("order").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-// ── NAVBAR ────────────────────────────────────────────────
+// ── NAVBAR ─────────────────────────────────────────────
 const navbar   = document.getElementById("navbar");
 const burger   = document.getElementById("burger");
 const navLinks = document.getElementById("navLinks");
@@ -780,7 +781,7 @@ function closeMenu() {
   burger.querySelectorAll("span").forEach(s => { s.style.transform = ""; s.style.opacity = ""; });
 }
 
-// ── SCROLL REVEAL ─────────────────────────────────────────
+// ── SCROLL REVEAL ──────────────────────────────────────
 const revObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -790,12 +791,12 @@ const revObs = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.1 });
-document.querySelectorAll("[data-reveal], .prod-card, .faq-item, .aside, .oform").forEach(el => {
+document.querySelectorAll(".prod-card, .faq-item, .aside, .oform, .policy-card").forEach(el => {
   el.style.opacity = "0";
   revObs.observe(el);
 });
 
-// ── FAQ ───────────────────────────────────────────────────
+// ── FAQ ────────────────────────────────────────────────
 function toggleFaq(btn) {
   const item    = btn.parentElement;
   const wasOpen = item.classList.contains("open");
@@ -803,16 +804,25 @@ function toggleFaq(btn) {
   if (!wasOpen) item.classList.add("open");
 }
 
-// ── FORM VALIDATION ───────────────────────────────────────
+// ── ESCAPE HTML (XSS protection) ──────────────────────
+function esc(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+// ── FORM VALIDATION ────────────────────────────────────
 const FIELDS = [
-  { id: "fullName",   label: "Full name"        },
-  { id: "email",      label: "Email address"    },
-  { id: "robloxUser", label: "Roblox username"  },
-  { id: "address",    label: "Street address"   },
-  { id: "city",       label: "City"             },
-  { id: "state",      label: "State/Province"   },
-  { id: "zip",        label: "ZIP code"         },
-  { id: "country",    label: "Country"          },
+  { id:"fullName",   label:"Full name"       },
+  { id:"email",      label:"Email address"   },
+  { id:"robloxUser", label:"Roblox username" },
+  { id:"address",    label:"Street address"  },
+  { id:"city",       label:"City"            },
+  { id:"state",      label:"State/Province"  },
+  { id:"zip",        label:"ZIP code"        },
+  { id:"country",    label:"Country"         },
 ];
 
 function showErr(id, msg) {
@@ -832,12 +842,19 @@ function validateForm() {
   FIELDS.forEach(({ id, label }) => {
     clearErr(id);
     const val = (document.getElementById(id)?.value || "").trim();
-    if (!val) { showErr(id, `${label} is required.`); valid = false; return; }
+    if (!val) {
+      showErr(id, `${label} is required.`);
+      valid = false;
+      return;
+    }
     if (id === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
-      showErr(id, "Enter a valid email address."); valid = false; return;
+      showErr(id, "Enter a valid email address.");
+      valid = false;
+      return;
     }
     if (id === "robloxUser" && !/^[a-zA-Z0-9_]{3,20}$/.test(val)) {
-      showErr(id, "3-20 characters: letters, numbers, underscores only."); valid = false;
+      showErr(id, "3-20 characters: letters, numbers, underscores only.");
+      valid = false;
     }
   });
   return valid;
@@ -847,41 +864,55 @@ FIELDS.forEach(({ id }) => {
   if (el) el.addEventListener("input", () => clearErr(id));
 });
 
-// ── COLLECT ORDER DATA ─────────────────────────────────────
+// ── COLLECT ORDER DATA ─────────────────────────────────
 function getOrderData() {
-  const a = document.getElementById("address").value.trim();
-  const c = document.getElementById("city").value.trim();
-  const s = document.getElementById("state").value.trim();
-  const z = document.getElementById("zip").value.trim();
-  const co = document.getElementById("country").value;
   return {
     product_name:     selectedProduct.name,
     price:            "$" + selectedProduct.price,
     customer_name:    document.getElementById("fullName").value.trim(),
     customer_email:   document.getElementById("email").value.trim(),
     roblox_username:  document.getElementById("robloxUser").value.trim(),
-    shipping_address: `${a}, ${c}, ${s} ${z}, ${co}`,
-    notes:            document.getElementById("notes").value.trim() || "None",
-    order_date:       new Date().toLocaleString("en-US", {
-      weekday: "long", year: "numeric", month: "long",
-      day: "numeric", hour: "2-digit", minute: "2-digit"
+    shipping_address: [
+      document.getElementById("address").value.trim(),
+      document.getElementById("city").value.trim(),
+      document.getElementById("state").value.trim(),
+      document.getElementById("zip").value.trim(),
+      document.getElementById("country").value.trim()
+    ].join(", "),
+    notes: document.getElementById("notes").value.trim() || "None",
+    order_date: new Date().toLocaleString("en-US", {
+      weekday:"long", year:"numeric", month:"long",
+      day:"numeric", hour:"2-digit", minute:"2-digit"
     }),
   };
 }
 
-// ── LOADING ───────────────────────────────────────────────
+// ── LOADING ────────────────────────────────────────────
 function setLoading(on) {
   document.getElementById("loading").classList.toggle("show", on);
 }
 
-// ── PAYPAL BUTTONS ─────────────────────────────────────────
+// ── PAYPAL BUTTONS ─────────────────────────────────────
 paypal.Buttons({
-  style: { layout: "vertical", color: "blue", shape: "rect", label: "pay", height: 50 },
+  style: { layout:"vertical", color:"blue", shape:"rect", label:"pay", height:50 },
 
-  // Step 1: validate + send email BEFORE PayPal opens
+  // Step 1 — validate form + spam check + send email BEFORE PayPal opens
   onClick: async function(data, actions) {
+
+    // Honeypot spam check — bots fill in hidden field, humans don't
+    if (document.getElementById("honeypot").value !== "") {
+      return actions.reject();
+    }
+
+    // Prevent double click
+    if (paypalClicked) {
+      return actions.reject();
+    }
+
+    // Validate form fields
     if (!validateForm()) {
-      document.querySelector(".err")?.scrollIntoView({ behavior: "smooth", block: "center" });
+      const firstErr = document.querySelector(".err");
+      if (firstErr) firstErr.scrollIntoView({ behavior:"smooth", block:"center" });
       const form = document.querySelector(".oform");
       form.style.animation = "none";
       void form.offsetHeight;
@@ -890,34 +921,43 @@ paypal.Buttons({
       return actions.reject();
     }
 
+    // Disable PayPal button to prevent double payment
+    paypalClicked = true;
+    document.getElementById("paypal-button-container").classList.add("disabled");
+
+    // Send order email
     setLoading(true);
     try {
       await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, getOrderData());
       console.log("Order email sent to mounirbenji12@gmail.com");
+      setLoading(false);
+      return actions.resolve(); // allow PayPal to open
     } catch (e) {
+      // EMAIL FAILED — stop payment so order is not lost
       console.error("EmailJS error:", e);
-      // Don't block payment if email fails
+      setLoading(false);
+      paypalClicked = false;
+      document.getElementById("paypal-button-container").classList.remove("disabled");
+      document.getElementById("ppNote").textContent = "Error sending order details. Please try again.";
+      document.getElementById("ppNote").style.color = "#f44336";
+      alert("There was an error sending your order details. Please try again. If the problem continues, contact mounirbenji12@gmail.com");
+      return actions.reject(); // block PayPal — do not take payment without order details
     }
-    setLoading(false);
-    return actions.resolve();
   },
 
-  // Step 2: create PayPal order with correct price for selected product
+  // Step 2 — create PayPal order at correct price
   createOrder: function(data, actions) {
     const order = getOrderData();
     return actions.order.create({
       purchase_units: [{
-        amount: {
-          value:         selectedProduct.price,
-          currency_code: "USD"
-        },
+        amount: { value: selectedProduct.price, currency_code: "USD" },
         description: `${selectedProduct.name} - @${order.roblox_username}`,
-        custom_id:   `roblox:${order.roblox_username} | name:${order.customer_name} | product:${selectedProduct.name}`,
+        custom_id: `roblox:${order.roblox_username}|name:${order.customer_name}|product:${selectedProduct.name}`,
       }]
     });
   },
 
-  // Step 3: payment approved — show confirmation
+  // Step 3 — payment approved, show confirmation
   onApprove: function(data, actions) {
     return actions.order.capture().then(function() {
       showConfirmation(getOrderData());
@@ -927,23 +967,28 @@ paypal.Buttons({
   onError: function(err) {
     console.error("PayPal error:", err);
     setLoading(false);
+    paypalClicked = false;
+    document.getElementById("paypal-button-container").classList.remove("disabled");
     alert("Payment error. Please try again or contact mounirbenji12@gmail.com");
   },
 
   onCancel: function() {
+    // Let them try again
+    paypalClicked = false;
+    document.getElementById("paypal-button-container").classList.remove("disabled");
     document.getElementById("ppNote").textContent = "Payment cancelled. Click Pay again when ready.";
   }
 
 }).render("#paypal-button-container");
 
-// ── CONFIRMATION ──────────────────────────────────────────
+// ── SHOW CONFIRMATION ──────────────────────────────────
 function showConfirmation(order) {
   document.getElementById("order").style.display = "none";
   const sec = document.getElementById("confirmSec");
   sec.style.display = "block";
 
   document.getElementById("confirmMsg").innerHTML =
-    `Thank you for your order! Your <strong>${esc(order.product_name)}</strong> will be 3D printed using the Roblox username: <strong>${esc(order.roblox_username)}</strong>. We have received all your details.`;
+    `Thank you! Your <strong>${esc(order.product_name)}</strong> will be 3D printed using the Roblox username: <strong>${esc(order.roblox_username)}</strong>. We have received your full order details.`;
 
   document.getElementById("confirmDetails").innerHTML = `
     <div class="cdr"><span class="cl">Product</span><span class="cv cv-or">${esc(order.product_name)}</span></div>
@@ -955,20 +1000,20 @@ function showConfirmation(order) {
     <div class="cdr"><span class="cl">Date</span><span class="cv">${esc(order.order_date)}</span></div>
     ${order.notes !== "None" ? `<div class="cdr"><span class="cl">Notes</span><span class="cv">${esc(order.notes)}</span></div>` : ""}
   `;
-  sec.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  sec.scrollIntoView({ behavior:"smooth", block:"start" });
 }
 
+// ── RESET ORDER (back to store) ────────────────────────
 function resetOrder() {
-  document.getElementById("order").style.display = "";
-  document.getElementById("confirmSec").style.display = "none";
   document.getElementById("orderForm").reset();
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-function esc(str) {
-  return String(str)
-    .replace(/&/g,"&amp;").replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  document.getElementById("confirmSec").style.display = "none";
+  document.getElementById("order").style.display = "block";
+  paypalClicked = false;
+  document.getElementById("paypal-button-container").classList.remove("disabled");
+  document.getElementById("ppNote").textContent = "Clicking Pay will send your order details to us, then open PayPal.";
+  document.getElementById("ppNote").style.color = "";
+  window.scrollTo({ top:0, behavior:"smooth" });
 }
 </script>
 </body>
