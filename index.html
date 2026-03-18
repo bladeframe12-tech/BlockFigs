@@ -7,21 +7,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>emailjs.init("9HMfswZkUMwqdqvX5");</script>
 <style>
-/* =============================================
-   BLOCKFIGS — FINAL WEBSITE
-   PayPal  : AfPYYfTdGLLlufBCzaQMOTTjjsE_d3CZsNcEeJyvFjdyagDwnEhnWWISlwntU-3Y-aqbKAvYaoVo6Um1
-   EmailJS : service_fti25oj / template_l3iqwta / 9HMfswZkUMwqdqvX5
-============================================= */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --or:#ff3a00;--or2:#ff6535;--gold:#ffc107;
   --gr:#00e5a0;--cy:#00cfff;--pu:#8b5cf6;
-  --bg:#04040e;--bg2:#080816;--bg3:#0c0c1e;--bg4:#111128;
-  --card:rgba(255,255,255,.035);--card2:rgba(255,255,255,.06);
+  --bg:#04040e;--bg2:#080816;--bg3:#0c0c1e;
   --bdr:rgba(255,255,255,.07);--bdr2:rgba(255,255,255,.13);
   --txt:#eaeaf8;--mid:#8888aa;--dim:#4a4a6a;
   --ff:'Bebas Neue',sans-serif;--fb:'DM Sans',sans-serif;
@@ -34,100 +27,44 @@ ul{list-style:none}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-thumb{background:var(--or);border-radius:3px}
 
-/* ── AMBIENT ── */
-.amb{position:fixed;pointer-events:none;z-index:0;border-radius:50%;filter:blur(100px);opacity:.12}
+/* ambient */
+.amb{position:fixed;pointer-events:none;z-index:0;border-radius:50%;filter:blur(100px);opacity:.11}
 .a1{width:700px;height:700px;background:var(--or);top:-250px;right:-200px}
 .a2{width:500px;height:500px;background:var(--pu);bottom:-200px;left:-150px}
-.a3{width:300px;height:300px;background:var(--cy);top:50%;left:50%;transform:translate(-50%,-50%);opacity:.05}
 
-/* ── NAV ── */
-.nav{
-  position:fixed;inset:0 0 auto;z-index:999;height:72px;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 48px;
-  background:rgba(4,4,14,.7);backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--bdr);transition:all .3s;
-}
-.nav.s{background:rgba(4,4,14,.96);border-bottom-color:var(--bdr2)}
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:999;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(4,4,14,.75);backdrop-filter:blur(24px);border-bottom:1px solid var(--bdr);transition:all .3s}
+.nav.s{background:rgba(4,4,14,.97);border-bottom-color:var(--bdr2)}
 .logo{font-family:var(--ff);font-size:1.9rem;letter-spacing:.1em}
 .logo em{font-style:normal;color:var(--or)}
 .nlinks{display:flex;align-items:center;gap:4px}
 .nlinks a{padding:8px 16px;border-radius:var(--r);color:var(--mid);font-size:.87rem;font-weight:500;transition:all .18s}
-.nlinks a:hover{color:var(--txt);background:var(--card2)}
-.nlinks .ncta{
-  background:var(--or);color:#fff;padding:9px 22px;font-weight:600;
-  box-shadow:0 0 24px rgba(255,58,0,.35);transition:all .2s;
-}
-.nlinks .ncta:hover{background:var(--or2);box-shadow:0 0 40px rgba(255,58,0,.55);transform:translateY(-1px)}
+.nlinks a:hover{color:var(--txt);background:rgba(255,255,255,.06)}
+.ncta{background:var(--or)!important;color:#fff!important;font-weight:600!important;box-shadow:0 0 24px rgba(255,58,0,.35);transition:all .2s!important}
+.ncta:hover{background:var(--or2)!important;box-shadow:0 0 40px rgba(255,58,0,.55)!important;transform:translateY(-1px)!important}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:5px}
 .burger span{display:block;width:22px;height:1.5px;background:var(--txt);border-radius:2px;transition:all .3s}
 
-/* ── HERO ── */
-.hero{
-  min-height:100vh;padding-top:72px;position:relative;
-  display:grid;grid-template-columns:1fr 1fr;overflow:hidden;
-}
-/* grid bg */
-.hero::before{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(var(--bdr) 1px,transparent 1px),linear-gradient(90deg,var(--bdr) 1px,transparent 1px);
-  background-size:64px 64px;
-  mask-image:radial-gradient(ellipse 70% 90% at 25% 50%,black,transparent);
-}
-/* giant bg letters */
-.hbg{
-  position:absolute;right:-40px;bottom:-60px;
-  font-family:var(--ff);font-size:38vw;line-height:1;
-  color:rgba(255,255,255,.015);pointer-events:none;user-select:none;
-  letter-spacing:-.02em;
-}
+/* hero */
+.hero{min-height:100vh;padding-top:72px;position:relative;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--bdr) 1px,transparent 1px),linear-gradient(90deg,var(--bdr) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 90% at 25% 50%,black,transparent)}
+.hbg{position:absolute;right:-40px;bottom:-60px;font-family:var(--ff);font-size:38vw;line-height:1;color:rgba(255,255,255,.015);pointer-events:none;user-select:none;letter-spacing:-.02em}
 .hleft{padding:90px 0 80px 60px;position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center}
-.hright{
-  position:relative;z-index:2;
-  display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,var(--bg2) 0%,#10082a 100%);
-  border-left:1px solid var(--bdr);min-height:100vh;
-}
-.hright::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 50% 80%,rgba(255,58,0,.15) 0%,transparent 60%);
-  pointer-events:none;
-}
-/* badge */
-.badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(0,229,160,.07);border:1px solid rgba(0,229,160,.2);
-  color:var(--gr);font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-  padding:7px 16px;border-radius:999px;margin-bottom:26px;
-  width:fit-content;
-}
+.hright{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--bg2) 0%,#10082a 100%);border-left:1px solid var(--bdr);min-height:100vh}
+.hright::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 80%,rgba(255,58,0,.15) 0%,transparent 60%);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,160,.07);border:1px solid rgba(0,229,160,.2);color:var(--gr);font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:7px 16px;border-radius:999px;margin-bottom:26px;width:fit-content}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--gr);box-shadow:0 0 10px var(--gr);animation:blink 1.8s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
-/* headline */
-.hero h1{
-  font-family:var(--ff);letter-spacing:.04em;
-  font-size:clamp(4.5rem,8vw,8rem);line-height:.92;margin-bottom:28px;
-}
-.hero h1 .hl{
-  display:block;
-  background:linear-gradient(110deg,var(--or) 20%,var(--gold) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
+.hero h1{font-family:var(--ff);letter-spacing:.04em;font-size:clamp(4.5rem,8vw,8rem);line-height:.92;margin-bottom:28px}
+.hero h1 .hl{display:block;background:linear-gradient(110deg,var(--or) 20%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hsub{color:var(--mid);font-size:1rem;font-weight:300;max-width:400px;line-height:1.8;margin-bottom:40px}
 .hsub strong{color:var(--txt);font-weight:500}
 .hbtns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
-/* trust pills */
 .trust{display:flex;gap:20px;flex-wrap:wrap}
 .titem{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--dim);font-weight:400}
 
-/* ── BUTTONS ── */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  padding:14px 32px;border-radius:var(--r);border:none;
-  font-family:var(--fb);font-weight:600;font-size:.9rem;
-  cursor:pointer;transition:all .2s;white-space:nowrap;
-  position:relative;overflow:hidden;
-}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 32px;border-radius:var(--r);border:none;font-family:var(--fb);font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s;white-space:nowrap;position:relative;overflow:hidden}
 .btn::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent 55%);pointer-events:none}
 .btn:hover{transform:translateY(-2px)}
 .btn-or{background:var(--or);color:#fff;box-shadow:0 4px 28px rgba(255,58,0,.45)}
@@ -135,281 +72,208 @@ ul{list-style:none}
 .btn-pu{background:var(--pu);color:#fff;box-shadow:0 4px 28px rgba(139,92,246,.4)}
 .btn-pu:hover{background:#9d6fff;box-shadow:0 8px 40px rgba(139,92,246,.6)}
 .btn-ghost{background:transparent;color:var(--mid);border:1px solid var(--bdr2)}
-.btn-ghost:hover{color:var(--txt);border-color:rgba(255,255,255,.3);background:var(--card)}
+.btn-ghost:hover{color:var(--txt);border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04)}
 .btn-w{width:100%;justify-content:center}
 
-/* ── CSS ROBLOX FIGURE ── */
+/* css figure */
 .fig-stage{position:relative;z-index:3}
-.fig-shadow-el{position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:90px;height:14px;background:rgba(0,0,0,.7);border-radius:50%;filter:blur(10px)}
-.fig{
-  width:150px;height:268px;position:relative;
-  animation:float 4s ease-in-out infinite;
-  filter:drop-shadow(0 30px 60px rgba(255,58,0,.35)) drop-shadow(0 0 80px rgba(255,58,0,.08));
-}
+.fig-shad{position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:90px;height:14px;background:rgba(0,0,0,.7);border-radius:50%;filter:blur(10px)}
+.fig{width:150px;height:268px;position:relative;animation:float 4s ease-in-out infinite;filter:drop-shadow(0 30px 60px rgba(255,58,0,.35)) drop-shadow(0 0 80px rgba(255,58,0,.08))}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
-/* head */
 .fh{position:absolute;width:94px;height:94px;border-radius:16px;background:linear-gradient(145deg,#ffba85,#ff4a12);top:0;left:50%;transform:translateX(-50%);box-shadow:0 10px 32px rgba(255,74,18,.6),inset 0 2px 0 rgba(255,255,255,.3)}
 .fe{position:absolute;width:16px;height:16px;background:#1c0400;border-radius:4px;top:32px}
 .fe.l{left:16px}.fe.r{right:16px}
 .fm{position:absolute;width:34px;height:13px;border:3.5px solid #1c0400;border-top:none;border-radius:0 0 17px 17px;bottom:13px;left:50%;transform:translateX(-50%)}
 .fneck{position:absolute;width:24px;height:8px;background:#e04200;border-radius:3px;top:96px;left:50%;transform:translateX(-50%)}
-/* body */
 .fbody{position:absolute;width:106px;height:76px;border-radius:14px;background:linear-gradient(145deg,#a07aff,#5520cc);top:106px;left:50%;transform:translateX(-50%);box-shadow:0 10px 32px rgba(85,32,204,.6),inset 0 2px 0 rgba(255,255,255,.2)}
-/* arms */
 .farm{position:absolute;width:30px;height:76px;border-radius:12px;background:linear-gradient(145deg,#ffba85,#ff4a12);top:106px;box-shadow:0 6px 18px rgba(255,74,18,.3)}
 .farm.l{left:0;transform:rotate(6deg);transform-origin:top center}
 .farm.r{right:0;transform:rotate(-6deg);transform-origin:top center}
-/* belt */
 .fbelt{position:absolute;width:110px;height:18px;border-radius:6px;background:linear-gradient(90deg,#2a1880,#4520b0);top:182px;left:50%;transform:translateX(-50%)}
-/* legs */
 .fleg{position:absolute;width:46px;height:74px;border-radius:12px 12px 16px 16px;background:linear-gradient(160deg,#2e1870,#14083a);bottom:0;box-shadow:0 8px 22px rgba(0,0,0,.7)}
 .fleg.l{left:8px}.fleg.r{right:8px}
-/* rings around stage */
 .sring{position:absolute;border-radius:50%;border:1px dashed;pointer-events:none;top:50%;left:50%;transform:translate(-50%,-50%)}
 .sr1{width:300px;height:300px;border-color:rgba(255,58,0,.12);animation:spin 20s linear infinite}
 .sr2{width:420px;height:420px;border-color:rgba(139,92,246,.07);animation:spin 35s linear infinite reverse}
-.sr3{width:560px;height:560px;border-color:rgba(0,207,255,.04);animation:spin 58s linear infinite}
 @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-/* glow */
 .sglow{position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(255,58,0,.18) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse 3s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}}
-/* floating tags */
-.ftag{
-  position:absolute;z-index:4;
-  background:rgba(12,12,30,.9);border:1px solid var(--bdr2);
-  border-radius:var(--r);padding:10px 16px;font-size:.74rem;font-weight:600;
-  backdrop-filter:blur(16px);white-space:nowrap;
-  box-shadow:0 10px 36px rgba(0,0,0,.55);
-}
+.ftag{position:absolute;z-index:4;background:rgba(12,12,30,.92);border:1px solid var(--bdr2);border-radius:var(--r);padding:10px 16px;font-size:.74rem;font-weight:600;backdrop-filter:blur(16px);white-space:nowrap;box-shadow:0 10px 36px rgba(0,0,0,.55)}
 .ftag i{margin-right:5px}
 .ft1{top:20%;right:24px;color:var(--cy);border-color:rgba(0,207,255,.2);animation:bob 3.2s ease-in-out infinite}
 .ft2{bottom:32%;left:20px;color:var(--gold);border-color:rgba(255,193,7,.2);animation:bob 3.8s 1s ease-in-out infinite}
 .ft3{bottom:14%;right:32px;color:var(--gr);border-color:rgba(0,229,160,.2);animation:bob 4.2s .5s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 
-/* ── MARQUEE ── */
+/* marquee */
 .marquee{background:var(--or);overflow:hidden;padding:15px 0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);position:relative;z-index:2}
 .mtrack{display:flex;white-space:nowrap;animation:mq 28s linear infinite}
-.mtrack span{font-family:var(--ff);font-size:.95rem;color:#fff;padding:0 30px;letter-spacing:.06em;opacity:.95}
+.mtrack span{font-family:var(--ff);font-size:.95rem;color:#fff;padding:0 30px;letter-spacing:.06em}
 .mtrack .sep{opacity:.4;padding:0 8px}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ── SECTIONS ── */
+/* sections */
 .sec{padding:112px 0;position:relative}
 .wrap{max-width:1160px;margin:0 auto;padding:0 48px}
-.eyebrow{
-  display:inline-block;font-size:.67rem;font-weight:600;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--or);padding:5px 14px;border-radius:999px;
-  background:rgba(255,58,0,.1);border:1px solid rgba(255,58,0,.2);margin-bottom:16px;
-}
+.eyebrow{display:inline-block;font-size:.67rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--or);padding:5px 14px;border-radius:999px;background:rgba(255,58,0,.1);border:1px solid rgba(255,58,0,.2);margin-bottom:16px}
 .sec-h{font-family:var(--ff);font-size:clamp(2.4rem,4vw,3.8rem);letter-spacing:.04em;margin-bottom:14px;text-align:center}
 .sec-p{color:var(--mid);font-size:.97rem;font-weight:300;text-align:center;max-width:500px;margin:0 auto 66px;line-height:1.8}
 
-/* ── PRODUCT CARDS ── */
+/* products */
 .psec{background:var(--bg2)}
 .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1020px;margin:0 auto}
-.pcard{
-  background:var(--bg3);border-radius:var(--r3);
-  border:1px solid var(--bdr);
-  transition:transform .4s cubic-bezier(.22,.68,0,1.2),box-shadow .4s;
-  position:relative;
-}
-/* NO overflow:hidden on outer card — crucial for PayPal iframe */
+.pcard{background:var(--bg3);border-radius:var(--r3);border:1px solid var(--bdr);transition:transform .4s cubic-bezier(.22,.68,0,1.2),box-shadow .4s;position:relative}
 .pcard:hover{transform:translateY(-12px)}
-.pcard.poc{border-color:rgba(255,58,0,.2)}
-.pcard.poc:hover{box-shadow:0 40px 100px rgba(0,0,0,.65),0 0 80px rgba(255,58,0,.1)}
-.pcard.ppc{border-color:rgba(139,92,246,.2)}
-.pcard.ppc:hover{box-shadow:0 40px 100px rgba(0,0,0,.65),0 0 80px rgba(139,92,246,.1)}
+.poc{border-color:rgba(255,58,0,.2)}.poc:hover{box-shadow:0 40px 100px rgba(0,0,0,.65),0 0 80px rgba(255,58,0,.1)}
+.ppc{border-color:rgba(139,92,246,.2)}.ppc:hover{box-shadow:0 40px 100px rgba(0,0,0,.65),0 0 80px rgba(139,92,246,.1)}
 .pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:var(--r3) var(--r3) 0 0;z-index:1}
 .poc::before{background:linear-gradient(90deg,var(--or),var(--gold),transparent)}
 .ppc::before{background:linear-gradient(90deg,var(--pu),var(--cy),transparent)}
-/* image zone — has overflow:hidden to clip figure, NOT the whole card */
-.pimg-wrap{border-radius:var(--r3) var(--r3) 0 0;overflow:hidden;position:relative;height:320px;display:flex;align-items:center;justify-content:center}
-.poc .pimg-wrap{background:radial-gradient(ellipse at 50% 90%,rgba(255,58,0,.2) 0%,transparent 60%),linear-gradient(160deg,#0d0820 0%,#170830 100%)}
-.ppc .pimg-wrap{background:radial-gradient(ellipse at 50% 90%,rgba(139,92,246,.2) 0%,transparent 60%),linear-gradient(160deg,#09091e 0%,#120c2e 100%)}
-.pimg-wrap::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:200px;height:80px;border-radius:50%;filter:blur(28px);pointer-events:none}
-.poc .pimg-wrap::after{background:rgba(255,58,0,.28)}
-.ppc .pimg-wrap::after{background:rgba(139,92,246,.28)}
+.pimg{border-radius:var(--r3) var(--r3) 0 0;overflow:hidden;position:relative;height:320px;display:flex;align-items:center;justify-content:center}
+.poc .pimg{background:radial-gradient(ellipse at 50% 90%,rgba(255,58,0,.2) 0%,transparent 60%),linear-gradient(160deg,#0d0820 0%,#170830 100%)}
+.ppc .pimg{background:radial-gradient(ellipse at 50% 90%,rgba(139,92,246,.2) 0%,transparent 60%),linear-gradient(160deg,#09091e 0%,#120c2e 100%)}
+.pimg::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:200px;height:80px;border-radius:50%;filter:blur(28px);pointer-events:none}
+.poc .pimg::after{background:rgba(255,58,0,.28)}.ppc .pimg::after{background:rgba(139,92,246,.28)}
 .pbadge{position:absolute;top:16px;left:16px;font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:999px;z-index:2}
-.pbadge-or{background:var(--or);color:#fff;box-shadow:0 4px 16px rgba(255,58,0,.5)}
-.pbadge-pu{background:var(--pu);color:#fff;box-shadow:0 4px 16px rgba(139,92,246,.5)}
+.pbor{background:var(--or);color:#fff;box-shadow:0 4px 16px rgba(255,58,0,.5)}
+.pbpu{background:var(--pu);color:#fff;box-shadow:0 4px 16px rgba(139,92,246,.5)}
 .pfig{animation:float 3.8s ease-in-out infinite}
-/* product body */
 .pbody{padding:34px}
 .pname{font-family:var(--ff);font-size:2rem;letter-spacing:.04em;margin-bottom:8px}
 .pdesc{color:var(--mid);font-size:.88rem;font-weight:300;margin-bottom:22px;line-height:1.7}
 .ppr{display:flex;align-items:baseline;gap:2px;margin-bottom:10px}
-.price-big{font-family:var(--ff);font-size:3.4rem;line-height:1;letter-spacing:.02em}
-.poc .price-big{color:var(--or)}.ppc .price-big{color:#a78bfa}
-.price-sm{font-size:1.6rem}
-.poc .price-sm{color:var(--or)}.ppc .price-sm{color:#a78bfa}
+.pbig{font-family:var(--ff);font-size:3.4rem;line-height:1;letter-spacing:.02em}
+.poc .pbig{color:var(--or)}.ppc .pbig{color:#a78bfa}
+.psm{font-size:1.6rem}.poc .psm{color:var(--or)}.ppc .psm{color:#a78bfa}
 .pship{display:inline-flex;align-items:center;gap:6px;background:rgba(0,229,160,.07);border:1px solid rgba(0,229,160,.15);color:var(--gr);font-size:.73rem;font-weight:600;padding:4px 13px;border-radius:999px;margin-bottom:22px}
 .pfeat{margin-bottom:26px}
 .pfeat li{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.87rem;color:var(--mid);font-weight:300}
 .pfeat li:last-child{border:none}
 .pfeat li i{color:var(--gr);font-size:.74rem;width:14px;flex-shrink:0}
-.psec-note{display:flex;align-items:center;justify-content:center;gap:6px;font-size:.75rem;color:var(--dim);margin-top:12px}
-.psec-note i{color:var(--gr)}
+.psafe{display:flex;align-items:center;justify-content:center;gap:6px;font-size:.75rem;color:var(--dim);margin-top:12px}
+.psafe i{color:var(--gr)}
 
-/* ── ORDER SECTION ── */
+/* order */
 .osec{background:var(--bg)}
-/* selector tabs */
 .ptabs{display:flex;gap:16px;margin-bottom:42px}
-.ptab{
-  flex:1;background:var(--bg3);border:1px solid var(--bdr);
-  border-radius:var(--r2);padding:20px 24px;cursor:pointer;
-  transition:all .25s;position:relative;
-}
+.ptab{flex:1;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--r2);padding:20px 24px;cursor:pointer;transition:all .25s;position:relative}
 .ptab::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:var(--r2) var(--r2) 0 0;background:transparent;transition:background .25s}
 .ptab:hover{border-color:var(--bdr2);transform:translateY(-2px)}
-.ptab.act-or{border-color:rgba(255,58,0,.3);background:rgba(255,58,0,.04)}
-.ptab.act-or::after{background:linear-gradient(90deg,var(--or),var(--gold))}
-.ptab.act-pu{border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.04)}
-.ptab.act-pu::after{background:linear-gradient(90deg,var(--pu),var(--cy))}
+.tab-or{border-color:rgba(255,58,0,.3)!important;background:rgba(255,58,0,.04)!important}
+.tab-or::after{background:linear-gradient(90deg,var(--or),var(--gold))!important}
+.tab-pu{border-color:rgba(139,92,246,.3)!important;background:rgba(139,92,246,.04)!important}
+.tab-pu::after{background:linear-gradient(90deg,var(--pu),var(--cy))!important}
 .ptab-name{font-family:var(--ff);font-size:1.15rem;letter-spacing:.04em;margin-bottom:4px}
 .ptab-price{font-weight:700;font-size:1.1rem;color:var(--dim)}
-.act-or .ptab-price{color:var(--or)}.act-pu .ptab-price{color:#a78bfa}
+.tab-or .ptab-price{color:var(--or)}.tab-pu .ptab-price{color:#a78bfa}
 .ptab-tick{position:absolute;top:18px;right:18px;color:var(--gr);opacity:0;transition:opacity .2s;font-size:.95rem}
-.act-or .ptab-tick,.act-pu .ptab-tick{opacity:1}
-/* layout */
+.tab-or .ptab-tick,.tab-pu .ptab-tick{opacity:1}
 .ogrid{display:grid;grid-template-columns:310px 1fr;gap:28px;align-items:start}
-
-/* summary sidebar */
-.osummary{
-  background:var(--bg3);border:1px solid var(--bdr);
-  border-radius:var(--r2);padding:30px;position:sticky;top:84px;overflow:hidden;
-}
-.osummary::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--or),var(--gold),transparent)}
-.osummary h3{font-family:var(--ff);font-size:1.15rem;letter-spacing:.06em;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--bdr)}
+.osum{background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--r2);padding:30px;position:sticky;top:84px;overflow:hidden}
+.osum::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--or),var(--gold),transparent)}
+.osum h3{font-family:var(--ff);font-size:1.15rem;letter-spacing:.06em;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--bdr)}
 .srow{display:flex;justify-content:space-between;font-size:.87rem;color:var(--dim);padding:9px 0}
 .srow span:last-child{font-weight:600;color:var(--txt)}
 .sdiv{height:1px;background:var(--bdr);margin:6px 0}
 .stot{display:flex;justify-content:space-between;font-weight:700;font-size:1.05rem;padding:12px 0}
 .stot span:last-child{font-family:var(--ff);font-size:1.3rem;color:var(--or)}
-.snote{display:flex;align-items:flex-start;gap:9px;font-size:.77rem;color:var(--dim);background:var(--card);border-radius:var(--r);padding:10px 12px;margin-top:10px;line-height:1.55}
+.snote{display:flex;align-items:flex-start;gap:9px;font-size:.77rem;color:var(--dim);background:rgba(255,255,255,.03);border-radius:var(--r);padding:10px 12px;margin-top:10px;line-height:1.55}
 .snote i{color:var(--gr);flex-shrink:0;margin-top:1px}
 
-/* ── FORM ── */
-.oform{
-  background:var(--bg3);border:1px solid var(--bdr);
-  border-radius:var(--r2);padding:42px;position:relative;overflow:hidden;
-}
+/* form */
+.oform{background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--r2);padding:42px;position:relative;overflow:hidden}
 .oform::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(255,58,0,.5),transparent)}
 .fhdr{display:flex;align-items:center;gap:9px;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);margin-bottom:24px}
 .fhdr i{color:var(--or)}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .fg{margin-bottom:20px}
-.fg label{display:block;font-size:.79rem;font-weight:500;color:var(--mid);margin-bottom:8px;letter-spacing:.01em}
+.fg label{display:block;font-size:.79rem;font-weight:500;color:var(--mid);margin-bottom:8px}
 .req{color:var(--or)}
-.fg input,.fg textarea{
-  width:100%;background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.09);border-radius:var(--r);
-  color:var(--txt);font-family:var(--fb);font-weight:300;font-size:.93rem;
-  padding:13px 16px;outline:none;
-  transition:border-color .2s,box-shadow .2s,background .2s;
-}
+.fg input,.fg textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:var(--r);color:var(--txt);font-family:var(--fb);font-weight:300;font-size:.93rem;padding:13px 16px;outline:none;transition:border-color .2s,box-shadow .2s,background .2s}
 .fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.18)}
 .fg input:focus,.fg textarea:focus{border-color:rgba(255,58,0,.45);background:rgba(255,58,0,.04);box-shadow:0 0 0 3px rgba(255,58,0,.1)}
 .fg input.err{border-color:rgba(244,67,54,.6);background:rgba(244,67,54,.04)}
 .ferr{font-size:.74rem;color:#f87171;margin-top:5px;display:block;min-height:15px}
-/* roblox box */
 .rbox{background:rgba(255,58,0,.05);border:1px solid rgba(255,58,0,.18);border-radius:var(--r2);padding:18px 20px;margin-bottom:22px}
 .rbox label{color:var(--or);font-size:.83rem;font-weight:600;display:block;margin-bottom:9px}
-.rbox input{
-  width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,58,0,.2);
-  border-radius:var(--r);color:var(--txt);font-family:var(--fb);font-size:.93rem;
-  padding:13px 16px;outline:none;transition:border-color .2s,box-shadow .2s;
-}
+.rbox input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,58,0,.2);border-radius:var(--r);color:var(--txt);font-family:var(--fb);font-size:.93rem;padding:13px 16px;outline:none;transition:border-color .2s,box-shadow .2s}
 .rbox input:focus{border-color:var(--or);box-shadow:0 0 0 3px rgba(255,58,0,.12)}
 .rbox input.err{border-color:rgba(244,67,54,.6)}
 .hint{font-size:.75rem;color:var(--dim);margin-top:7px;display:block;line-height:1.5}
 
-/* ── PAYMENT BOX ── */
-.paybox{
-  margin-top:30px;padding:28px;
-  background:rgba(255,255,255,.025);
-  border:1px solid var(--bdr2);
-  border-radius:var(--r2);
-  /* NO overflow:hidden — PayPal iframe must not be clipped */
-}
-.pay-top{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  font-size:.78rem;color:var(--mid);margin-bottom:18px;flex-wrap:wrap;text-align:center;
-}
-.pay-top i{color:var(--gr)}
-/* payment method icons row */
-.pay-icons{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
-.pay-icon{
-  display:flex;align-items:center;gap:6px;
-  background:var(--card2);border:1px solid var(--bdr);
-  border-radius:8px;padding:7px 14px;font-size:.75rem;font-weight:600;color:var(--mid);
-}
-.pay-icon i{font-size:.85rem}
-/* paypal container — absolutely no overflow clip anywhere in its parent chain */
-#pp-container{min-height:50px;border-radius:var(--r);overflow:visible;position:relative;z-index:1}
-#pp-container.locked{opacity:.35;pointer-events:none}
-.pay-note{font-size:.75rem;color:var(--dim);text-align:center;margin-top:14px;line-height:1.55}
-/* validation reminder */
-.val-reminder{
-  display:none;align-items:center;gap:9px;
-  background:rgba(255,58,0,.08);border:1px solid rgba(255,58,0,.2);
-  border-radius:var(--r);padding:12px 16px;margin-bottom:16px;
-  font-size:.82rem;color:var(--or);font-weight:500;
-}
-.val-reminder.show{display:flex}
-.val-reminder i{flex-shrink:0}
+/* ===================================================
+   PAYMENT BOX — no overflow:hidden ANYWHERE here
+   so PayPal iframe is never clipped
+=================================================== */
+.paybox{margin-top:30px;padding:28px;background:rgba(255,255,255,.025);border:1px solid var(--bdr2);border-radius:var(--r2)}
+.pay-hdr{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);text-align:center;margin-bottom:16px}
+.pay-methods{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.pm{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.06);border:1px solid var(--bdr);border-radius:8px;padding:6px 13px;font-size:.74rem;font-weight:600;color:var(--mid)}
+.pm i{font-size:.85rem}
 
-/* ── LOADER ── */
+/* error banner above PayPal */
+.form-err-banner{display:none;align-items:center;gap:10px;background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.3);border-radius:var(--r);padding:12px 16px;margin-bottom:16px;font-size:.83rem;color:#f87171;font-weight:500}
+.form-err-banner.show{display:flex}
+.form-err-banner i{flex-shrink:0}
+
+/* PayPal button wrapper — absolutely critical: no overflow, no clip */
+#pp-btn{
+  min-height:55px;
+  /* PayPal renders an iframe — it must not be clipped */
+}
+#pp-btn.dimmed{opacity:.4;pointer-events:none;cursor:not-allowed}
+
+.pay-note{font-size:.75rem;color:var(--dim);text-align:center;margin-top:14px;line-height:1.6}
+.pay-note.ok{color:var(--gr)}
+.pay-note.bad{color:#f87171}
+
+/* loader */
 .loader{display:none;position:fixed;inset:0;z-index:9999;background:rgba(4,4,14,.9);backdrop-filter:blur(10px);align-items:center;justify-content:center;flex-direction:column;gap:18px}
 .loader.on{display:flex}
-.spin{width:52px;height:52px;border-radius:50%;border:3px solid rgba(255,255,255,.07);border-top-color:var(--or);animation:spin .75s linear infinite}
+.spin{width:52px;height:52px;border-radius:50%;border:3px solid rgba(255,255,255,.07);border-top-color:var(--or);animation:spin2 .75s linear infinite}
+@keyframes spin2{to{transform:rotate(360deg)}}
 .loader p{color:var(--mid);font-size:.9rem}
 
-/* ── CONFIRMATION ── */
+/* confirmation */
 .confsec{display:none;padding:112px 0;background:var(--bg2)}
-.confbox{
-  background:var(--bg3);border:1px solid rgba(0,229,160,.18);
-  border-radius:var(--r3);padding:64px 52px;max-width:680px;
-  margin:0 auto;text-align:center;position:relative;overflow:hidden;
-}
-.confbox::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gr),var(--cy))}
-.conf-icon{width:86px;height:86px;border-radius:50%;background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.2);display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:var(--gr);margin:0 auto 26px;box-shadow:0 0 60px rgba(0,229,160,.15)}
-.confbox h2{font-family:var(--ff);font-size:2.8rem;letter-spacing:.04em;margin-bottom:12px}
-.conf-msg{color:var(--mid);font-size:.97rem;font-weight:300;margin-bottom:30px;line-height:1.8}
-.conf-msg strong{color:var(--or);font-weight:600}
-.conf-det{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r2);padding:22px 26px;text-align:left;margin-bottom:28px}
+.cbox{background:var(--bg3);border:1px solid rgba(0,229,160,.18);border-radius:var(--r3);padding:64px 52px;max-width:680px;margin:0 auto;text-align:center;position:relative;overflow:hidden}
+.cbox::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gr),var(--cy))}
+.cicon{width:86px;height:86px;border-radius:50%;background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.2);display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:var(--gr);margin:0 auto 26px;box-shadow:0 0 60px rgba(0,229,160,.15)}
+.cbox h2{font-family:var(--ff);font-size:2.8rem;letter-spacing:.04em;margin-bottom:12px}
+.cmsg{color:var(--mid);font-size:.97rem;font-weight:300;margin-bottom:30px;line-height:1.8}
+.cmsg strong{color:var(--or);font-weight:600}
+.cdet{background:rgba(255,255,255,.03);border:1px solid var(--bdr);border-radius:var(--r2);padding:22px 26px;text-align:left;margin-bottom:28px}
 .crow{display:flex;justify-content:space-between;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.87rem;gap:16px}
 .crow:last-child{border:none}
-.crow .cl{color:var(--dim);font-weight:300;flex-shrink:0}
-.crow .cv{font-weight:600;text-align:right}
+.crow .cl{color:var(--dim);font-weight:300;flex-shrink:0}.crow .cv{font-weight:600;text-align:right}
 .cv-or{color:var(--or)!important}
-.conf-steps{display:flex;align-items:center;gap:10px;margin-bottom:28px;text-align:left}
-.cstep{flex:1;display:flex;align-items:flex-start;gap:10px;background:var(--card);border-radius:var(--r);padding:14px;font-size:.81rem;color:var(--mid);line-height:1.55;font-weight:300}
+.csteps{display:flex;align-items:center;gap:10px;margin-bottom:28px;text-align:left}
+.cstep{flex:1;display:flex;align-items:flex-start;gap:10px;background:rgba(255,255,255,.03);border-radius:var(--r);padding:14px;font-size:.81rem;color:var(--mid);line-height:1.55;font-weight:300}
 .cstep strong{color:var(--txt);display:block;margin-bottom:3px;font-weight:600}
 .cnum{width:28px;height:28px;border-radius:50%;background:var(--or);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0}
 .carr{color:var(--dim);flex-shrink:0}
 
-/* ── FAQ ── */
-.faq-sec{background:var(--bg)}
-.faq-list{max-width:700px;margin:0 auto}
-.fitem{background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--r2);margin-bottom:10px;overflow:hidden;transition:border-color .2s}
-.fitem.open{border-color:rgba(255,58,0,.25)}
+/* faq */
+.faqsec{background:var(--bg)}
+.flist{max-width:700px;margin:0 auto}
+.fi{background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--r2);margin-bottom:10px;overflow:hidden;transition:border-color .2s}
+.fi.open{border-color:rgba(255,58,0,.25)}
 .fq{display:flex;justify-content:space-between;align-items:center;padding:20px 26px;cursor:pointer;font-weight:500;font-size:.93rem;gap:16px;transition:color .2s}
-.fq:hover,.fitem.open .fq{color:var(--or)}
+.fq:hover,.fi.open .fq{color:var(--or)}
 .fq i{color:var(--or);font-size:.75rem;transition:transform .3s;flex-shrink:0}
-.fitem.open .fq i{transform:rotate(180deg)}
+.fi.open .fq i{transform:rotate(180deg)}
 .fa{padding:0 26px;max-height:0;overflow:hidden;color:var(--mid);font-size:.9rem;font-weight:300;line-height:1.8;transition:max-height .35s ease,padding .35s ease}
-.fitem.open .fa{max-height:260px;padding:0 26px 20px}
+.fi.open .fa{max-height:260px;padding:0 26px 20px}
 
-/* ── POLICIES ── */
+/* policies */
 .polsec{background:var(--bg2);padding:64px 0}
-.pol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1020px;margin:0 auto}
-.polcard{background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--r2);padding:28px;transition:all .2s}
-.polcard:hover{border-color:var(--bdr2);transform:translateY(-3px)}
-.polcard h4{font-family:var(--ff);font-size:1.05rem;letter-spacing:.04em;margin-bottom:12px;color:var(--or)}
-.polcard p{color:var(--mid);font-size:.86rem;font-weight:300;line-height:1.75}
+.polgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1020px;margin:0 auto}
+.polc{background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--r2);padding:28px;transition:all .2s}
+.polc:hover{border-color:var(--bdr2);transform:translateY(-3px)}
+.polc h4{font-family:var(--ff);font-size:1.05rem;letter-spacing:.04em;margin-bottom:12px;color:var(--or)}
+.polc p{color:var(--mid);font-size:.86rem;font-weight:300;line-height:1.75}
 
-/* ── FOOTER ── */
+/* footer */
 footer{background:#020208;border-top:1px solid var(--bdr);padding:56px 0 0}
 .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:52px;margin-bottom:52px}
 .fbrand p{color:var(--dim);font-size:.86rem;font-weight:300;margin:12px 0 20px;max-width:240px;line-height:1.7}
@@ -421,20 +285,20 @@ footer{background:#020208;border-top:1px solid var(--bdr);padding:56px 0 0}
 .fcol a:hover{color:var(--txt)}
 .fbot{border-top:1px solid var(--bdr);padding:22px 0;display:flex;justify-content:space-between;font-size:.78rem;color:var(--dim);font-weight:300}
 
-/* ── REVEAL ── */
+/* reveal */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
 .rv.in{opacity:1;transform:translateY(0)}
 
-/* ── RESPONSIVE ── */
+/* responsive */
 @media(max-width:1020px){
   .hero{grid-template-columns:1fr;min-height:auto}
   .hleft{padding:70px 48px 40px}
   .hright{min-height:480px}
   .hbg{font-size:50vw}
   .pgrid,.ogrid{grid-template-columns:1fr}
-  .osummary{position:static}
-  .pol-grid{grid-template-columns:1fr;max-width:520px}
-  .conf-steps{flex-direction:column}
+  .osum{position:static}
+  .polgrid{grid-template-columns:1fr;max-width:520px}
+  .csteps{flex-direction:column}
   .carr{transform:rotate(90deg)}
   .fgrid{grid-template-columns:1fr 1fr}
 }
@@ -449,42 +313,34 @@ footer{background:#020208;border-top:1px solid var(--bdr);padding:56px 0 0}
   .frow{grid-template-columns:1fr}
   .ptabs{flex-direction:column}
   .oform{padding:26px 18px}
-  .confbox{padding:40px 22px}
+  .cbox{padding:40px 22px}
   .fgrid{grid-template-columns:1fr}
   .fbot{flex-direction:column;gap:8px;text-align:center}
 }
-
-/* shake */
 @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
 </style>
 </head>
 <body>
 
-<!-- ambient blobs -->
 <div class="amb a1"></div>
 <div class="amb a2"></div>
-<div class="amb a3"></div>
+<div class="loader" id="ldr"><div class="spin"></div><p>Processing your payment…</p></div>
 
-<!-- loader -->
-<div class="loader" id="loader"><div class="spin"></div><p>Sending your order…</p></div>
-
-<!-- ══════════ NAV ══════════ -->
+<!-- NAV -->
 <nav class="nav" id="nav">
   <a href="#top" class="logo">BLOCK<em>FIGS</em></a>
   <ul class="nlinks" id="nl">
-    <li><a href="#top" onclick="closemenu()">Home</a></li>
-    <li><a href="#shop" onclick="closemenu()">Shop</a></li>
-    <li><a href="#faq" onclick="closemenu()">FAQ</a></li>
-    <li><a href="#order" class="ncta" onclick="closemenu()">Order Now</a></li>
+    <li><a href="#top" onclick="cm()">Home</a></li>
+    <li><a href="#shop" onclick="cm()">Shop</a></li>
+    <li><a href="#faq" onclick="cm()">FAQ</a></li>
+    <li><a href="#order" class="ncta" onclick="cm()">Order Now</a></li>
   </ul>
   <button class="burger" id="bur" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- ══════════ HERO ══════════ -->
+<!-- HERO -->
 <section class="hero" id="top">
   <div class="hbg">BF</div>
-
-  <!-- LEFT -->
   <div class="hleft">
     <div class="badge"><span class="dot"></span>&nbsp; Now Taking Orders</div>
     <h1>YOUR<br>AVATAR<br><span class="hl">IN YOUR<br>HANDS.</span></h1>
@@ -499,23 +355,18 @@ footer{background:#020208;border-top:1px solid var(--bdr);padding:56px 0 0}
       <div class="titem"><i class="fas fa-globe" style="color:var(--cy)"></i>&nbsp;Ships worldwide</div>
     </div>
   </div>
-
-  <!-- RIGHT: figure -->
   <div class="hright">
-    <div class="sring sr1"></div>
-    <div class="sring sr2"></div>
-    <div class="sring sr3"></div>
+    <div class="sring sr1"></div><div class="sring sr2"></div>
     <div class="sglow"></div>
     <div class="fig-stage">
       <div class="fig">
         <div class="fh"><div class="fe l"></div><div class="fe r"></div><div class="fm"></div></div>
-        <div class="fneck"></div>
-        <div class="fbody"></div>
+        <div class="fneck"></div><div class="fbody"></div>
         <div class="farm l"></div><div class="farm r"></div>
         <div class="fbelt"></div>
         <div class="fleg l"></div><div class="fleg r"></div>
       </div>
-      <div class="fig-shadow-el"></div>
+      <div class="fig-shad"></div>
     </div>
     <div class="ftag ft1"><i class="fas fa-cube"></i>3D Printed</div>
     <div class="ftag ft2"><i class="fas fa-user"></i>Your Avatar</div>
@@ -523,26 +374,21 @@ footer{background:#020208;border-top:1px solid var(--bdr);padding:56px 0 0}
   </div>
 </section>
 
-<!-- marquee -->
-<div class="marquee">
-  <div class="mtrack">
-    <span>CUSTOM 3D PRINT</span><span class="sep">·</span><span>YOUR ROBLOX AVATAR</span><span class="sep">·</span><span>2 INCH — $45</span><span class="sep">·</span><span>3 INCH — $60</span><span class="sep">·</span><span>FREE SHIPPING</span><span class="sep">·</span><span>GIFT READY</span><span class="sep">·</span><span>JUST YOUR USERNAME</span><span class="sep">·</span><span>PAYPAL PROTECTED</span><span class="sep">·</span>
-    <span>CUSTOM 3D PRINT</span><span class="sep">·</span><span>YOUR ROBLOX AVATAR</span><span class="sep">·</span><span>2 INCH — $45</span><span class="sep">·</span><span>3 INCH — $60</span><span class="sep">·</span><span>FREE SHIPPING</span><span class="sep">·</span><span>GIFT READY</span><span class="sep">·</span><span>JUST YOUR USERNAME</span><span class="sep">·</span><span>PAYPAL PROTECTED</span><span class="sep">·</span>
-  </div>
-</div>
+<div class="marquee"><div class="mtrack">
+  <span>CUSTOM 3D PRINT</span><span class="sep">·</span><span>YOUR ROBLOX AVATAR</span><span class="sep">·</span><span>2 INCH — $45</span><span class="sep">·</span><span>3 INCH — $60</span><span class="sep">·</span><span>FREE SHIPPING</span><span class="sep">·</span><span>GIFT READY</span><span class="sep">·</span><span>PAYPAL PROTECTED</span><span class="sep">·</span>
+  <span>CUSTOM 3D PRINT</span><span class="sep">·</span><span>YOUR ROBLOX AVATAR</span><span class="sep">·</span><span>2 INCH — $45</span><span class="sep">·</span><span>3 INCH — $60</span><span class="sep">·</span><span>FREE SHIPPING</span><span class="sep">·</span><span>GIFT READY</span><span class="sep">·</span><span>PAYPAL PROTECTED</span><span class="sep">·</span>
+</div></div>
 
-<!-- ══════════ PRODUCTS ══════════ -->
+<!-- PRODUCTS -->
 <section class="sec psec" id="shop">
   <div class="wrap">
     <div style="text-align:center"><span class="eyebrow">Choose Your Size</span></div>
     <h2 class="sec-h">Pick Your Figure</h2>
     <p class="sec-p">Two sizes, same outstanding quality. Every figure is 3D printed from your exact Roblox avatar.</p>
     <div class="pgrid">
-
-      <!-- 2 inch -->
       <div class="pcard poc rv">
-        <div class="pimg-wrap">
-          <span class="pbadge pbadge-or">Most Popular</span>
+        <div class="pimg">
+          <span class="pbadge pbor">Most Popular</span>
           <div class="pfig" style="width:88px;height:158px;position:relative">
             <div style="position:absolute;width:56px;height:56px;border-radius:11px;background:linear-gradient(145deg,#ffba85,#ff4a12);top:0;left:50%;transform:translateX(-50%);box-shadow:0 6px 20px rgba(255,74,18,.55)"></div>
             <div style="position:absolute;width:15px;height:6px;background:#e04200;border-radius:3px;top:58px;left:50%;transform:translateX(-50%)"></div>
@@ -556,8 +402,8 @@ footer{background:#020208;border-top:1px solid var(--bdr);padding:56px 0 0}
         </div>
         <div class="pbody">
           <h3 class="pname">2 INCH FIGURE</h3>
-          <p class="pdesc">Compact and detailed. Perfect for your desk, shelf, or as a gift for any Roblox fan.</p>
-          <div class="ppr"><span class="price-big">$45</span><span class="price-sm">.00</span></div>
+          <p class="pdesc">Compact and detailed. Perfect for your desk, shelf, or as a gift.</p>
+          <div class="ppr"><span class="pbig">$45</span><span class="psm">.00</span></div>
           <div class="pship"><i class="fas fa-truck"></i> Free worldwide shipping</div>
           <ul class="pfeat">
             <li><i class="fas fa-check-circle"></i> Built from your exact Roblox username</li>
@@ -566,14 +412,12 @@ footer{background:#020208;border-top:1px solid var(--bdr);padding:56px 0 0}
             <li><i class="fas fa-check-circle"></i> Ships in 7–12 business days</li>
           </ul>
           <a href="#order" class="btn btn-or btn-w" onclick="pick('2inch')"><i class="fas fa-shopping-cart"></i> Order for $45</a>
-          <div class="psec-note"><i class="fas fa-lock"></i> Secure PayPal checkout</div>
+          <div class="psafe"><i class="fas fa-lock"></i> Secure PayPal checkout</div>
         </div>
       </div>
-
-      <!-- 3 inch -->
       <div class="pcard ppc rv">
-        <div class="pimg-wrap">
-          <span class="pbadge pbadge-pu">Premium</span>
+        <div class="pimg">
+          <span class="pbadge pbpu">Premium</span>
           <div class="pfig" style="width:116px;height:208px;position:relative">
             <div class="fh" style="position:absolute;top:0;left:50%;transform:translateX(-50%)"></div>
             <div class="fe l"></div><div class="fe r"></div><div class="fm"></div>
@@ -585,8 +429,8 @@ footer{background:#020208;border-top:1px solid var(--bdr);padding:56px 0 0}
         </div>
         <div class="pbody">
           <h3 class="pname">3 INCH FIGURE</h3>
-          <p class="pdesc">Our largest size. Maximum detail for the true collector who wants every feature visible.</p>
-          <div class="ppr"><span class="price-big">$60</span><span class="price-sm">.00</span></div>
+          <p class="pdesc">Our largest size. Maximum detail for the true collector.</p>
+          <div class="ppr"><span class="pbig">$60</span><span class="psm">.00</span></div>
           <div class="pship"><i class="fas fa-truck"></i> Free worldwide shipping</div>
           <ul class="pfeat">
             <li><i class="fas fa-check-circle"></i> Built from your exact Roblox username</li>
@@ -595,23 +439,21 @@ footer{background:#020208;border-top:1px solid var(--bdr);padding:56px 0 0}
             <li><i class="fas fa-check-circle"></i> Ships in 7–12 business days</li>
           </ul>
           <a href="#order" class="btn btn-pu btn-w" onclick="pick('3inch')"><i class="fas fa-shopping-cart"></i> Order for $60</a>
-          <div class="psec-note"><i class="fas fa-lock"></i> Secure PayPal checkout</div>
+          <div class="psafe"><i class="fas fa-lock"></i> Secure PayPal checkout</div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ══════════ ORDER ══════════ -->
+<!-- ORDER -->
 <section class="sec osec" id="order">
   <div class="wrap">
     <div style="text-align:center"><span class="eyebrow">Checkout</span></div>
     <h2 class="sec-h">Place Your Order</h2>
-    <p class="sec-p">Fill in your details below. Your full order info is automatically sent to us the moment payment goes through.</p>
-
+    <p class="sec-p">Fill in your details. Payment goes through PayPal — real money, real order.</p>
     <div class="ptabs">
-      <div class="ptab act-or" id="t2" onclick="pick('2inch')">
+      <div class="ptab tab-or" id="t2" onclick="pick('2inch')">
         <span class="ptab-tick"><i class="fas fa-check-circle"></i></span>
         <div class="ptab-name">2 INCH FIGURE</div>
         <div class="ptab-price">$45.00</div>
@@ -622,27 +464,21 @@ footer{background:#020208;border-top:1px solid var(--bdr);padding:56px 0 0}
         <div class="ptab-price">$60.00</div>
       </div>
     </div>
-
     <div class="ogrid">
-
-      <!-- SUMMARY -->
-      <aside class="osummary rv">
+      <aside class="osum rv">
         <h3>Order Summary</h3>
         <div class="srow"><span id="sname">2 Inch Roblox Figure</span><span id="sprice">$45.00</span></div>
         <div class="srow"><span>Shipping</span><span style="color:var(--gr)">FREE</span></div>
         <div class="sdiv"></div>
         <div class="stot"><span>Total</span><span id="stotal">$45.00</span></div>
-        <div class="snote"><i class="fas fa-lock"></i> Secure PayPal — buyer protection on every order</div>
+        <div class="snote"><i class="fas fa-lock"></i> Real PayPal payment — money is charged immediately on approval</div>
         <div class="snote"><i class="fas fa-clock"></i> Ships in 7–12 business days</div>
-        <div class="snote"><i class="fas fa-envelope"></i> Order details sent to us automatically</div>
-        <div class="snote"><i class="fas fa-credit-card"></i> Visa, Mastercard, Amex accepted</div>
+        <div class="snote"><i class="fas fa-envelope"></i> Order details sent to us automatically after payment</div>
+        <div class="snote"><i class="fas fa-credit-card"></i> Visa, Mastercard, Amex &amp; PayPal accepted</div>
       </aside>
-
-      <!-- FORM -->
       <form class="oform rv" id="oform" novalidate>
         <input type="text" id="hp" style="display:none" tabindex="-1" autocomplete="off">
-
-        <div class="fhdr"><i class="fas fa-user"></i>&nbsp; Your Information</div>
+        <div class="fhdr"><i class="fas fa-user"></i>&nbsp;Your Information</div>
         <div class="frow">
           <div class="fg">
             <label>Full Name <span class="req">*</span></label>
@@ -655,15 +491,13 @@ footer{background:#020208;border-top:1px solid var(--bdr);padding:56px 0 0}
             <span class="ferr" id="e-em"></span>
           </div>
         </div>
-
         <div class="rbox">
           <label><i class="fas fa-gamepad"></i>&nbsp; Roblox Username <span class="req">*</span></label>
           <input type="text" id="ru" placeholder="YourExactRobloxUsername">
           <span class="hint">We use this to 3D print your exact avatar — double-check the spelling!</span>
           <span class="ferr" id="e-ru"></span>
         </div>
-
-        <div class="fhdr"><i class="fas fa-map-marker-alt"></i>&nbsp; Shipping Address</div>
+        <div class="fhdr"><i class="fas fa-map-marker-alt"></i>&nbsp;Shipping Address</div>
         <div class="fg">
           <label>Street Address <span class="req">*</span></label>
           <input type="text" id="ad" placeholder="123 Main Street, Apt 4B" autocomplete="street-address">
@@ -695,53 +529,44 @@ footer{background:#020208;border-top:1px solid var(--bdr);padding:56px 0 0}
         </div>
         <div class="fg">
           <label>Notes (optional)</label>
-          <textarea id="nt" rows="3" maxlength="300" placeholder="Anything we should know? (max 300 characters)"></textarea>
+          <textarea id="nt" rows="3" maxlength="300" placeholder="Anything we should know?"></textarea>
         </div>
 
-        <!-- PAYMENT BOX -->
+        <!-- PAYMENT SECTION -->
         <div class="paybox">
-          <div class="pay-top">
-            <i class="fas fa-lock"></i> 256-bit SSL encrypted &nbsp;·&nbsp; Powered by PayPal
+          <div class="pay-hdr">Secure Payment</div>
+          <div class="pay-methods">
+            <div class="pm"><i class="fab fa-paypal" style="color:#009cde"></i>PayPal</div>
+            <div class="pm"><i class="far fa-credit-card" style="color:#aaa"></i>Visa</div>
+            <div class="pm"><i class="far fa-credit-card" style="color:#aaa"></i>Mastercard</div>
+            <div class="pm"><i class="far fa-credit-card" style="color:#aaa"></i>Amex</div>
           </div>
-
-          <!-- accepted payment methods -->
-          <div class="pay-icons">
-            <div class="pay-icon"><i class="fab fa-paypal" style="color:#009cde"></i> PayPal</div>
-            <div class="pay-icon"><i class="far fa-credit-card" style="color:#1a1f71"></i> Visa</div>
-            <div class="pay-icon"><i class="far fa-credit-card" style="color:#eb001b"></i> Mastercard</div>
-            <div class="pay-icon"><i class="far fa-credit-card" style="color:#007bc1"></i> Amex</div>
+          <!-- form error banner -->
+          <div class="form-err-banner" id="errbanner">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="errmsg">Please complete all required fields above first.</span>
           </div>
-
-          <!-- validation reminder (shows when form has errors) -->
-          <div class="val-reminder" id="vr">
-            <i class="fas fa-exclamation-circle"></i>
-            <span id="vr-msg">Please fill in all required fields above before paying.</span>
-          </div>
-
-          <!-- PayPal button renders here -->
-          <div id="pp-container"></div>
-
-          <p class="pay-note" id="pay-note">
-            Click the button above to pay securely.<br>
-            No PayPal account needed — choose "Pay with Debit or Credit Card" inside PayPal.
+          <!-- PayPal mounts here — NO overflow:hidden on any parent -->
+          <div id="pp-btn"></div>
+          <p class="pay-note" id="paynote">
+            No PayPal account needed — click "Pay with Debit or Credit Card" inside PayPal.
           </p>
         </div>
-
       </form>
     </div>
   </div>
 </section>
 
-<!-- ══════════ CONFIRMATION ══════════ -->
+<!-- CONFIRMATION -->
 <section class="confsec" id="conf">
   <div class="wrap">
-    <div class="confbox">
-      <div class="conf-icon"><i class="fas fa-check"></i></div>
+    <div class="cbox">
+      <div class="cicon"><i class="fas fa-check"></i></div>
       <h2>ORDER CONFIRMED!</h2>
-      <p class="conf-msg" id="conf-msg">Thank you! Your custom figure is on its way to being made.</p>
-      <div class="conf-det" id="conf-det"></div>
-      <div class="conf-steps">
-        <div class="cstep"><div class="cnum">1</div><div><strong>Payment Done</strong>PayPal receipt sent to your email</div></div>
+      <p class="cmsg" id="cmsg">Thank you! Your custom figure will be 3D printed and shipped to you.</p>
+      <div class="cdet" id="cdet"></div>
+      <div class="csteps">
+        <div class="cstep"><div class="cnum">1</div><div><strong>Payment Done</strong>PayPal receipt in your email</div></div>
         <div class="carr"><i class="fas fa-arrow-right"></i></div>
         <div class="cstep"><div class="cnum">2</div><div><strong>We 3D Print</strong>Using your Roblox username</div></div>
         <div class="carr"><i class="fas fa-arrow-right"></i></div>
@@ -752,35 +577,35 @@ footer{background:#020208;border-top:1px solid var(--bdr);padding:56px 0 0}
   </div>
 </section>
 
-<!-- ══════════ FAQ ══════════ -->
-<section class="sec faq-sec" id="faq">
+<!-- FAQ -->
+<section class="sec faqsec" id="faq">
   <div class="wrap">
     <div style="text-align:center"><span class="eyebrow">FAQ</span></div>
     <h2 class="sec-h">Common Questions</h2>
     <p class="sec-p">Everything you need to know before placing your order.</p>
-    <div class="faq-list">
-      <div class="fitem rv"><div class="fq" onclick="doFaq(this)">How do you recreate my avatar? <i class="fas fa-chevron-down"></i></div><div class="fa">Just give us your Roblox username at checkout. We look it up and 3D print a figure that matches your exact look. We never need your password.</div></div>
-      <div class="fitem rv"><div class="fq" onclick="doFaq(this)">What is the difference between 2 inch and 3 inch? <i class="fas fa-chevron-down"></i></div><div class="fa">The 2 inch figure ($45) is compact and great for a desk or shelf. The 3 inch ($60) is larger with more visible detail — ideal for collectors who want every feature to stand out.</div></div>
-      <div class="fitem rv"><div class="fq" onclick="doFaq(this)">How long does shipping take? <i class="fas fa-chevron-down"></i></div><div class="fa">Production takes 3–5 business days, and shipping takes 4–7 business days. Total estimated time is 7–12 business days. We ship worldwide for free.</div></div>
-      <div class="fitem rv"><div class="fq" onclick="doFaq(this)">What if I'm not happy with my order? <i class="fas fa-chevron-down"></i></div><div class="fa">Contact us and we will work to make it right. Custom items cannot be returned unless they arrive damaged or do not match your avatar.</div></div>
-      <div class="fitem rv"><div class="fq" onclick="doFaq(this)">Can I pay by credit or debit card? <i class="fas fa-chevron-down"></i></div><div class="fa">Yes! When the PayPal popup opens, click "Pay with Debit or Credit Card" at the bottom. No PayPal account needed. Visa, Mastercard, and Amex are all accepted. Your card details go directly to PayPal — we never see them.</div></div>
-      <div class="fitem rv"><div class="fq" onclick="doFaq(this)">What if I change my avatar after ordering? <i class="fas fa-chevron-down"></i></div><div class="fa">Email us within 24 hours of placing your order. After that we may have already started printing and cannot change the design.</div></div>
+    <div class="flist">
+      <div class="fi rv"><div class="fq" onclick="doFaq(this)">How do you recreate my avatar? <i class="fas fa-chevron-down"></i></div><div class="fa">Just give us your Roblox username at checkout. We look it up and 3D print a figure that matches your exact look. We never need your password.</div></div>
+      <div class="fi rv"><div class="fq" onclick="doFaq(this)">2 inch vs 3 inch — what's the difference? <i class="fas fa-chevron-down"></i></div><div class="fa">The 2 inch ($45) is compact, great for a desk or shelf. The 3 inch ($60) is larger with more visible detail — ideal for collectors.</div></div>
+      <div class="fi rv"><div class="fq" onclick="doFaq(this)">How long does shipping take? <i class="fas fa-chevron-down"></i></div><div class="fa">Production: 3–5 business days. Shipping: 4–7 business days. Total: 7–12 business days. We ship worldwide for free.</div></div>
+      <div class="fi rv"><div class="fq" onclick="doFaq(this)">Will real money be charged from my card or PayPal? <i class="fas fa-chevron-down"></i></div><div class="fa">Yes — this is a real PayPal Live payment. Money is charged immediately when you approve it. You will receive a PayPal receipt in your email. Your card data goes directly to PayPal — we never see it.</div></div>
+      <div class="fi rv"><div class="fq" onclick="doFaq(this)">Can I pay by credit or debit card without a PayPal account? <i class="fas fa-chevron-down"></i></div><div class="fa">Yes! When the PayPal window opens, click "Pay with Debit or Credit Card" at the bottom. Enter your card details there. No PayPal account required.</div></div>
+      <div class="fi rv"><div class="fq" onclick="doFaq(this)">What if I'm not happy with my order? <i class="fas fa-chevron-down"></i></div><div class="fa">Contact us and we will make it right. Custom items cannot be returned unless they arrive damaged or do not match your avatar.</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ POLICIES ══════════ -->
+<!-- POLICIES -->
 <section class="polsec" id="policies">
   <div class="wrap">
-    <div class="pol-grid">
-      <div class="polcard rv"><h4><i class="fas fa-undo"></i> Refund Policy</h4><p>Custom 3D printed figures cannot be returned unless they arrive damaged or do not match your avatar. Contact us within 7 days of receiving your order.</p></div>
-      <div class="polcard rv"><h4><i class="fas fa-shipping-fast"></i> Shipping Policy</h4><p>Production 3–5 days, shipping 4–7 days. Total: 7–12 business days. Free worldwide shipping. Tracking provided when available.</p></div>
-      <div class="polcard rv"><h4><i class="fas fa-user-shield"></i> Privacy Policy</h4><p>Your data is used only to fulfill your order. We never sell or share it. Payment is handled entirely by PayPal — we never see your card details.</p></div>
+    <div class="polgrid">
+      <div class="polc rv"><h4><i class="fas fa-undo"></i> Refund Policy</h4><p>Custom 3D printed figures cannot be returned unless they arrive damaged or do not match your avatar. Contact us within 7 days of receiving your order.</p></div>
+      <div class="polc rv"><h4><i class="fas fa-shipping-fast"></i> Shipping Policy</h4><p>Production 3–5 days, shipping 4–7 days. Total 7–12 business days. Free worldwide shipping. Tracking provided when available.</p></div>
+      <div class="polc rv"><h4><i class="fas fa-user-shield"></i> Privacy Policy</h4><p>Your data is used only to fulfill your order. Payment is handled entirely by PayPal — we never see your card details.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ FOOTER ══════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="fgrid">
@@ -788,9 +613,9 @@ footer{background:#020208;border-top:1px solid var(--bdr);padding:56px 0 0}
         <div class="logo" style="font-size:1.75rem">BLOCK<em>FIGS</em></div>
         <p>Custom 3D printed Roblox figures, made just for you.</p>
         <div class="socials">
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
         </div>
       </div>
       <div class="fcol">
@@ -813,63 +638,59 @@ footer{background:#020208;border-top:1px solid var(--bdr);padding:56px 0 0}
   </div>
 </footer>
 
-<!-- ══════════ PayPal SDK loaded last, AFTER DOM is ready ══════════ -->
+<!-- ============================================================
+  ALL JS + PayPal SDK at the very bottom — after all DOM exists
+  CRITICAL FIX: PayPal payment happens FIRST.
+  Email is sent AFTER payment captures — never blocks payment.
+============================================================ -->
 <script>
-/* ── CONFIG ── */
 const SVC='service_fti25oj', TPL='template_l3iqwta';
-let clicked=false;
 let prod={id:'2inch',name:'2 Inch Roblox Figure',price:'45.00',label:'$45.00'};
 
-/* ── NAV ── */
+/* NAV */
 const nav=document.getElementById('nav'),bur=document.getElementById('bur'),nl=document.getElementById('nl');
 window.addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>40));
 bur.addEventListener('click',()=>{
-  const o=nl.classList.toggle('open');
-  const s=bur.querySelectorAll('span');
+  const o=nl.classList.toggle('open'),s=bur.querySelectorAll('span');
   if(o){s[0].style.transform='translateY(7px) rotate(45deg)';s[1].style.opacity='0';s[2].style.transform='translateY(-7px) rotate(-45deg)'}
   else s.forEach(x=>{x.style.transform='';x.style.opacity=''});
 });
-document.addEventListener('click',e=>{if(!nav.contains(e.target))closemenu()});
-function closemenu(){nl.classList.remove('open');bur.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity=''})}
+document.addEventListener('click',e=>{if(!nav.contains(e.target))cm()});
+function cm(){nl.classList.remove('open');bur.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity=''})}
 
-/* ── SCROLL REVEAL ── */
+/* REVEAL */
 const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})},{threshold:.07});
 document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
 
-/* ── FAQ ── */
+/* FAQ */
 function doFaq(btn){
   const it=btn.parentElement,was=it.classList.contains('open');
-  document.querySelectorAll('.fitem.open').forEach(i=>i.classList.remove('open'));
+  document.querySelectorAll('.fi.open').forEach(i=>i.classList.remove('open'));
   if(!was)it.classList.add('open');
 }
 
-/* ── XSS ── */
+/* XSS */
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 
-/* ── PRODUCT SELECTOR ── */
+/* PRODUCT */
 function pick(id){
   prod=id==='3inch'
     ?{id:'3inch',name:'3 Inch Roblox Figure',price:'60.00',label:'$60.00'}
     :{id:'2inch',name:'2 Inch Roblox Figure',price:'45.00',label:'$45.00'};
-  const t2=document.getElementById('t2'),t3=document.getElementById('t3');
-  t2.className='ptab'+(id==='2inch'?' act-or':'');
-  t3.className='ptab'+(id==='3inch'?' act-pu':'');
+  document.getElementById('t2').className='ptab'+(id==='2inch'?' tab-or':'');
+  document.getElementById('t3').className='ptab'+(id==='3inch'?' tab-pu':'');
   document.getElementById('sname').textContent=prod.name;
   document.getElementById('sprice').textContent=prod.label;
   document.getElementById('stotal').textContent=prod.label;
   document.getElementById('order').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-/* ── FORM VALIDATION ── */
+/* VALIDATION */
 const FIELDS=[
-  {id:'fn',label:'Full name'},
-  {id:'em',label:'Email address'},
-  {id:'ru',label:'Roblox username'},
-  {id:'ad',label:'Street address'},
-  {id:'ci',label:'City'},
-  {id:'st',label:'State/Province'},
-  {id:'zp',label:'ZIP code'},
-  {id:'co',label:'Country'},
+  {id:'fn',label:'Full name'},{id:'em',label:'Email address'},
+  {id:'ru',label:'Roblox username'},{id:'ad',label:'Street address'},
+  {id:'ci',label:'City'},{id:'st',label:'State/Province'},
+  {id:'zp',label:'ZIP code'},{id:'co',label:'Country'},
 ];
 function showErr(id,msg){const el=document.getElementById(id),er=document.getElementById('e-'+id);if(el)el.classList.add('err');if(er)er.textContent=msg}
 function clearErr(id){const el=document.getElementById(id),er=document.getElementById('e-'+id);if(el)el.classList.remove('err');if(er)er.textContent=''}
@@ -879,21 +700,20 @@ function validate(){
     clearErr(id);
     const v=(document.getElementById(id)?.value||'').trim();
     if(!v){showErr(id,label+' is required.');if(!first)first=id;ok=false;return}
-    if(id==='em'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){showErr(id,'Enter a valid email address.');if(!first)first=id;ok=false;return}
-    if(id==='ru'&&!/^[a-zA-Z0-9_]{3,20}$/.test(v)){showErr(id,'3–20 chars: letters, numbers, underscores only.');if(!first)first=id;ok=false}
+    if(id==='em'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){showErr(id,'Enter a valid email.');if(!first)first=id;ok=false;return}
+    if(id==='ru'&&!/^[a-zA-Z0-9_]{3,20}$/.test(v)){showErr(id,'3–20 chars: letters, numbers, underscores.');if(!first)first=id;ok=false}
   });
   return{ok,first};
 }
-FIELDS.forEach(({id})=>{const el=document.getElementById(id);if(el)el.addEventListener('input',()=>{clearErr(id);hideVR()})});
+FIELDS.forEach(({id})=>{
+  const el=document.getElementById(id);
+  if(el)el.addEventListener('input',()=>{clearErr(id);document.getElementById('errbanner').classList.remove('show')});
+});
 
-function showVR(msg){const vr=document.getElementById('vr'),vm=document.getElementById('vr-msg');vr.classList.add('show');vm.textContent=msg||'Please fill in all required fields above before paying.'}
-function hideVR(){document.getElementById('vr').classList.remove('show')}
-
-/* ── ORDER DATA ── */
+/* ORDER DATA */
 function getData(){
   return{
-    product_name:prod.name,
-    price:'$'+prod.price,
+    product_name:prod.name,price:'$'+prod.price,
     customer_name:document.getElementById('fn').value.trim(),
     customer_email:document.getElementById('em').value.trim(),
     roblox_username:document.getElementById('ru').value.trim(),
@@ -909,135 +729,160 @@ function getData(){
   };
 }
 
-/* ── HELPERS ── */
-function setLoad(on){document.getElementById('loader').classList.toggle('on',on)}
-function lockPP(on){document.getElementById('pp-container').classList.toggle('locked',on)}
-function resetPPui(msg){clicked=false;lockPP(false);if(msg){const n=document.getElementById('pay-note');n.textContent=msg;n.style.color=msg.toLowerCase().includes('error')||msg.toLowerCase().includes('cancel')?'#f87171':'var(--dim)'}}
-
-/* ── PAYPAL: loaded dynamically AFTER page ready ── */
-function initPayPal(){
-  if(typeof paypal==='undefined'){
-    console.error('PayPal SDK not loaded');
-    document.getElementById('pp-container').innerHTML='<p style="color:#f87171;font-size:.85rem;text-align:center;padding:16px">Payment system unavailable. Please refresh the page.</p>';
-    return;
-  }
-  paypal.Buttons({
-    style:{layout:'vertical',color:'blue',shape:'rect',label:'pay',height:52},
-
-    /* STEP 1: validate BEFORE PayPal popup opens */
-    onClick:async function(data,actions){
-      /* honeypot check */
-      if(document.getElementById('hp').value!=='')return actions.reject();
-      /* double-click guard */
-      if(clicked)return actions.reject();
-
-      const{ok,first}=validate();
-      if(!ok){
-        /* scroll to first error */
-        if(first){
-          const el=document.getElementById(first);
-          if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
-        }
-        /* shake the form */
-        const fm=document.getElementById('oform');
-        fm.style.animation='none';void fm.offsetHeight;fm.style.animation='shake .4s ease';
-        setTimeout(()=>{fm.style.animation=''},400);
-        showVR('Please complete all required fields above before paying.');
-        return actions.reject();
-      }
-
-      /* lock UI and send email */
-      clicked=true;lockPP(true);setLoad(true);
-      try{
-        await emailjs.send(SVC,TPL,getData());
-        setLoad(false);
-        return actions.resolve();
-      }catch(err){
-        console.error('EmailJS error:',err);
-        setLoad(false);
-        resetPPui('⚠ Error sending order details. Please try again.');
-        alert('There was a problem sending your order details. Please try again. If this keeps happening, contact us directly.');
-        return actions.reject();
-      }
-    },
-
-    /* STEP 2: create order with correct price */
-    createOrder:function(data,actions){
-      const o=getData();
-      return actions.order.create({
-        purchase_units:[{
-          amount:{value:prod.price,currency_code:'USD'},
-          description:prod.name+' - @'+o.roblox_username,
-          custom_id:'roblox:'+o.roblox_username+'|name:'+o.customer_name+'|product:'+prod.id,
-        }]
-      });
-    },
-
-    /* STEP 3: capture payment and show confirmation */
-    onApprove:function(data,actions){
-      setLoad(true);
-      return actions.order.capture().then(function(details){
-        setLoad(false);
-        showConf(getData(),details);
-      }).catch(function(err){
-        setLoad(false);
-        console.error('Capture error:',err);
-        resetPPui('');
-        alert('Payment was approved but we could not confirm it. Please save your PayPal transaction ID and contact us.');
-      });
-    },
-
-    onError:function(err){
-      console.error('PayPal error:',err);
-      setLoad(false);
-      resetPPui('A PayPal error occurred. Please refresh and try again.');
-    },
-
-    onCancel:function(){
-      resetPPui('Payment cancelled — click Pay again when you\'re ready.');
-    }
-
-  }).render('#pp-container');
+/* LOADER */
+function setLoad(on,msg){
+  document.getElementById('ldr').classList.toggle('on',on);
+  if(msg)document.querySelector('#ldr p').textContent=msg;
 }
 
-/* ── CONFIRMATION ── */
+/* NOTE */
+function setNote(msg,cls){
+  const n=document.getElementById('paynote');
+  n.textContent=msg;n.className='pay-note'+(cls?' '+cls:'');
+}
+
+/* CONFIRMATION */
 function showConf(o,det){
   document.getElementById('order').style.display='none';
-  const sec=document.getElementById('conf');sec.style.display='block';
+  const s=document.getElementById('conf');s.style.display='block';
   const tx=det?.id||'N/A';
-  document.getElementById('conf-msg').innerHTML=
-    'Thank you! Your <strong>'+esc(o.product_name)+'</strong> will be 3D printed using the Roblox username <strong>'+esc(o.roblox_username)+'</strong>.';
-  document.getElementById('conf-det').innerHTML=
+  document.getElementById('cmsg').innerHTML='Thank you! Your <strong>'+esc(o.product_name)+'</strong> will be 3D printed using the Roblox username <strong>'+esc(o.roblox_username)+'</strong>.';
+  document.getElementById('cdet').innerHTML=
     '<div class="crow"><span class="cl">Product</span><span class="cv cv-or">'+esc(o.product_name)+'</span></div>'+
     '<div class="crow"><span class="cl">Amount Paid</span><span class="cv cv-or">'+esc(o.price)+'</span></div>'+
-    '<div class="crow"><span class="cl">PayPal TX</span><span class="cv">'+esc(tx)+'</span></div>'+
+    '<div class="crow"><span class="cl">PayPal TX ID</span><span class="cv">'+esc(tx)+'</span></div>'+
     '<div class="crow"><span class="cl">Name</span><span class="cv">'+esc(o.customer_name)+'</span></div>'+
     '<div class="crow"><span class="cl">Email</span><span class="cv">'+esc(o.customer_email)+'</span></div>'+
     '<div class="crow"><span class="cl">Roblox Username</span><span class="cv cv-or">'+esc(o.roblox_username)+'</span></div>'+
     '<div class="crow"><span class="cl">Ship To</span><span class="cv">'+esc(o.shipping_address)+'</span></div>'+
     '<div class="crow"><span class="cl">Date</span><span class="cv">'+esc(o.order_date)+'</span></div>'+
     (o.notes!=='None'?'<div class="crow"><span class="cl">Notes</span><span class="cv">'+esc(o.notes)+'</span></div>':'');
-  sec.scrollIntoView({behavior:'smooth',block:'start'});
+  s.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-/* ── RESET ── */
+/* RESET */
 function doReset(){
   document.getElementById('oform').reset();
-  hideVR();
+  document.getElementById('errbanner').classList.remove('show');
   document.getElementById('conf').style.display='none';
   document.getElementById('order').style.display='block';
-  resetPPui('Click the button above to pay securely.\nNo PayPal account needed — choose "Pay with Debit or Credit Card" inside PayPal.');
+  setNote('No PayPal account needed — click "Pay with Debit or Credit Card" inside PayPal.','');
   pick('2inch');
   window.scrollTo({top:0,behavior:'smooth'});
 }
+
+/* ============================================================
+   initPayPal — called after SDK loads
+   
+   KEY ARCHITECTURE CHANGE:
+   - onClick only validates the form (no email sending)
+   - createOrder sets up the PayPal transaction
+   - onApprove captures the REAL money, THEN sends the email
+   - Email failure NEVER blocks or cancels the payment
+============================================================ */
+function initPayPal(){
+  if(typeof paypal==='undefined'){
+    document.getElementById('pp-btn').innerHTML='<p style="color:#f87171;text-align:center;padding:16px;font-size:.85rem">Payment system failed to load. Please refresh the page.</p>';
+    return;
+  }
+
+  paypal.Buttons({
+    style:{
+      layout:'vertical',
+      color:'blue',
+      shape:'rect',
+      label:'pay',
+      height:50
+    },
+
+    /* STEP 1: validate form only — no email, no blocking network calls */
+    onClick:function(data,actions){
+      /* honeypot */
+      if(document.getElementById('hp').value!=='')return actions.reject();
+
+      const{ok,first}=validate();
+      if(!ok){
+        /* show error banner */
+        const banner=document.getElementById('errbanner');
+        document.getElementById('errmsg').textContent='Please fill in all required fields above before paying.';
+        banner.classList.add('show');
+        /* scroll to first error */
+        if(first){
+          const el=document.getElementById(first);
+          if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.focus()}
+        }
+        /* shake form */
+        const fm=document.getElementById('oform');
+        fm.style.animation='none';void fm.offsetHeight;
+        fm.style.animation='shake .4s ease';
+        setTimeout(()=>{fm.style.animation=''},400);
+        return actions.reject();
+      }
+
+      /* form is valid — proceed to PayPal */
+      document.getElementById('errbanner').classList.remove('show');
+      return actions.resolve();
+    },
+
+    /* STEP 2: create the PayPal order — this opens the PayPal window */
+    createOrder:function(data,actions){
+      const o=getData();
+      return actions.order.create({
+        purchase_units:[{
+          amount:{value:prod.price,currency_code:'USD'},
+          description:prod.name+' — @'+o.roblox_username,
+          custom_id:'roblox:'+o.roblox_username+'|name:'+o.customer_name+'|product:'+prod.id,
+        }],
+        application_context:{
+          shipping_preference:'NO_SHIPPING'
+        }
+      });
+    },
+
+    /* STEP 3: buyer approved — CAPTURE MONEY FIRST, send email after */
+    onApprove:function(data,actions){
+      setLoad(true,'Processing payment…');
+      return actions.order.capture().then(function(details){
+        setLoad(false);
+        const orderData=getData();
+        /* Show confirmation immediately — payment is done */
+        showConf(orderData,details);
+        /* Send email in background — failure does NOT affect the customer */
+        emailjs.send(SVC,TPL,orderData).then(function(){
+          console.log('Order email sent successfully');
+        }).catch(function(emailErr){
+          /* Email failed silently — payment already went through */
+          /* Log the order details to console as backup */
+          console.error('EmailJS failed — order details below:');
+          console.log(JSON.stringify(orderData,null,2));
+          console.log('PayPal TX:',details?.id);
+        });
+      }).catch(function(captureErr){
+        setLoad(false);
+        console.error('PayPal capture error:',captureErr);
+        setNote('Payment capture failed. If money was taken from your account, please contact us with your PayPal transaction ID.','bad');
+      });
+    },
+
+    onError:function(err){
+      console.error('PayPal SDK error:',err);
+      setLoad(false);
+      setNote('A PayPal error occurred. Please refresh the page and try again.','bad');
+    },
+
+    onCancel:function(){
+      setNote('Payment cancelled. Click Pay again whenever you\'re ready.','');
+    }
+
+  }).render('#pp-btn');
+}
 </script>
 
-<!-- PayPal SDK loaded LAST — after all DOM elements exist -->
+<!-- PayPal SDK loads LAST, after the DOM and all JS are ready -->
 <script
-  src="https://www.paypal.com/sdk/js?client-id=AfPYYfTdGLLlufBCzaQMOTTjjsE_d3CZsNcEeJyvFjdyagDwnEhnWWISlwntU-3Y-aqbKAvYaoVo6Um1&currency=USD"
+  src="https://www.paypal.com/sdk/js?client-id=AfPYYfTdGLLlufBCzaQMOTTjjsE_d3CZsNcEeJyvFjdyagDwnEhnWWISlwntU-3Y-aqbKAvYaoVo6Um1&currency=USD&intent=capture"
   onload="initPayPal()"
-  onerror="document.getElementById('pp-container').innerHTML='<p style=color:#f87171;font-size:.85rem;text-align:center;padding:16px>Could not load payment system. Please check your connection and refresh.</p>'">
+  onerror="document.getElementById('pp-btn').innerHTML='<p style=color:#f87171;text-align:center;padding:16px;font-size:.85rem>PayPal failed to load. Check your internet connection and refresh.</p>'">
 </script>
-
 </body>
 </html>
