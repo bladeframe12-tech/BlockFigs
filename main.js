@@ -1,188 +1,309 @@
-// BlockFigs — Main JS
-let stripe, cardEl;
-let orderData = {};
+/* ═══════════════════════════════════════════════════════
+   BlockFigs — main.js
+   EmailJS Public Key : tq8vaamQ8OqaghTBi  (loaded in index.html head)
+   EmailJS Service ID : service_4573wtn
+   EmailJS Template ID: template_r0xrxii
+   PayPal Client ID   : AV1vhhsniMX3TE8aGQ4UNLGeNlfpsWdAZoVTBJ9VvQr9qq2b57icmxGXjUYjev42Qogyl1qu9rH85_mN
+═══════════════════════════════════════════════════════ */
 
-const PRODUCTS = {
-  '2inch': { name: '2 Inch Custom Figure', price: 45, display: '$45.00' },
-  '3inch': { name: '3 Inch Custom Figure', price: 60, display: '$60.00' }
+const EMAILJS_SERVICE  = "service_4573wtn";
+const EMAILJS_TEMPLATE = "template_r0xrxii";
+
+// Tracks whether PayPal button was already clicked (prevent double payment)
+let paypalClicked = false;
+
+// Currently selected product
+let selectedProduct = {
+  id:    "2inch",
+  name:  "2 Inch Roblox Figure",
+  price: "45.00",
+  label: "$45.00"
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  initStripe();
-  initPayPal();
-  loadEmailJS();
+// ── SELECT PRODUCT ─────────────────────────────────────
+function selectProduct(id) {
+  selectedProduct = id === "3inch"
+    ? { id:"3inch", name:"3 Inch Roblox Figure", price:"60.00", label:"$60.00" }
+    : { id:"2inch", name:"2 Inch Roblox Figure", price:"45.00", label:"$45.00" };
+
+  const tab2 = document.getElementById("tab-2inch");
+  const tab3 = document.getElementById("tab-3inch");
+  tab2.className = id === "2inch" ? "ptab active-or" : "ptab";
+  tab3.className = id === "3inch" ? "ptab active-pu" : "ptab";
+  tab2.querySelector(".ptab-price").style.color = id === "2inch" ? "var(--or)"  : "var(--mu)";
+  tab3.querySelector(".ptab-price").style.color = id === "3inch" ? "#a855f7" : "var(--mu)";
+
+  document.getElementById("asideProductName").textContent  = selectedProduct.name;
+  document.getElementById("asideProductPrice").textContent = selectedProduct.label;
+  document.getElementById("asideTotalPrice").textContent   = selectedProduct.label;
+
+  document.getElementById("order").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+// ── NAVBAR ─────────────────────────────────────────────
+const navbar   = document.getElementById("navbar");
+const burger   = document.getElementById("burger");
+const navLinks = document.getElementById("navLinks");
+
+window.addEventListener("scroll", () => {
+  navbar.classList.toggle("scrolled", window.scrollY > 30);
 });
 
-function initStripe() {
-  if (!CONFIG.STRIPE_PUBLISHABLE_KEY.startsWith('pk_')) {
-    document.getElementById('stripe-status').textContent = '⚠️ Add your Stripe key in js/config.js';
-    return;
+burger.addEventListener("click", () => {
+  const open = navLinks.classList.toggle("open");
+  const s = burger.querySelectorAll("span");
+  if (open) {
+    s[0].style.transform = "translateY(7px) rotate(45deg)";
+    s[1].style.opacity   = "0";
+    s[2].style.transform = "translateY(-7px) rotate(-45deg)";
+  } else {
+    s.forEach(x => { x.style.transform = ""; x.style.opacity = ""; });
   }
-  try {
-    stripe = Stripe(CONFIG.STRIPE_PUBLISHABLE_KEY);
-    const els = stripe.elements();
-    cardEl = els.create('card', {
-      style: { base: { fontSize: '15px', color: '#F5F5F5', '::placeholder': { color: '#444' }, backgroundColor: '#1A1A1A' } }
-    });
-    cardEl.mount('#stripe-card-element');
-    document.getElementById('stripe-status').style.display = 'none';
-  } catch(e) {
-    document.getElementById('stripe-status').textContent = 'Payment error — check Stripe key.';
-  }
+});
+
+document.addEventListener("click", e => {
+  if (!navbar.contains(e.target) && navLinks.classList.contains("open")) closeMenu();
+});
+
+function closeMenu() {
+  navLinks.classList.remove("open");
+  burger.querySelectorAll("span").forEach(s => { s.style.transform = ""; s.style.opacity = ""; });
 }
 
-function initPayPal() {
-  if (typeof paypal === 'undefined') {
-    document.getElementById('paypal-button-container').innerHTML = '<p style="color:#888;font-size:0.85rem">⚠️ Add your PayPal Client ID in config.js and the script tag in index.html.</p>';
-    return;
-  }
-  paypal.Buttons({
-    createOrder: (data, actions) => {
-      const p = getProd(); if (!p) { alert('Select a product first.'); return; }
-      return actions.order.create({ purchase_units: [{ description: p.name, amount: { value: p.price.toString() } }] });
-    },
-    onApprove: async (data, actions) => {
-      const order = await actions.order.capture();
-      collectData(); orderData.paymentMethod = 'PayPal'; orderData.transactionId = order.id;
-      sendEmail(); goStep(4); showConfirm();
-    },
-    onError: err => alert('PayPal error: ' + err)
-  }).render('#paypal-button-container');
-}
-
-function loadEmailJS() {
-  const s = document.createElement('script');
-  s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
-  s.onload = () => {
-    if (CONFIG.EMAILJS_PUBLIC_KEY !== 'YOUR_EMAILJS_PUBLIC_KEY') emailjs.init(CONFIG.EMAILJS_PUBLIC_KEY);
-  };
-  document.head.appendChild(s);
-}
-
-function sendEmail() {
-  if (CONFIG.EMAILJS_PUBLIC_KEY === 'YOUR_EMAILJS_PUBLIC_KEY') { console.log('EmailJS not set. Order:', orderData); return; }
-  const params = {
-    owner_email: CONFIG.OWNER_EMAIL,
-    customer_email: orderData.email,
-    customer_name: orderData.firstName + ' ' + orderData.lastName,
-    roblox_username: orderData.robloxUsername,
-    product_name: orderData.productName,
-    product_price: orderData.productPrice,
-    address: `${orderData.address}, ${orderData.city}, ${orderData.state} ${orderData.zip}, ${orderData.country}`,
-    phone: orderData.phone || 'Not provided',
-    notes: orderData.notes || 'None',
-    payment_method: orderData.paymentMethod,
-    transaction_id: orderData.transactionId || 'N/A',
-    order_date: new Date().toLocaleString()
-  };
-  emailjs.send(CONFIG.EMAILJS_SERVICE_ID, CONFIG.EMAILJS_TEMPLATE_ID, params)
-    .then(() => console.log('Email sent!'))
-    .catch(e => console.error('Email failed:', e));
-}
-
-function getProd() {
-  const r = document.querySelector('input[name="prod"]:checked');
-  return r ? PRODUCTS[r.value] : null;
-}
-
-function updateSummary() {
-  const p = getProd();
-  const u = document.getElementById('roblox_username')?.value.trim();
-  document.getElementById('s-prod').textContent = p ? p.name : '—';
-  document.getElementById('s-user').textContent = u || '—';
-  document.getElementById('s-total').textContent = p ? p.display : '$0';
-  const pa = document.getElementById('pay-amt');
-  if (pa) pa.textContent = p ? p.display : '$0.00';
-}
-
-function selectProd(id) {
-  const r = document.querySelector(`input[name="prod"][value="${id}"]`);
-  if (r) { r.checked = true; updateSummary(); }
-}
-
-function goStep(n) {
-  if (n === 2 && !validateStep1()) return;
-  if (n === 3 && !validateStep2()) return;
-  document.querySelectorAll('.fstep').forEach(s => s.classList.remove('active'));
-  document.getElementById('fs' + n).classList.add('active');
-  document.getElementById('order').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function validateStep1() {
-  if (!getProd()) { alert('Please select a product size.'); return false; }
-  if (!document.getElementById('roblox_username').value.trim()) { alert('Please enter your Roblox username.'); return false; }
-  return true;
-}
-
-function validateStep2() {
-  const ids = ['first_name','last_name','email','address','city','zip','country'];
-  for (const id of ids) {
-    if (!document.getElementById(id).value.trim()) {
-      alert('Please fill in all required shipping fields.'); document.getElementById(id).focus(); return false;
+// ── SCROLL REVEAL ──────────────────────────────────────
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.animation = "revUp 0.55s ease both";
+      e.target.style.opacity   = "1";
+      revObs.unobserve(e.target);
     }
-  }
-  if (!/\S+@\S+\.\S+/.test(document.getElementById('email').value)) { alert('Please enter a valid email address.'); return false; }
-  return true;
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll(".prod-card, .faq-item, .aside, .oform, .policy-card").forEach(el => {
+  el.style.opacity = "0";
+  revObs.observe(el);
+});
+
+// ── FAQ ────────────────────────────────────────────────
+function toggleFaq(btn) {
+  const item    = btn.parentElement;
+  const wasOpen = item.classList.contains("open");
+  document.querySelectorAll(".faq-item.open").forEach(i => i.classList.remove("open"));
+  if (!wasOpen) item.classList.add("open");
 }
 
-function collectData() {
-  const p = getProd();
-  orderData = {
-    productName: p?.name, productPrice: p?.display,
-    robloxUsername: document.getElementById('roblox_username').value.trim(),
-    notes: document.getElementById('notes').value.trim(),
-    firstName: document.getElementById('first_name').value.trim(),
-    lastName: document.getElementById('last_name').value.trim(),
-    email: document.getElementById('email').value.trim(),
-    phone: document.getElementById('phone').value.trim(),
-    address: document.getElementById('address').value.trim(),
-    city: document.getElementById('city').value.trim(),
-    state: document.getElementById('state').value.trim(),
-    zip: document.getElementById('zip').value.trim(),
-    country: document.getElementById('country').value.trim()
+// ── ESCAPE HTML (XSS protection) ──────────────────────
+function esc(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+// ── FORM VALIDATION ────────────────────────────────────
+const FIELDS = [
+  { id:"fullName",   label:"Full name"       },
+  { id:"email",      label:"Email address"   },
+  { id:"robloxUser", label:"Roblox username" },
+  { id:"address",    label:"Street address"  },
+  { id:"city",       label:"City"            },
+  { id:"state",      label:"State/Province"  },
+  { id:"zip",        label:"ZIP code"        },
+  { id:"country",    label:"Country"         },
+];
+
+function showErr(id, msg) {
+  const el  = document.getElementById(id);
+  const err = document.getElementById("err-" + id);
+  if (el)  el.classList.add("err");
+  if (err) err.textContent = msg;
+}
+
+function clearErr(id) {
+  const el  = document.getElementById(id);
+  const err = document.getElementById("err-" + id);
+  if (el)  el.classList.remove("err");
+  if (err) err.textContent = "";
+}
+
+function validateForm() {
+  let valid = true;
+  FIELDS.forEach(({ id, label }) => {
+    clearErr(id);
+    const val = (document.getElementById(id)?.value || "").trim();
+    if (!val) {
+      showErr(id, `${label} is required.`);
+      valid = false;
+      return;
+    }
+    if (id === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+      showErr(id, "Enter a valid email address.");
+      valid = false;
+      return;
+    }
+    if (id === "robloxUser" && !/^[a-zA-Z0-9_]{3,20}$/.test(val)) {
+      showErr(id, "3-20 characters: letters, numbers, underscores only.");
+      valid = false;
+    }
+  });
+  return valid;
+}
+
+FIELDS.forEach(({ id }) => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener("input", () => clearErr(id));
+});
+
+// ── COLLECT ORDER DATA ─────────────────────────────────
+function getOrderData() {
+  return {
+    product_name:     selectedProduct.name,
+    price:            "$" + selectedProduct.price,
+    customer_name:    document.getElementById("fullName").value.trim(),
+    customer_email:   document.getElementById("email").value.trim(),
+    roblox_username:  document.getElementById("robloxUser").value.trim(),
+    shipping_address: [
+      document.getElementById("address").value.trim(),
+      document.getElementById("city").value.trim(),
+      document.getElementById("state").value.trim(),
+      document.getElementById("zip").value.trim(),
+      document.getElementById("country").value.trim()
+    ].join(", "),
+    notes: document.getElementById("notes").value.trim() || "None",
+    order_date: new Date().toLocaleString("en-US", {
+      weekday:"long", year:"numeric", month:"long",
+      day:"numeric", hour:"2-digit", minute:"2-digit"
+    }),
   };
 }
 
-async function submitPay(method) {
-  if (!stripe || !cardEl) { alert('Stripe not configured. Add your Stripe key to js/config.js'); return; }
-  const btn = document.getElementById('pay-btn');
-  btn.textContent = 'Processing...'; btn.disabled = true;
-  const { paymentMethod, error } = await stripe.createPaymentMethod({
-    type: 'card', card: cardEl,
-    billing_details: { name: document.getElementById('card_name').value, email: document.getElementById('email').value }
-  });
-  if (error) {
-    alert('Card error: ' + error.message);
-    const p = getProd();
-    btn.textContent = 'Pay ' + (p ? p.display : ''); btn.disabled = false; return;
+// ── LOADING ────────────────────────────────────────────
+function setLoading(on) {
+  document.getElementById("loading").classList.toggle("show", on);
+}
+
+// ── PAYPAL BUTTONS ─────────────────────────────────────
+paypal.Buttons({
+  style: { layout:"vertical", color:"blue", shape:"rect", label:"pay", height:50 },
+
+  // Step 1 — validate form + spam check + send email BEFORE PayPal opens
+  onClick: async function(data, actions) {
+
+    // Honeypot spam check
+    if (document.getElementById("honeypot").value !== "") {
+      return actions.reject();
+    }
+
+    // Prevent double click
+    if (paypalClicked) {
+      return actions.reject();
+    }
+
+    // Validate form fields
+    if (!validateForm()) {
+      const firstErr = document.querySelector(".err");
+      if (firstErr) firstErr.scrollIntoView({ behavior:"smooth", block:"center" });
+      const form = document.querySelector(".oform");
+      form.style.animation = "none";
+      void form.offsetHeight;
+      form.style.animation = "shake 0.4s ease";
+      setTimeout(() => { form.style.animation = ""; }, 400);
+      return actions.reject();
+    }
+
+    // Lock button
+    paypalClicked = true;
+    document.getElementById("paypal-button-container").classList.add("disabled");
+
+    // Send order email via EmailJS
+    setLoading(true);
+    try {
+      await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, getOrderData());
+      console.log("✅ Order email sent to mounirbenji12@gmail.com");
+      setLoading(false);
+      return actions.resolve(); // allow PayPal to open
+    } catch (e) {
+      // EMAIL FAILED — block payment so order is not lost
+      console.error("❌ EmailJS error:", e);
+      setLoading(false);
+      paypalClicked = false;
+      document.getElementById("paypal-button-container").classList.remove("disabled");
+      document.getElementById("ppNote").textContent = "Error sending order details. Please try again.";
+      document.getElementById("ppNote").style.color = "#f44336";
+      alert("There was an error sending your order details. Please try again. If the problem continues, contact mounirbenji12@gmail.com");
+      return actions.reject();
+    }
+  },
+
+  // Step 2 — create PayPal order at correct price
+  createOrder: function(data, actions) {
+    const order = getOrderData();
+    return actions.order.create({
+      purchase_units: [{
+        amount: { value: selectedProduct.price, currency_code: "USD" },
+        description: `${selectedProduct.name} - @${order.roblox_username}`,
+        custom_id: `roblox:${order.roblox_username}|name:${order.customer_name}|product:${selectedProduct.name}`,
+      }]
+    });
+  },
+
+  // Step 3 — payment approved, show confirmation
+  onApprove: function(data, actions) {
+    return actions.order.capture().then(function() {
+      showConfirmation(getOrderData());
+    });
+  },
+
+  onError: function(err) {
+    console.error("PayPal error:", err);
+    setLoading(false);
+    paypalClicked = false;
+    document.getElementById("paypal-button-container").classList.remove("disabled");
+    alert("Payment error. Please try again or contact mounirbenji12@gmail.com");
+  },
+
+  onCancel: function() {
+    paypalClicked = false;
+    document.getElementById("paypal-button-container").classList.remove("disabled");
+    document.getElementById("ppNote").textContent = "Payment cancelled. Click Pay again when ready.";
   }
-  collectData(); orderData.paymentMethod = 'Credit/Debit Card'; orderData.transactionId = paymentMethod.id;
-  sendEmail(); goStep(4); showConfirm();
+
+}).render("#paypal-button-container");
+
+// ── SHOW CONFIRMATION ──────────────────────────────────
+function showConfirmation(order) {
+  document.getElementById("order").style.display = "none";
+  const sec = document.getElementById("confirmSec");
+  sec.style.display = "block";
+
+  document.getElementById("confirmMsg").innerHTML =
+    `Thank you! Your <strong>${esc(order.product_name)}</strong> will be 3D printed using the Roblox username: <strong>${esc(order.roblox_username)}</strong>. We have received your full order details.`;
+
+  document.getElementById("confirmDetails").innerHTML = `
+    <div class="cdr"><span class="cl">Product</span><span class="cv cv-or">${esc(order.product_name)}</span></div>
+    <div class="cdr"><span class="cl">Price</span><span class="cv cv-or">${esc(order.price)}</span></div>
+    <div class="cdr"><span class="cl">Name</span><span class="cv">${esc(order.customer_name)}</span></div>
+    <div class="cdr"><span class="cl">Email</span><span class="cv">${esc(order.customer_email)}</span></div>
+    <div class="cdr"><span class="cl">Roblox Username</span><span class="cv cv-or">${esc(order.roblox_username)}</span></div>
+    <div class="cdr"><span class="cl">Ship To</span><span class="cv">${esc(order.shipping_address)}</span></div>
+    <div class="cdr"><span class="cl">Date</span><span class="cv">${esc(order.order_date)}</span></div>
+    ${order.notes !== "None" ? `<div class="cdr"><span class="cl">Notes</span><span class="cv">${esc(order.notes)}</span></div>` : ""}
+  `;
+
+  sec.scrollIntoView({ behavior:"smooth", block:"start" });
 }
 
-function showConfirm() {
-  const b = document.getElementById('confirmBox');
-  if (!b) return;
-  b.innerHTML = `<strong>Product:</strong> ${orderData.productName}<br><strong>Roblox Username:</strong> ${orderData.robloxUsername}<br><strong>Shipping to:</strong> ${orderData.firstName} ${orderData.lastName}, ${orderData.address}, ${orderData.city}<br><strong>Confirmation to:</strong> ${orderData.email}`;
-}
-
-function switchPay(tab, btn) {
-  document.querySelectorAll('.ptab').forEach(t => t.classList.remove('on'));
-  document.querySelectorAll('.ppanel').forEach(p => p.classList.remove('on'));
-  btn.classList.add('on');
-  document.getElementById('pp-' + tab).classList.add('on');
-}
-
-function toggleFaq(btn) {
-  const item = btn.closest('.faq-q-item');
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-q-item').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
-
-function resetForm() {
-  document.querySelectorAll('input[type=text], input[type=email], input[type=tel], textarea').forEach(i => i.value = '');
-  document.querySelectorAll('input[type=radio]').forEach(i => i.checked = false);
-  updateSummary();
-  goStep(1);
+// ── RESET ORDER (back to store) ────────────────────────
+function resetOrder() {
+  document.getElementById("orderForm").reset();
+  document.getElementById("confirmSec").style.display = "none";
+  document.getElementById("order").style.display = "block";
+  paypalClicked = false;
+  document.getElementById("paypal-button-container").classList.remove("disabled");
+  document.getElementById("ppNote").textContent = "Clicking Pay will send your order details to us, then open PayPal.";
+  document.getElementById("ppNote").style.color = "";
+  window.scrollTo({ top:0, behavior:"smooth" });
 }
